@@ -1,0 +1,232 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout_Encargado.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<!--ESTE ES EL HEAD-->
+<head>
+    <meta charset="UTF-8">
+    <meta naame="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Asesores</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/registroAsesorias.css">
+</head>
+<!--FIN DE HEAD-->
+<!--INICIO DE BODY-->
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="openTab('registro')" href="@Url.Action("RegistraAsesor", "asesor")">Registro Asesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesor", "asesor")">Consulta Asesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAlumno", "alumno")">Consulta Alumno</a>
+                </li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
+                    <h2><b>REGISTRO  DE ASESORES</b></h2>
+                    <!-- Contenido del formulario para registro de asesores -->
+                    @model SIAA.asesor
+
+
+                    @using (Html.BeginForm("RegistraAsesor", "asesor", FormMethod.Post, new { id = "formRegistro" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>MATRICULA</b></p>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.IdAsesor, new { htmlAttributes = new { @class = "form-control", id = "IdAsesor" } })
+                                    @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
+                                    <span id="success-message" class="text-success">@ViewBag.SuccessMessage</span>
+                                    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                                    {
+                                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+                                            <div>
+                                                @ViewBag.SuccessMessage
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.usuario.Nombre, Html.DisplayNameFor(model => model.usuario.Nombre).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.usuario.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre", id = "nombreInput" } })
+                                    <span id="nombreError" class="text-danger"></span>
+                                    @Html.ValidationMessageFor(model => model.usuario.Nombre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>APELLIDO PATERNO</b></p>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.usuario.ApellidoPaterno, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido Paterno", id = "apellidoPaternoInput" } })
+                                    <span id="apellidoPaternoError" class="text-danger"></span>
+                                    @Html.ValidationMessageFor(model => model.usuario.ApellidoPaterno, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>APELLIDO MATERNO</b></p>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.usuario.ApellidoMaterno, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido Materno", id = "apellidoMaternoInput" } })
+                                    <span id="apellidoMaternoError" class="text-danger"></span>
+                                    @Html.ValidationMessageFor(model => model.usuario.ApellidoMaterno, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Correo, Html.DisplayNameFor(model => model.Correo).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", placeholder = "uabc.edu.mx.com", id = "correoInput" } })
+                                    <span id="correoError" class="text-danger"></span>
+                                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>PROGRAMA EDUCATIVO</b></p>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("IdProgramaEducativo", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.usuario.IdProgramaEducativo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>ESTATUS</b></p>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("IdEstatus", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.usuario.IdEstatus, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="botones">
+                                    <button type="submit" class="btn btn-warning glyphicon glyphicon glyphicon-ok" value="Guardar"></button>
+                                    <button type="reset" class="btn btn-light glyphicon glyphicon glyphicon-trash" value="Cancelar"></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+                <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
+
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <script src="~/Scripts/menuRegistroAsesores.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var successMessage = "@ViewBag.SuccessMessage";
+            if (successMessage && successMessage.trim() !== "") {
+                // Muestra el mensaje de éxito usando JavaScript
+                var successElement = document.getElementById("success-message");
+                successElement.innerHTML = successMessage;
+
+                // Puedes agregar estilos o clases adicionales según tus necesidades
+                successElement.classList.add("alert", "alert-primary", "d-flex", "align-items-center", "role", "alert");
+
+                // Limpia el mensaje de éxito después de un tiempo (opcional)
+                setTimeout(function () {
+                    successElement.innerHTML = "";
+                }, 50000); // Muestra el mensaje por 5 segundos (ajusta según tus necesidades).
+            }
+        });
+        </script>
+
+        <!-- Agrega este script al final de tu vista -->
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // ... (otro código)
+
+                // Validación para campos de texto que no permiten números
+                var nombreInput = document.getElementById("nombreInput");
+                var apellidoPaternoInput = document.getElementById("apellidoPaternoInput");
+                var apellidoMaternoInput = document.getElementById("apellidoMaternoInput");
+
+                nombreInput.addEventListener("input", function () {
+                    validarCampoTexto(nombreInput);
+                });
+
+                apellidoPaternoInput.addEventListener("input", function () {
+                    validarCampoTexto(apellidoPaternoInput);
+                });
+
+                apellidoMaternoInput.addEventListener("input", function () {
+                    validarCampoTexto(apellidoMaternoInput);
+                });
+
+                function validarCampoTexto(inputElement) {
+                    var valor = inputElement.value;
+                    if (/^\d+$/.test(valor)) {
+                        // Si contiene solo números, muestra un mensaje de error
+                        inputElement.setCustomValidity("Este campo no permite números.");
+                    } else {
+                        // Si no contiene solo números, elimina el mensaje de error
+                        inputElement.setCustomValidity("");
+                    }
+                }
+
+
+            });
+        </script>
+        <script>
+
+
+            function limpiarCampos() {
+                // Limpiar campos al hacer clic en el botón de cancelar
+                document.getElementById("nombreInput").value = "";
+                document.getElementById("apellidoPaternoInput").value = "";
+                document.getElementById("apellidoMaternoInput").value = "";
+                document.getElementById("correoInput").value = "";
+
+                // También puedes restablecer la validación si es necesario
+                document.getElementById("nombreInput").setCustomValidity("");
+                document.getElementById("apellidoPaternoInput").setCustomValidity("");
+                document.getElementById("apellidoMaternoInput").setCustomValidity("");
+                document.getElementById("correoInput").setCustomValidity("");
+            }
+        </script>
+
+
+
+</body>
+
+
+
+</html>

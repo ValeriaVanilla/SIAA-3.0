@@ -1,0 +1,206 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesoria\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesoria\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\asesoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\asesoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesoria\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesoria\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\menu\\menualumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\menu\\menualumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesoria\\modificaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesoria\\modificaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\menu\\menuencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\menu\\menuencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\shared\\layout_encargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\shared\\layout_encargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\siaa_model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\siaa_model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegistroAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "ViewState": "AQIAAD0AAAAAAAAAAAApwE4AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T03:07:43.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConsultaAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\ConsultaAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesoria\\ConsultaAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\ConsultaAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesoria\\ConsultaAsesoria.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAMAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T03:02:58.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MenuAlumno.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuAlumno.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\menu\\MenuAlumno.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuAlumno.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\menu\\MenuAlumno.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T03:00:46.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "asesoriaController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesoriaController.cs",
+              "RelativeDocumentMoniker": "SIAA\\Controllers\\asesoriaController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesoriaController.cs",
+              "RelativeToolTip": "SIAA\\Controllers\\asesoriaController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwD0AAABlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T02:58:06.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Layout_Encargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T02:52:50.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T01:45:23.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModificaAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\ModificaAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesoria\\ModificaAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\ModificaAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesoria\\ModificaAsesoria.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADkAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T03:10:42.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MenuEncargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T02:47:49.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "menuController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\menuController.cs",
+              "RelativeDocumentMoniker": "SIAA\\Controllers\\menuController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\menuController.cs",
+              "RelativeToolTip": "SIAA\\Controllers\\menuController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T02:48:46.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\Index.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\Index.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\alumno\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T01:53:40.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SIAA_Model.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\SIAA_Model.edmx",
+              "RelativeDocumentMoniker": "SIAA\\SIAA_Model.edmx",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\SIAA_Model.edmx [Diagram1]",
+              "RelativeToolTip": "SIAA\\SIAA_Model.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-04-26T01:23:19.468Z",
+              "EditorCaption": " [Diagram1]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

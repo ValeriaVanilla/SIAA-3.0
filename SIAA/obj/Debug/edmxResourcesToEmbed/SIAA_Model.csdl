@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="siaaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_AL_USR" FromRole="alumno" ToRole="usuario" />
+    <NavigationProperty Name="asistencias" Relationship="Self.FK_AST_AL" FromRole="alumno" ToRole="asistencia" />
+    <NavigationProperty Name="evaluacions" Relationship="Self.FK_EV_AL" FromRole="alumno" ToRole="evaluacion" />
+    <NavigationProperty Name="solicituds" Relationship="Self.FK_SL_AL" FromRole="alumno" ToRole="solicitud" />
+  </EntityType>
+  <EntityType Name="asesor">
+    <Key>
+      <PropertyRef Name="IdAsesor" />
+    </Key>
+    <Property Name="IdAsesor" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_AS_USR" FromRole="asesor" ToRole="usuario" />
+    <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_AS" FromRole="asesor" ToRole="asesoria" />
+  </EntityType>
+  <EntityType Name="asesoria">
+    <Key>
+      <PropertyRef Name="IdAsesoria" />
+    </Key>
+    <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+    <Property Name="IdAsesor" Type="Int32" Nullable="false" />
+    <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
+    <Property Name="CicloEscolar" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdLugar" Type="Int32" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asesor" Relationship="Self.FK_ASE_AS" FromRole="asesoria" ToRole="asesor" />
+    <NavigationProperty Name="cat_horario" Relationship="Self.FK_ASE_HO" FromRole="asesoria" ToRole="cat_horario" />
+    <NavigationProperty Name="cat_lugar" Relationship="Self.FK_ASE_LU" FromRole="asesoria" ToRole="cat_lugar" />
+    <NavigationProperty Name="cat_unidad_aprendizaje" Relationship="Self.FK_ASE_UA" FromRole="asesoria" ToRole="cat_unidad_aprendizaje" />
+    <NavigationProperty Name="evaluacions" Relationship="Self.FK_EV_ASE" FromRole="asesoria" ToRole="evaluacion" />
+    <NavigationProperty Name="reportes" Relationship="Self.FK_RP_ASE" FromRole="asesoria" ToRole="reporte" />
+    <NavigationProperty Name="solicituds" Relationship="Self.FK_SL_ASE" FromRole="asesoria" ToRole="solicitud" />
+  </EntityType>
+  <EntityType Name="asistencia">
+    <Key>
+      <PropertyRef Name="IdAsistencia" />
+      <PropertyRef Name="IdReporte" />
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAsistencia" Type="Int32" Nullable="false" />
+    <Property Name="IdReporte" Type="Int32" Nullable="false" />
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="alumno" Relationship="Self.FK_AST_AL" FromRole="asistencia" ToRole="alumno" />
+    <NavigationProperty Name="reporte" Relationship="Self.FK_AST_RP" FromRole="asistencia" ToRole="reporte" />
+  </EntityType>
+  <EntityType Name="cat_estado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="solicituds" Relationship="Self.FK_SL_ES" FromRole="cat_estado" ToRole="solicitud" />
+  </EntityType>
+  <EntityType Name="cat_estatus">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_ES_USR" FromRole="cat_estatus" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="cat_horario">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+      <PropertyRef Name="IdAsesoria" />
+    </Key>
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+    <Property Name="Dia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoraInicio" Type="Int32" Nullable="false" />
+    <Property Name="HoraFin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_HO" FromRole="cat_horario" ToRole="asesoria" />
+  </EntityType>
+  <EntityType Name="cat_lugar">
+    <Key>
+      <PropertyRef Name="IdLugar" />
+    </Key>
+    <Property Name="IdLugar" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_LU" FromRole="cat_lugar" ToRole="asesoria" />
+  </EntityType>
+  <EntityType Name="cat_programa_educativo">
+    <Key>
+      <PropertyRef Name="IdProgramaEducativo" />
+    </Key>
+    <Property Name="IdProgramaEducativo" Type="Int32" Nullable="false" />
+    <Property Name="NombreProgramaEducativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_PE_USR" FromRole="cat_programa_educativo" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="cat_temas">
+    <Key>
+      <PropertyRef Name="IdTemas" />
+    </Key>
+    <Property Name="IdTemas" Type="Int32" Nullable="false" />
+    <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
+    <Property Name="NombreTema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="reportes" Relationship="Self.FK_RP_TM" FromRole="cat_temas" ToRole="reporte" />
+    <NavigationProperty Name="cat_unidad_aprendizaje" Relationship="Self.FK_TE_UA" FromRole="cat_temas" ToRole="cat_unidad_aprendizaje" />
+  </EntityType>
+  <EntityType Name="cat_tipo_usuario">
+    <Key>
+      <PropertyRef Name="IdTipoUsuario" />
+    </Key>
+    <Property Name="IdTipoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="NombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_TU_USR" FromRole="cat_tipo_usuario" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="cat_unidad_aprendizaje">
+    <Key>
+      <PropertyRef Name="IdUnidadAprendizaje" />
+    </Key>
+    <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
+    <Property Name="NombreUnidadAprendizaje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_UA" FromRole="cat_unidad_aprendizaje" ToRole="asesoria" />
+    <NavigationProperty Name="cat_temas" Relationship="Self.FK_TE_UA" FromRole="cat_unidad_aprendizaje" ToRole="cat_temas" />
+  </EntityType>
+  <EntityType Name="encargado">
+    <Key>
+      <PropertyRef Name="IdEncargado" />
+    </Key>
+    <Property Name="IdEncargado" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_EN_USR" FromRole="encargado" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="evaluacion">
+    <Key>
+      <PropertyRef Name="IdEvaluacion" />
+    </Key>
+    <Property Name="IdEvaluacion" Type="Int32" Nullable="false" />
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" />
+    <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+    <Property Name="MedioConocimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DesempenoAlumno" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DesempenoAsesor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PuntualidadAsesor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ActitudAsesor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="LenguajeAsesor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EspacioAdecuado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CambioEspacio" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Mejora" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="alumno" Relationship="Self.FK_EV_AL" FromRole="evaluacion" ToRole="alumno" />
+    <NavigationProperty Name="asesoria" Relationship="Self.FK_EV_ASE" FromRole="evaluacion" ToRole="asesoria" />
+  </EntityType>
+  <EntityType Name="reporte">
+    <Key>
+      <PropertyRef Name="IdReporte" />
+    </Key>
+    <Property Name="IdReporte" Type="Int32" Nullable="false" />
+    <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Duracion" Type="Int32" Nullable="false" />
+    <Property Name="IdTemaVisto" Type="Int32" Nullable="false" />
+    <Property Name="Comentarios" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="asesoria" Relationship="Self.FK_RP_ASE" FromRole="reporte" ToRole="asesoria" />
+    <NavigationProperty Name="asistencias" Relationship="Self.FK_AST_RP" FromRole="reporte" ToRole="asistencia" />
+    <NavigationProperty Name="cat_temas" Relationship="Self.FK_RP_TM" FromRole="reporte" ToRole="cat_temas" />
+  </EntityType>
+  <EntityType Name="solicitud">
+    <Key>
+      <PropertyRef Name="Idsolicitud" />
+    </Key>
+    <Property Name="Idsolicitud" Type="Int32" Nullable="false" />
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" />
+    <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+    <Property Name="FechaSolicitud" Type="DateTime" Precision="0" />
+    <Property Name="FechaAceptacion" Type="DateTime" Precision="0" />
+    <Property Name="IdEstado" Type="Int32" />
+    <NavigationProperty Name="alumno" Relationship="Self.FK_SL_AL" FromRole="solicitud" ToRole="alumno" />
+    <NavigationProperty Name="asesoria" Relationship="Self.FK_SL_ASE" FromRole="solicitud" ToRole="asesoria" />
+    <NavigationProperty Name="cat_estado" Relationship="Self.FK_SL_ES" FromRole="solicitud" ToRole="cat_estado" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdProgramaEducativo" Type="Int32" />
+    <Property Name="IdTipoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <NavigationProperty Name="alumno" Relationship="Self.FK_AL_USR" FromRole="usuario" ToRole="alumno" />
+    <NavigationProperty Name="asesor" Relationship="Self.FK_AS_USR" FromRole="usuario" ToRole="asesor" />
+    <NavigationProperty Name="cat_estatus" Relationship="Self.FK_ES_USR" FromRole="usuario" ToRole="cat_estatus" />
+    <NavigationProperty Name="cat_programa_educativo" Relationship="Self.FK_PE_USR" FromRole="usuario" ToRole="cat_programa_educativo" />
+    <NavigationProperty Name="cat_tipo_usuario" Relationship="Self.FK_TU_USR" FromRole="usuario" ToRole="cat_tipo_usuario" />
+    <NavigationProperty Name="encargado" Relationship="Self.FK_EN_USR" FromRole="usuario" ToRole="encargado" />
+  </EntityType>
+  <Association Name="FK_AL_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="alumno" Type="Self.alumno" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AST_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="asistencia">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EV_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="evaluacion">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesor" Type="Self.asesor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="asesor">
+        <PropertyRef Name="IdAsesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_AS">
+    <End Role="asesor" Type="Self.asesor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesor">
+        <PropertyRef Name="IdAsesor" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdAsesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_HO">
+    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_horario">
+        <PropertyRef Name="IdHorario" />
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdHorario" />
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_LU">
+    <End Role="cat_lugar" Type="Self.cat_lugar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_lugar">
+        <PropertyRef Name="IdLugar" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdLugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_UA">
+    <End Role="cat_unidad_aprendizaje" Type="Self.cat_unidad_aprendizaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_unidad_aprendizaje">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EV_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="evaluacion">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RP_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="reporte">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AST_RP">
+    <End Role="reporte" Type="Self.reporte" Multiplicity="1" />
+    <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reporte">
+        <PropertyRef Name="IdReporte" />
+      </Principal>
+      <Dependent Role="asistencia">
+        <PropertyRef Name="IdReporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_ES">
+    <End Role="cat_estado" Type="Self.cat_estado" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_estado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ES_USR">
+    <End Role="cat_estatus" Type="Self.cat_estatus" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_estatus">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PE_USR">
+    <End Role="cat_programa_educativo" Type="Self.cat_programa_educativo" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_programa_educativo">
+        <PropertyRef Name="IdProgramaEducativo" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdProgramaEducativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RP_TM">
+    <End Role="cat_temas" Type="Self.cat_temas" Multiplicity="1" />
+    <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_temas">
+        <PropertyRef Name="IdTemas" />
+      </Principal>
+      <Dependent Role="reporte">
+        <PropertyRef Name="IdTemaVisto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TE_UA">
+    <End Role="cat_unidad_aprendizaje" Type="Self.cat_unidad_aprendizaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="cat_temas" Type="Self.cat_temas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_unidad_aprendizaje">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Principal>
+      <Dependent Role="cat_temas">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TU_USR">
+    <End Role="cat_tipo_usuario" Type="Self.cat_tipo_usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_tipo_usuario">
+        <PropertyRef Name="IdTipoUsuario" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdTipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EN_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="encargado" Type="Self.encargado" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="encargado">
+        <PropertyRef Name="IdEncargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="siaaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alumnoes" EntityType="Self.alumno" />
+    <EntitySet Name="asesors" EntityType="Self.asesor" />
+    <EntitySet Name="asesorias" EntityType="Self.asesoria" />
+    <EntitySet Name="asistencias" EntityType="Self.asistencia" />
+    <EntitySet Name="cat_estado" EntityType="Self.cat_estado" />
+    <EntitySet Name="cat_estatus" EntityType="Self.cat_estatus" />
+    <EntitySet Name="cat_horario" EntityType="Self.cat_horario" />
+    <EntitySet Name="cat_lugar" EntityType="Self.cat_lugar" />
+    <EntitySet Name="cat_programa_educativo" EntityType="Self.cat_programa_educativo" />
+    <EntitySet Name="cat_temas" EntityType="Self.cat_temas" />
+    <EntitySet Name="cat_tipo_usuario" EntityType="Self.cat_tipo_usuario" />
+    <EntitySet Name="cat_unidad_aprendizaje" EntityType="Self.cat_unidad_aprendizaje" />
+    <EntitySet Name="encargadoes" EntityType="Self.encargado" />
+    <EntitySet Name="evaluacions" EntityType="Self.evaluacion" />
+    <EntitySet Name="reportes" EntityType="Self.reporte" />
+    <EntitySet Name="solicituds" EntityType="Self.solicitud" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
+    <AssociationSet Name="FK_AL_USR" Association="Self.FK_AL_USR">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="alumno" EntitySet="alumnoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AST_AL" Association="Self.FK_AST_AL">
+      <End Role="alumno" EntitySet="alumnoes" />
+      <End Role="asistencia" EntitySet="asistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EV_AL" Association="Self.FK_EV_AL">
+      <End Role="alumno" EntitySet="alumnoes" />
+      <End Role="evaluacion" EntitySet="evaluacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_AL" Association="Self.FK_SL_AL">
+      <End Role="alumno" EntitySet="alumnoes" />
+      <End Role="solicitud" EntitySet="solicituds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_USR" Association="Self.FK_AS_USR">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="asesor" EntitySet="asesors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_AS" Association="Self.FK_ASE_AS">
+      <End Role="asesor" EntitySet="asesors" />
+      <End Role="asesoria" EntitySet="asesorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_HO" Association="Self.FK_ASE_HO">
+      <End Role="cat_horario" EntitySet="cat_horario" />
+      <End Role="asesoria" EntitySet="asesorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_LU" Association="Self.FK_ASE_LU">
+      <End Role="cat_lugar" EntitySet="cat_lugar" />
+      <End Role="asesoria" EntitySet="asesorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_UA" Association="Self.FK_ASE_UA">
+      <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
+      <End Role="asesoria" EntitySet="asesorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EV_ASE" Association="Self.FK_EV_ASE">
+      <End Role="asesoria" EntitySet="asesorias" />
+      <End Role="evaluacion" EntitySet="evaluacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RP_ASE" Association="Self.FK_RP_ASE">
+      <End Role="asesoria" EntitySet="asesorias" />
+      <End Role="reporte" EntitySet="reportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_ASE" Association="Self.FK_SL_ASE">
+      <End Role="asesoria" EntitySet="asesorias" />
+      <End Role="solicitud" EntitySet="solicituds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AST_RP" Association="Self.FK_AST_RP">
+      <End Role="reporte" EntitySet="reportes" />
+      <End Role="asistencia" EntitySet="asistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_ES" Association="Self.FK_SL_ES">
+      <End Role="cat_estado" EntitySet="cat_estado" />
+      <End Role="solicitud" EntitySet="solicituds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ES_USR" Association="Self.FK_ES_USR">
+      <End Role="cat_estatus" EntitySet="cat_estatus" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PE_USR" Association="Self.FK_PE_USR">
+      <End Role="cat_programa_educativo" EntitySet="cat_programa_educativo" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RP_TM" Association="Self.FK_RP_TM">
+      <End Role="cat_temas" EntitySet="cat_temas" />
+      <End Role="reporte" EntitySet="reportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TE_UA" Association="Self.FK_TE_UA">
+      <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
+      <End Role="cat_temas" EntitySet="cat_temas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TU_USR" Association="Self.FK_TU_USR">
+      <End Role="cat_tipo_usuario" EntitySet="cat_tipo_usuario" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EN_USR" Association="Self.FK_EN_USR">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="encargado" EntitySet="encargadoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

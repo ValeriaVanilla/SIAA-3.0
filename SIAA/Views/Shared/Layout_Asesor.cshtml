@@ -1,0 +1,130 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="~/Content/LayoutStyle.css" />
+
+    <title>SIAA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--INICIO DE CUADROS -->
+    <div class="encabezados_borde">
+        <div class="borde-verde">
+            <img class="escudo-uabc" src="~/Resources/Logoenblancouabc.png" alt="">
+            <div class="linea-vertical-encabezado"></div>
+            <img class="escudo-fim" src="~/Resources/EscudoB_FIM.png" alt="">
+            <div class="texto-en-cuadrado-uabc">
+                <p>
+                    Universidad Autónoma de Baja California
+
+                </p>
+            </div>
+            <div class="texto-en-cuadrado-siaa">
+                <b>SIAA - SISTEMA DE ASESORÍAS ACADÉMICAS</b>
+            </div>
+        </div>
+        <div class="borde-amarillo"></div>
+    </div>
+
+    <!--FIN CUADROS-->
+    <!--NOTFICACIONES -->
+    <div class="notificaciones">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-bell" viewBox="0 0 20 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+        </svg>
+    </div>
+
+    <!--USUARIO -->
+    <div class="usuario-container">
+
+        <img class="iconUsuario" src="~/Resources/UsuarioInicio.png" />
+        <p class="txtUsuario">Asesor</p>
+        <div class="usuario-dropdown">
+            <a href="#">Informacion Personal</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+
+    </div>
+    <!--FIN USUARIO -->
+    <!--FIN DE CABECERA -->
+    <!--INICIO DE MENU LATERAL-->
+    <div class="menu-lateral">
+        <div class="menu-contenedor">
+            <ul>
+                <li>
+                    <div class="opcion-menu">
+                        <a href='@Url.Action("MenuAsesor", "menu")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/inicio-inicio.png" />
+                            <span>Inicio</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="opcion-menu">
+                        <a href='@Url.Action("RegistroAsesoria", "asesorias")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/asesorias-inicio.png" />
+                            <span>Asesorías</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="opcion-menu">
+                        <a href='@Url.Action("SolicitudesAsesoria", "asesor")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/Solicitar_inicio.png" />
+                            <span>Solicitudes</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="opcion-menu-1">
+                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/reporte-inicio.png" />
+                            <span>Reportes</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li>
+                    <hr class="linea">
+                </li>
+
+                <li>
+                    <div class="opcion-menu">
+                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/cerrar-sesion-inicio.png" />
+                            <span>Cerrar Sesión </span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="opcion-menu">
+                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                            <img class="imagenes-lateral" src="~/Resources/Menu_lateral/ayuda-inicio.png" />
+                            <span>Ayuda </span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--MOSTRAR EL CONTENIDO -->
+    <div class="contenido">
+        <!-- Contenido principal de la página -->
+        @RenderBody()
+
+    </div>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

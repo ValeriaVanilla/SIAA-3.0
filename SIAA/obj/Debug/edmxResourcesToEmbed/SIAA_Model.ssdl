@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="siaaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Genero" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="asesor">
+    <Key>
+      <PropertyRef Name="IdAsesor" />
+    </Key>
+    <Property Name="IdAsesor" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="45" />
+    <Property Name="Genero" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="asesoria">
+    <Key>
+      <PropertyRef Name="IdAsesoria" />
+    </Key>
+    <Property Name="IdAsesoria" Type="int" Nullable="false" />
+    <Property Name="IdAsesor" Type="int" Nullable="false" />
+    <Property Name="IdUnidadAprendizaje" Type="int" Nullable="false" />
+    <Property Name="CicloEscolar" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="IdLugar" Type="int" Nullable="false" />
+    <Property Name="IdHorario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="asistencia">
+    <Key>
+      <PropertyRef Name="IdAsistencia" />
+      <PropertyRef Name="IdReporte" />
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAsistencia" Type="int" Nullable="false" />
+    <Property Name="IdReporte" Type="int" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_estado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_estatus">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_horario">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+      <PropertyRef Name="IdAsesoria" />
+    </Key>
+    <Property Name="IdHorario" Type="int" Nullable="false" />
+    <Property Name="IdAsesoria" Type="int" Nullable="false" />
+    <Property Name="Dia" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoraInicio" Type="int" Nullable="false" />
+    <Property Name="HoraFin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_lugar">
+    <Key>
+      <PropertyRef Name="IdLugar" />
+    </Key>
+    <Property Name="IdLugar" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_programa_educativo">
+    <Key>
+      <PropertyRef Name="IdProgramaEducativo" />
+    </Key>
+    <Property Name="IdProgramaEducativo" Type="int" Nullable="false" />
+    <Property Name="NombreProgramaEducativo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_temas">
+    <Key>
+      <PropertyRef Name="IdTemas" />
+    </Key>
+    <Property Name="IdTemas" Type="int" Nullable="false" />
+    <Property Name="IdUnidadAprendizaje" Type="int" Nullable="false" />
+    <Property Name="NombreTema" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_tipo_usuario">
+    <Key>
+      <PropertyRef Name="IdTipoUsuario" />
+    </Key>
+    <Property Name="IdTipoUsuario" Type="int" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cat_unidad_aprendizaje">
+    <Key>
+      <PropertyRef Name="IdUnidadAprendizaje" />
+    </Key>
+    <Property Name="IdUnidadAprendizaje" Type="int" Nullable="false" />
+    <Property Name="NombreUnidadAprendizaje" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="encargado">
+    <Key>
+      <PropertyRef Name="IdEncargado" />
+    </Key>
+    <Property Name="IdEncargado" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Genero" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="evaluacion">
+    <Key>
+      <PropertyRef Name="IdEvaluacion" />
+    </Key>
+    <Property Name="IdEvaluacion" Type="int" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="IdAsesoria" Type="int" Nullable="false" />
+    <Property Name="MedioConocimiento" Type="varchar" MaxLength="45" />
+    <Property Name="DesempenoAlumno" Type="varchar" MaxLength="45" />
+    <Property Name="DesempenoAsesor" Type="varchar" MaxLength="45" />
+    <Property Name="PuntualidadAsesor" Type="varchar" MaxLength="45" />
+    <Property Name="ActitudAsesor" Type="varchar" MaxLength="45" />
+    <Property Name="LenguajeAsesor" Type="varchar" MaxLength="45" />
+    <Property Name="EspacioAdecuado" Type="varchar" MaxLength="45" />
+    <Property Name="CambioEspacio" Type="varchar" MaxLength="45" />
+    <Property Name="Mejora" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="reporte">
+    <Key>
+      <PropertyRef Name="IdReporte" />
+    </Key>
+    <Property Name="IdReporte" Type="int" Nullable="false" />
+    <Property Name="IdAsesoria" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Duracion" Type="int" Nullable="false" />
+    <Property Name="IdTemaVisto" Type="int" Nullable="false" />
+    <Property Name="Comentarios" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="solicitud">
+    <Key>
+      <PropertyRef Name="Idsolicitud" />
+    </Key>
+    <Property Name="Idsolicitud" Type="int" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="IdAsesoria" Type="int" Nullable="false" />
+    <Property Name="FechaSolicitud" Type="date" />
+    <Property Name="FechaAceptacion" Type="date" />
+    <Property Name="IdEstado" Type="int" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="45" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="45" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdProgramaEducativo" Type="int" />
+    <Property Name="IdTipoUsuario" Type="int" Nullable="false" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
+  <Association Name="FK_AL_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="alumno" Type="Self.alumno" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesor" Type="Self.asesor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="asesor">
+        <PropertyRef Name="IdAsesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_AS">
+    <End Role="asesor" Type="Self.asesor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesor">
+        <PropertyRef Name="IdAsesor" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdAsesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_HO">
+    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_horario">
+        <PropertyRef Name="IdHorario" />
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdHorario" />
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_LU">
+    <End Role="cat_lugar" Type="Self.cat_lugar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_lugar">
+        <PropertyRef Name="IdLugar" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdLugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASE_UA">
+    <End Role="cat_unidad_aprendizaje" Type="Self.cat_unidad_aprendizaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_unidad_aprendizaje">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Principal>
+      <Dependent Role="asesoria">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AST_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="asistencia">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AST_RP">
+    <End Role="reporte" Type="Self.reporte" Multiplicity="1" />
+    <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reporte">
+        <PropertyRef Name="IdReporte" />
+      </Principal>
+      <Dependent Role="asistencia">
+        <PropertyRef Name="IdReporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EN_USR">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="encargado" Type="Self.encargado" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="encargado">
+        <PropertyRef Name="IdEncargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ES_USR">
+    <End Role="cat_estatus" Type="Self.cat_estatus" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_estatus">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EV_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="evaluacion">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EV_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="evaluacion">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PE_USR">
+    <End Role="cat_programa_educativo" Type="Self.cat_programa_educativo" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_programa_educativo">
+        <PropertyRef Name="IdProgramaEducativo" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdProgramaEducativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RP_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="reporte">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RP_TM">
+    <End Role="cat_temas" Type="Self.cat_temas" Multiplicity="1" />
+    <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_temas">
+        <PropertyRef Name="IdTemas" />
+      </Principal>
+      <Dependent Role="reporte">
+        <PropertyRef Name="IdTemaVisto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_AL">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_ASE">
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asesoria">
+        <PropertyRef Name="IdAsesoria" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdAsesoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SL_ES">
+    <End Role="cat_estado" Type="Self.cat_estado" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_estado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TE_UA">
+    <End Role="cat_unidad_aprendizaje" Type="Self.cat_unidad_aprendizaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="cat_temas" Type="Self.cat_temas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_unidad_aprendizaje">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Principal>
+      <Dependent Role="cat_temas">
+        <PropertyRef Name="IdUnidadAprendizaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TU_USR">
+    <End Role="cat_tipo_usuario" Type="Self.cat_tipo_usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_tipo_usuario">
+        <PropertyRef Name="IdTipoUsuario" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="IdTipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="siaaModelStoreContainer">
+    <EntitySet Name="alumno" EntityType="Self.alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asesor" EntityType="Self.asesor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asesoria" EntityType="Self.asesoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asistencia" EntityType="Self.asistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_estado" EntityType="Self.cat_estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_estatus" EntityType="Self.cat_estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_horario" EntityType="Self.cat_horario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_lugar" EntityType="Self.cat_lugar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_programa_educativo" EntityType="Self.cat_programa_educativo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_temas" EntityType="Self.cat_temas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_tipo_usuario" EntityType="Self.cat_tipo_usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_unidad_aprendizaje" EntityType="Self.cat_unidad_aprendizaje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="encargado" EntityType="Self.encargado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evaluacion" EntityType="Self.evaluacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reporte" EntityType="Self.reporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="solicitud" EntityType="Self.solicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AL_USR" Association="Self.FK_AL_USR">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_USR" Association="Self.FK_AS_USR">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="asesor" EntitySet="asesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_AS" Association="Self.FK_ASE_AS">
+      <End Role="asesor" EntitySet="asesor" />
+      <End Role="asesoria" EntitySet="asesoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_HO" Association="Self.FK_ASE_HO">
+      <End Role="cat_horario" EntitySet="cat_horario" />
+      <End Role="asesoria" EntitySet="asesoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_LU" Association="Self.FK_ASE_LU">
+      <End Role="cat_lugar" EntitySet="cat_lugar" />
+      <End Role="asesoria" EntitySet="asesoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASE_UA" Association="Self.FK_ASE_UA">
+      <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
+      <End Role="asesoria" EntitySet="asesoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AST_AL" Association="Self.FK_AST_AL">
+      <End Role="alumno" EntitySet="alumno" />
+      <End Role="asistencia" EntitySet="asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AST_RP" Association="Self.FK_AST_RP">
+      <End Role="reporte" EntitySet="reporte" />
+      <End Role="asistencia" EntitySet="asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EN_USR" Association="Self.FK_EN_USR">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="encargado" EntitySet="encargado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ES_USR" Association="Self.FK_ES_USR">
+      <End Role="cat_estatus" EntitySet="cat_estatus" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EV_AL" Association="Self.FK_EV_AL">
+      <End Role="alumno" EntitySet="alumno" />
+      <End Role="evaluacion" EntitySet="evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EV_ASE" Association="Self.FK_EV_ASE">
+      <End Role="asesoria" EntitySet="asesoria" />
+      <End Role="evaluacion" EntitySet="evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PE_USR" Association="Self.FK_PE_USR">
+      <End Role="cat_programa_educativo" EntitySet="cat_programa_educativo" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RP_ASE" Association="Self.FK_RP_ASE">
+      <End Role="asesoria" EntitySet="asesoria" />
+      <End Role="reporte" EntitySet="reporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RP_TM" Association="Self.FK_RP_TM">
+      <End Role="cat_temas" EntitySet="cat_temas" />
+      <End Role="reporte" EntitySet="reporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_AL" Association="Self.FK_SL_AL">
+      <End Role="alumno" EntitySet="alumno" />
+      <End Role="solicitud" EntitySet="solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_ASE" Association="Self.FK_SL_ASE">
+      <End Role="asesoria" EntitySet="asesoria" />
+      <End Role="solicitud" EntitySet="solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SL_ES" Association="Self.FK_SL_ES">
+      <End Role="cat_estado" EntitySet="cat_estado" />
+      <End Role="solicitud" EntitySet="solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TE_UA" Association="Self.FK_TE_UA">
+      <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
+      <End Role="cat_temas" EntitySet="cat_temas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TU_USR" Association="Self.FK_TU_USR">
+      <End Role="cat_tipo_usuario" EntitySet="cat_tipo_usuario" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

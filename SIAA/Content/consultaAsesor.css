@@ -1,0 +1,55 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    margin-left: 135px;
+    background-color: #f2f2f2;
+}
+
+search-box {
+    width: 300px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+}
+
+
+.encabezado {
+    background-color: #214525;
+    color: #fff;
+    height: 30px;
+}
+
+.search-container {
+    background-color: #f2f2f2;
+    border-color: white;
+    border-bottom-style: solid;
+    border-width: 1px;
+    color: #fff;
+    height: 60px;
+    display: flex;
+}
+
+#myInput {
+    margin: 8px;
+}
+
+
+
+.tab-pane {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.nav-tabs a.active {
+    background-color: #f1b034;
+    font-weight: bold;
+    /* Otros estilos que desees aplicar */
+}
+
+a {
+    color: black;
+}

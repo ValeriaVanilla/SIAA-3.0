@@ -1,0 +1,61 @@
+﻿@model  IEnumerable<SIAA.solicitud>
+
+@{
+    Layout = "~/Views/Shared/Layout_Asesor.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Solicitudes.css">
+
+<div class="contenido">
+    <h1>Solicitudes De Asesorías</h1>
+
+    <!--Aqui se imprimen las solicitudes-->
+    <table class="tabla">
+        @foreach (var item in Model)
+        {
+            <tr class="tarjeta">
+                <td>
+                    <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
+
+                </td>
+                <td>
+                    <div class="titulo">
+
+                        <h2>@Html.DisplayFor(modelItem => item.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</h2>
+                        <p> @Html.DisplayFor(modelItem => item.IdAsesoria)</p>
+                    </div>
+
+                </td>
+                <td>
+                    <div class="datos-asesorado">
+                        <h3>Datos del asesorado</h3>
+                        <b>
+                            Nombre:
+                        </b>
+                        @Html.DisplayFor(modelItem => item.alumno.usuario.Nombre)
+                        @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoPaterno)
+                        @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoMaterno)
+                        <br>
+                        <b>
+                            Matricula:
+                        </b>
+                        @Html.DisplayFor(modelItem => item.alumno.IdAlumno)
+                        <br>
+                        <b>Correo: </b>
+                        @Html.DisplayFor(modelItem => item.alumno.Correo)
+                    </div>
+                </td>
+    <td></td>
+        <td>
+        </td>
+        <td>
+            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idAsesoria = item.IdAsesoria},  new { @class = "btn btn-warning glyphicon glyphicon-ok" })
+        </td>
+        <td>
+            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { id = item.IdAsesoria }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
+        </td>
+        </tr>
+    }
+        </table>
+    </div>
+

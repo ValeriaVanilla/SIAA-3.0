@@ -1,0 +1,32 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    margin-left: 135px;
+    background-color: #f2f2f2;
+}
+
+.tab-pane {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.nav-tabs a.active {
+    background-color: #f1b034;
+    font-weight: bold;
+    /* Otros estilos que desees aplicar */
+}
+
+a{
+    color:black;
+}
+
+#mensajeRegistro {
+    display: none;
+    position: fixed;
+    top: 10px; /* Ajusta la posición desde la parte superior */
+    left: 10px; /* Ajusta la posición desde la izquierda */
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+}

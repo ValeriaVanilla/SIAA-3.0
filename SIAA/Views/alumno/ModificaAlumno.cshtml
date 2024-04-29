@@ -1,0 +1,100 @@
+﻿@model SIAA.alumno
+
+@{
+    Layout = null;
+}
+
+<h2>Modificación de alumnos</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.IdAlumno)
+
+<div class="form-group">
+    <p class="control-label col-md-2"><b>MATRÍCULA</b></p>
+    <div class="col-md-10">
+        @Html.DisplayFor(model => model.IdAlumno)
+    </div>
+</div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>NOMBRE</b></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usuario.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>APELLIDO PATERNO</b></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario.ApellidoPaterno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usuario.ApellidoPaterno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>APELLIDO MATERNO</b></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario.ApellidoMaterno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usuario.ApellidoMaterno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>CORREO</b></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.usuario.cat_estatus.IdEstatus, "IdEstatus", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdEstatus", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.usuario.cat_estatus.IdEstatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>PROGRAMA EDUCATIV0</b></p>
+            <div class="col-md-10">
+                @Html.DropDownList("IdProgramaEducativo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.usuario.IdProgramaEducativo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">
+                <b>
+                    TIPO USUARIO
+                </b>
+            </p>
+            <div class="col-md-10">
+                @Html.DropDownList("IdTipo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.usuario.IdTipoUsuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

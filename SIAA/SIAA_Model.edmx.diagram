@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc001e84e8a946b984db82a8faca6791" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="siaaModel.alumno" Width="1.5" PointX="2.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.asesor" Width="1.5" PointX="4.625" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.asesoria" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.asistencia" Width="1.5" PointX="5.625" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_estado" Width="1.5" PointX="7.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_estatus" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_horario" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_lugar" Width="1.5" PointX="11.375" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_programa_educativo" Width="1.5" PointX="1.5" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_temas" Width="1.5" PointX="3.875" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_tipo_usuario" Width="1.5" PointX="1.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.cat_unidad_aprendizaje" Width="1.5" PointX="1" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.encargado" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.evaluacion" Width="1.5" PointX="11" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.reporte" Width="1.5" PointX="9.125" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.solicitud" Width="1.5" PointX="5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="siaaModel.usuario" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="siaaModel.FK_AL_USR" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_AST_AL" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_EV_AL" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_SL_AL" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_AS_USR" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_ASE_AS" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_ASE_HO" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_ASE_LU" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_ASE_UA" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_EV_ASE" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_RP_ASE" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_SL_ASE" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_AST_RP" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_SL_ES" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_ES_USR" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_PE_USR" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_RP_TM" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_TE_UA" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_TU_USR" ManuallyRouted="false" />
+        <AssociationConnector Association="siaaModel.FK_EN_USR" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

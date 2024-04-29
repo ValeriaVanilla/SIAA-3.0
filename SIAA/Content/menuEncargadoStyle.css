@@ -1,0 +1,69 @@
+body{
+ 
+}
+
+
+.contenedor-menu{
+    padding:19px;
+    margin-left:153px;
+    display:flex;
+}
+
+.card-menu-encargado {
+    box-shadow: 5px 5px 20px grey;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 30px;
+    margin-top: 80px;
+}
+
+
+img {
+    height: 250px;
+    border-radius: 3px;
+}
+
+.titulo {
+    color: white;
+    margin: 0;
+    font-size: 1.9em;
+
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px; /* Ajusta el relleno según tus preferencias */
+    background: rgba(01, 45, 31, 0.7); /* Ajusta la opacidad y el color del fondo según tus preferencias */
+    text-align: center;
+}
+
+.card-menu-encargado img {
+    display: block;
+    width: 100%;
+}
+.enlace-tarjeta {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card-menu-encargado {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: none;
+}
+
+.card-menu-encargado:hover .tooltip {
+    display: block;
+}

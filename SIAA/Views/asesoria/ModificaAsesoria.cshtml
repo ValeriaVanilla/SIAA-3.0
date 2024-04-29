@@ -1,0 +1,75 @@
+﻿@model SIAA.asesoria
+
+@{
+    Layout = null;
+
+}
+
+<div class="container" style="margin-right: 2cm;">
+    <h2>Modificación de asesorías</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.IdAsesoria)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cat_unidad_aprendizaje.NombreUnidadAprendizaje, "Nombre de la asesoría", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cat_unidad_aprendizaje.NombreUnidadAprendizaje, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cat_unidad_aprendizaje.NombreUnidadAprendizaje, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdAsesor, "Id del asesor", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("IdAsesor", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdUnidadAprendizaje, "Clave de la materia", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <p class="control-label col-md-2"><b>LUGAR</b></p>
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.cat_lugar.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cat_lugar.Descripcion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <p class="control-label col-md-2"><b>HORARIO</b></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cat_horario.Dia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cat_horario.Dia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-default" />
+
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink("Regresar", "ConsultaAsesoria")
+    </div>
+</div>
+

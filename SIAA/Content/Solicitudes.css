@@ -1,0 +1,79 @@
+﻿body {
+}
+
+.contenido{
+    margin-top: 4%;
+    margin-left: 5%;
+}
+
+.flex-container {
+    display: grid;
+    
+    
+}
+
+.tarjeta {   
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+    Width: 500px;
+    height: 180px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.imagen {
+    height: 80%;
+}
+
+.datos {
+    display: flex;
+    
+}
+
+.titulo {
+    margin: 5px;
+    height: 100%;
+    align-content: center;
+ 
+}
+
+    .titulo > h2,p {
+        margin: 7px;
+    }
+
+    .titulo > h2 {
+        color: #214525;
+        font-weight:bold;
+    }
+
+.datos-asesorado {
+    
+    border-left: 3px solid #F2B134;
+    font-size: 15px;
+    margin: 5px;
+}
+
+    .datos-asesorado > h3, b {
+        margin: 10px;
+    }
+
+    .datos-asesorado > h3 {
+        color: #214525;
+        font-weight: bold;
+    }
+    
+    .tabla{
+        width:70%;
+        border-collapse: separate;
+        border-spacing: 0px 20px;
+    }
+
+        .tabla > tr {
+            background-color: #ffffff;
+            font-size: 20px;
+            Width: 500px;
+            height: 180px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }

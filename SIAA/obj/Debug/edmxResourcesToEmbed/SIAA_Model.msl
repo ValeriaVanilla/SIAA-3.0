@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="siaaModelStoreContainer" CdmEntityContainer="siaaEntities">
+    <EntitySetMapping Name="alumnoes">
+      <EntityTypeMapping TypeName="siaaModel.alumno">
+        <MappingFragment StoreEntitySet="alumno">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asesors">
+      <EntityTypeMapping TypeName="siaaModel.asesor">
+        <MappingFragment StoreEntitySet="asesor">
+          <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asesorias">
+      <EntityTypeMapping TypeName="siaaModel.asesoria">
+        <MappingFragment StoreEntitySet="asesoria">
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
+          <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
+          <ScalarProperty Name="CicloEscolar" ColumnName="CicloEscolar" />
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asistencias">
+      <EntityTypeMapping TypeName="siaaModel.asistencia">
+        <MappingFragment StoreEntitySet="asistencia">
+          <ScalarProperty Name="IdAsistencia" ColumnName="IdAsistencia" />
+          <ScalarProperty Name="IdReporte" ColumnName="IdReporte" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_estado">
+      <EntityTypeMapping TypeName="siaaModel.cat_estado">
+        <MappingFragment StoreEntitySet="cat_estado">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_estatus">
+      <EntityTypeMapping TypeName="siaaModel.cat_estatus">
+        <MappingFragment StoreEntitySet="cat_estatus">
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_horario">
+      <EntityTypeMapping TypeName="siaaModel.cat_horario">
+        <MappingFragment StoreEntitySet="cat_horario">
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_lugar">
+      <EntityTypeMapping TypeName="siaaModel.cat_lugar">
+        <MappingFragment StoreEntitySet="cat_lugar">
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_programa_educativo">
+      <EntityTypeMapping TypeName="siaaModel.cat_programa_educativo">
+        <MappingFragment StoreEntitySet="cat_programa_educativo">
+          <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
+          <ScalarProperty Name="NombreProgramaEducativo" ColumnName="NombreProgramaEducativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_temas">
+      <EntityTypeMapping TypeName="siaaModel.cat_temas">
+        <MappingFragment StoreEntitySet="cat_temas">
+          <ScalarProperty Name="IdTemas" ColumnName="IdTemas" />
+          <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
+          <ScalarProperty Name="NombreTema" ColumnName="NombreTema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_tipo_usuario">
+      <EntityTypeMapping TypeName="siaaModel.cat_tipo_usuario">
+        <MappingFragment StoreEntitySet="cat_tipo_usuario">
+          <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_unidad_aprendizaje">
+      <EntityTypeMapping TypeName="siaaModel.cat_unidad_aprendizaje">
+        <MappingFragment StoreEntitySet="cat_unidad_aprendizaje">
+          <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
+          <ScalarProperty Name="NombreUnidadAprendizaje" ColumnName="NombreUnidadAprendizaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="encargadoes">
+      <EntityTypeMapping TypeName="siaaModel.encargado">
+        <MappingFragment StoreEntitySet="encargado">
+          <ScalarProperty Name="IdEncargado" ColumnName="IdEncargado" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="evaluacions">
+      <EntityTypeMapping TypeName="siaaModel.evaluacion">
+        <MappingFragment StoreEntitySet="evaluacion">
+          <ScalarProperty Name="IdEvaluacion" ColumnName="IdEvaluacion" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="MedioConocimiento" ColumnName="MedioConocimiento" />
+          <ScalarProperty Name="DesempenoAlumno" ColumnName="DesempenoAlumno" />
+          <ScalarProperty Name="DesempenoAsesor" ColumnName="DesempenoAsesor" />
+          <ScalarProperty Name="PuntualidadAsesor" ColumnName="PuntualidadAsesor" />
+          <ScalarProperty Name="ActitudAsesor" ColumnName="ActitudAsesor" />
+          <ScalarProperty Name="LenguajeAsesor" ColumnName="LenguajeAsesor" />
+          <ScalarProperty Name="EspacioAdecuado" ColumnName="EspacioAdecuado" />
+          <ScalarProperty Name="CambioEspacio" ColumnName="CambioEspacio" />
+          <ScalarProperty Name="Mejora" ColumnName="Mejora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reportes">
+      <EntityTypeMapping TypeName="siaaModel.reporte">
+        <MappingFragment StoreEntitySet="reporte">
+          <ScalarProperty Name="IdReporte" ColumnName="IdReporte" />
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="IdTemaVisto" ColumnName="IdTemaVisto" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solicituds">
+      <EntityTypeMapping TypeName="siaaModel.solicitud">
+        <MappingFragment StoreEntitySet="solicitud">
+          <ScalarProperty Name="Idsolicitud" ColumnName="Idsolicitud" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="FechaAceptacion" ColumnName="FechaAceptacion" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="siaaModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
+          <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

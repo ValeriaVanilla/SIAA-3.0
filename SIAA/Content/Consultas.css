@@ -1,0 +1,89 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    margin-left: 135px;
+    background-color: #f2f2f2;
+}
+
+.card-body{
+    margin-top: 15px;
+}
+
+search-box {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+}
+
+
+.encabezado {
+    background-color: #214525;
+    color: #fff;
+    height: 30px;
+}
+
+.search-container {
+    background-color: #fff;
+    border-color: white;
+    border-bottom-style: solid;
+    border-width: 1px;
+    color: #fff;
+    height: 60px;
+    display: flex;
+}
+
+#myInput {
+    margin: 8px;
+}
+
+
+.card-body li.hover {
+    background-color: #FAC710;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tab-pane {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.nav-tabs active {
+    background-color: #FAC710;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-tabs a.active {
+    background-color: #FAC710;
+    font-weight: bold;
+    color: #fff;
+    /* Otros estilos que desees aplicar */
+}
+
+.nav-tabs a.hover{
+    background-color: #FAC710;
+    color: #fff;
+    font-weight: bold;
+    /* Otros estilos que desees aplicar */
+}
+
+
+    a {
+    color: black;
+}
+
+#mensajeRegistro {
+    display: none;
+    position: fixed;
+    top: 10px; /* Ajusta la posición desde la parte superior */
+    left: 10px; /* Ajusta la posición desde la izquierda */
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+}
