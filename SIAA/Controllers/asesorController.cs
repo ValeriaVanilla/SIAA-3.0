@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Windows.Forms;
 using SIAA;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace SIAA.Controllers
 {
@@ -206,10 +207,51 @@ namespace SIAA.Controllers
             var solicitudes = db.solicituds.Include(a => a.alumno).Include(a => a.asesoria);
             return View(solicitudes.ToList());
         }
+        
+        ///// Funciones para el componente de solicitudes
+
         public ActionResult AprobarSolicitud(int idAsesoria, int idAlumno)
         {
 
             return RedirectToAction("SolicitudesAsesoria");
         }
+
+        
+        ///// Funciones para el componente de reportes
+
+        public ActionResult ConsultaReporte() // Se obtiene la lista de los reportes registrados en el sistema y las conexiones que hay entre las tablas
+        {
+
+            var reportes = db.reportes.Include(a => a.cat_temas).Include(a => a.asesoria);
+            return View(reportes.ToList());
+        }
+
+
+        public ActionResult ReporteAsesor() // Se llama la vista reporte de asesor donde se registran los reportes
+        {
+            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "CicloEscolar");
+            ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReporteAsesor([Bind(Include = "IdReporte, IdAsesoria, Fecha, Duracion, IdTemaVisto, Comentarios")] reporte reporte) // Se guarda el registro del reporte
+        {
+            if (ModelState.IsValid)
+            {
+                db.reportes.Add(reporte);
+                db.SaveChanges();
+
+                return RedirectToAction("ReporteAsesor");
+            }
+        
+            // En caso de validación fallida, devolver la vista con el modelo y mostrar los errores
+            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "CicloEscolar", reporte.IdAsesoria);
+            ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema", reporte.IdTemaVisto);
+            return View(reporte);
+        }
     }
 }
+    
+

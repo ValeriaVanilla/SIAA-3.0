@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout_Asesor.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<!--ESTE ES EL HEAD-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Reportes</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/registroAsesorias.css">
+
+</head>
+<!--FIN DE HEAD-->
+<!--INICIO DE BODY-->
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="openTab('reporte')" href="@Url.Action("ReporteAsesor", "asesor")">Registro Reportes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaReporte", "asesor")">Consulta Reportes</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="registro" role="tabpanel" aria-labelledby="registro-tab">
+                    <h2><b>REGISTRO  DE REPORTES</b></h2>
+                    <!-- Contenido del formulario para registro de reportes -->
+                    @model SIAA.reporte
+
+                    @using (Html.BeginForm("ReporteAsesor", "asesor", FormMethod.Post, new { id = "formRegistro" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <p class="control-label col-md-2"><b>NO. DE REPORTE</b></p>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.IdReporte, new { htmlAttributes = new { @class = "form-control", id = "IdReporte" } })
+                                    @Html.ValidationMessageFor(model => model.IdReporte, "", new { @class = "text-danger" })
+                                    <span id="success-message" class="text-success">@ViewBag.SuccessMessage</span>
+                                    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                                    {
+                                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
+                                            <div>
+                                                @ViewBag.SuccessMessage
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="form-group">                               
+                               
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>NO. DE ASESORÍA</b></p>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("IdAsesoria", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IdAsesoria, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>FECHA</b></p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>DURACIÓN</b></p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Duracion, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Duracion, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>NO. DE TEMA VISTO</b></p>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("IdTemaVisto", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IdTemaVisto, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>COMENTARIOS</b></p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Comentarios, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="botones">
+                                        <button type="submit" class="btn btn-warning glyphicon glyphicon glyphicon-ok" value="Guardar"></button>
+                                        <button type="reset" class="btn btn-light glyphicon glyphicon glyphicon-trash" value="Cancelar"></button>
+                                    </div>
+                                </div>
+
+                           
+                        </div>
+                    </div>
+                    }
+                    </div>
+                <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
+                      </div>
+
+                    </div>
+                </div></div>
+</body>
+</html>
+                           
+
+

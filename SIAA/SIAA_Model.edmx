@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="siaaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="siaaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="alumno">
           <Key>
             <PropertyRef Name="IdAlumno" />
@@ -59,10 +59,8 @@
         <EntityType Name="cat_horario">
           <Key>
             <PropertyRef Name="IdHorario" />
-            <PropertyRef Name="IdAsesoria" />
           </Key>
           <Property Name="IdHorario" Type="int" Nullable="false" />
-          <Property Name="IdAsesoria" Type="int" Nullable="false" />
           <Property Name="Dia" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="HoraInicio" Type="int" Nullable="false" />
           <Property Name="HoraFin" Type="int" Nullable="false" />
@@ -206,18 +204,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ASE_HO">
-          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1" />
           <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cat_horario">
               <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
             </Principal>
             <Dependent Role="asesoria">
               <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -536,8 +530,7 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="siaaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -561,25 +554,7 @@
           <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_AS_USR" FromRole="asesor" ToRole="usuario" />
-          <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_AS" FromRole="asesor" ToRole="asesoria" />
-        </EntityType>
-        <EntityType Name="asesoria">
-          <Key>
-            <PropertyRef Name="IdAsesoria" />
-          </Key>
-          <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
-          <Property Name="IdAsesor" Type="Int32" Nullable="false" />
-          <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
-          <Property Name="CicloEscolar" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdLugar" Type="Int32" Nullable="false" />
-          <Property Name="IdHorario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="asesor" Relationship="Self.FK_ASE_AS" FromRole="asesoria" ToRole="asesor" />
-          <NavigationProperty Name="cat_horario" Relationship="Self.FK_ASE_HO" FromRole="asesoria" ToRole="cat_horario" />
-          <NavigationProperty Name="cat_lugar" Relationship="Self.FK_ASE_LU" FromRole="asesoria" ToRole="cat_lugar" />
-          <NavigationProperty Name="cat_unidad_aprendizaje" Relationship="Self.FK_ASE_UA" FromRole="asesoria" ToRole="cat_unidad_aprendizaje" />
-          <NavigationProperty Name="evaluacions" Relationship="Self.FK_EV_ASE" FromRole="asesoria" ToRole="evaluacion" />
-          <NavigationProperty Name="reportes" Relationship="Self.FK_RP_ASE" FromRole="asesoria" ToRole="reporte" />
-          <NavigationProperty Name="solicituds" Relationship="Self.FK_SL_ASE" FromRole="asesoria" ToRole="solicitud" />
+          <NavigationProperty Name="asesorias" Relationship="siaaModel.FK_ASE_AS" FromRole="asesor" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="asistencia">
           <Key>
@@ -609,25 +584,13 @@
           <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_ES_USR" FromRole="cat_estatus" ToRole="usuario" />
         </EntityType>
-        <EntityType Name="cat_horario">
-          <Key>
-            <PropertyRef Name="IdHorario" />
-            <PropertyRef Name="IdAsesoria" />
-          </Key>
-          <Property Name="IdHorario" Type="Int32" Nullable="false" />
-          <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
-          <Property Name="Dia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HoraInicio" Type="Int32" Nullable="false" />
-          <Property Name="HoraFin" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_HO" FromRole="cat_horario" ToRole="asesoria" />
-        </EntityType>
         <EntityType Name="cat_lugar">
           <Key>
             <PropertyRef Name="IdLugar" />
           </Key>
           <Property Name="IdLugar" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_LU" FromRole="cat_lugar" ToRole="asesoria" />
+          <NavigationProperty Name="asesorias" Relationship="siaaModel.FK_ASE_LU" FromRole="cat_lugar" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="cat_programa_educativo">
           <Key>
@@ -661,8 +624,8 @@
           </Key>
           <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
           <Property Name="NombreUnidadAprendizaje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_UA" FromRole="cat_unidad_aprendizaje" ToRole="asesoria" />
           <NavigationProperty Name="cat_temas" Relationship="Self.FK_TE_UA" FromRole="cat_unidad_aprendizaje" ToRole="cat_temas" />
+          <NavigationProperty Name="asesorias" Relationship="siaaModel.FK_ASE_UA" FromRole="cat_unidad_aprendizaje" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="encargado">
           <Key>
@@ -690,7 +653,7 @@
           <Property Name="CambioEspacio" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Mejora" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="alumno" Relationship="Self.FK_EV_AL" FromRole="evaluacion" ToRole="alumno" />
-          <NavigationProperty Name="asesoria" Relationship="Self.FK_EV_ASE" FromRole="evaluacion" ToRole="asesoria" />
+          <NavigationProperty Name="asesoria" Relationship="siaaModel.FK_EV_ASE" FromRole="evaluacion" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="reporte">
           <Key>
@@ -702,9 +665,9 @@
           <Property Name="Duracion" Type="Int32" Nullable="false" />
           <Property Name="IdTemaVisto" Type="Int32" Nullable="false" />
           <Property Name="Comentarios" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="asesoria" Relationship="Self.FK_RP_ASE" FromRole="reporte" ToRole="asesoria" />
           <NavigationProperty Name="asistencias" Relationship="Self.FK_AST_RP" FromRole="reporte" ToRole="asistencia" />
           <NavigationProperty Name="cat_temas" Relationship="Self.FK_RP_TM" FromRole="reporte" ToRole="cat_temas" />
+          <NavigationProperty Name="asesoria" Relationship="siaaModel.FK_RP_ASE" FromRole="reporte" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="solicitud">
           <Key>
@@ -717,8 +680,8 @@
           <Property Name="FechaAceptacion" Type="DateTime" Precision="0" />
           <Property Name="IdEstado" Type="Int32" />
           <NavigationProperty Name="alumno" Relationship="Self.FK_SL_AL" FromRole="solicitud" ToRole="alumno" />
-          <NavigationProperty Name="asesoria" Relationship="Self.FK_SL_ASE" FromRole="solicitud" ToRole="asesoria" />
           <NavigationProperty Name="cat_estado" Relationship="Self.FK_SL_ES" FromRole="solicitud" ToRole="cat_estado" />
+          <NavigationProperty Name="asesoria" Relationship="siaaModel.FK_SL_ASE" FromRole="solicitud" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -806,102 +769,6 @@
             </Principal>
             <Dependent Role="asesor">
               <PropertyRef Name="IdAsesor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ASE_AS">
-          <End Role="asesor" Type="Self.asesor" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="asesor">
-              <PropertyRef Name="IdAsesor" />
-            </Principal>
-            <Dependent Role="asesoria">
-              <PropertyRef Name="IdAsesor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ASE_HO">
-          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cat_horario">
-              <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
-            </Principal>
-            <Dependent Role="asesoria">
-              <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ASE_LU">
-          <End Role="cat_lugar" Type="Self.cat_lugar" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cat_lugar">
-              <PropertyRef Name="IdLugar" />
-            </Principal>
-            <Dependent Role="asesoria">
-              <PropertyRef Name="IdLugar" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ASE_UA">
-          <End Role="cat_unidad_aprendizaje" Type="Self.cat_unidad_aprendizaje" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cat_unidad_aprendizaje">
-              <PropertyRef Name="IdUnidadAprendizaje" />
-            </Principal>
-            <Dependent Role="asesoria">
-              <PropertyRef Name="IdUnidadAprendizaje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EV_ASE">
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
-          <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="asesoria">
-              <PropertyRef Name="IdAsesoria" />
-            </Principal>
-            <Dependent Role="evaluacion">
-              <PropertyRef Name="IdAsesoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RP_ASE">
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="asesoria">
-              <PropertyRef Name="IdAsesoria" />
-            </Principal>
-            <Dependent Role="reporte">
-              <PropertyRef Name="IdAsesoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SL_ASE">
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
-          <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="asesoria">
-              <PropertyRef Name="IdAsesoria" />
-            </Principal>
-            <Dependent Role="solicitud">
-              <PropertyRef Name="IdAsesoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1016,11 +883,9 @@
         <EntityContainer Name="siaaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="alumnoes" EntityType="Self.alumno" />
           <EntitySet Name="asesors" EntityType="Self.asesor" />
-          <EntitySet Name="asesorias" EntityType="Self.asesoria" />
           <EntitySet Name="asistencias" EntityType="Self.asistencia" />
           <EntitySet Name="cat_estado" EntityType="Self.cat_estado" />
           <EntitySet Name="cat_estatus" EntityType="Self.cat_estatus" />
-          <EntitySet Name="cat_horario" EntityType="Self.cat_horario" />
           <EntitySet Name="cat_lugar" EntityType="Self.cat_lugar" />
           <EntitySet Name="cat_programa_educativo" EntityType="Self.cat_programa_educativo" />
           <EntitySet Name="cat_temas" EntityType="Self.cat_temas" />
@@ -1050,34 +915,6 @@
           <AssociationSet Name="FK_AS_USR" Association="Self.FK_AS_USR">
             <End Role="usuario" EntitySet="usuarios" />
             <End Role="asesor" EntitySet="asesors" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ASE_AS" Association="Self.FK_ASE_AS">
-            <End Role="asesor" EntitySet="asesors" />
-            <End Role="asesoria" EntitySet="asesorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ASE_HO" Association="Self.FK_ASE_HO">
-            <End Role="cat_horario" EntitySet="cat_horario" />
-            <End Role="asesoria" EntitySet="asesorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ASE_LU" Association="Self.FK_ASE_LU">
-            <End Role="cat_lugar" EntitySet="cat_lugar" />
-            <End Role="asesoria" EntitySet="asesorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ASE_UA" Association="Self.FK_ASE_UA">
-            <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
-            <End Role="asesoria" EntitySet="asesorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EV_ASE" Association="Self.FK_EV_ASE">
-            <End Role="asesoria" EntitySet="asesorias" />
-            <End Role="evaluacion" EntitySet="evaluacions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RP_ASE" Association="Self.FK_RP_ASE">
-            <End Role="asesoria" EntitySet="asesorias" />
-            <End Role="reporte" EntitySet="reportes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SL_ASE" Association="Self.FK_SL_ASE">
-            <End Role="asesoria" EntitySet="asesorias" />
-            <End Role="solicitud" EntitySet="solicituds" />
           </AssociationSet>
           <AssociationSet Name="FK_AST_RP" Association="Self.FK_AST_RP">
             <End Role="reporte" EntitySet="reportes" />
@@ -1111,7 +948,157 @@
             <End Role="usuario" EntitySet="usuarios" />
             <End Role="encargado" EntitySet="encargadoes" />
           </AssociationSet>
+          <EntitySet Name="asesorias" EntityType="siaaModel.asesoria" />
+          <EntitySet Name="cat_horario" EntityType="siaaModel.cat_horario" />
+          <AssociationSet Name="FK_ASE_AS" Association="siaaModel.FK_ASE_AS">
+            <End Role="asesor" EntitySet="asesors" />
+            <End Role="asesoria" EntitySet="asesorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASE_HO" Association="siaaModel.FK_ASE_HO">
+            <End Role="cat_horario" EntitySet="cat_horario" />
+            <End Role="asesoria" EntitySet="asesorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASE_LU" Association="siaaModel.FK_ASE_LU">
+            <End Role="cat_lugar" EntitySet="cat_lugar" />
+            <End Role="asesoria" EntitySet="asesorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASE_UA" Association="siaaModel.FK_ASE_UA">
+            <End Role="cat_unidad_aprendizaje" EntitySet="cat_unidad_aprendizaje" />
+            <End Role="asesoria" EntitySet="asesorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EV_ASE" Association="siaaModel.FK_EV_ASE">
+            <End Role="asesoria" EntitySet="asesorias" />
+            <End Role="evaluacion" EntitySet="evaluacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RP_ASE" Association="siaaModel.FK_RP_ASE">
+            <End Role="asesoria" EntitySet="asesorias" />
+            <End Role="reporte" EntitySet="reportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SL_ASE" Association="siaaModel.FK_SL_ASE">
+            <End Role="asesoria" EntitySet="asesorias" />
+            <End Role="solicitud" EntitySet="solicituds" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="asesoria">
+          <Key>
+            <PropertyRef Name="IdAsesoria" />
+          </Key>
+          <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
+          <Property Name="IdAsesor" Type="Int32" Nullable="false" />
+          <Property Name="IdUnidadAprendizaje" Type="Int32" Nullable="false" />
+          <Property Name="CicloEscolar" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="IdLugar" Type="Int32" Nullable="false" />
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asesor" Relationship="siaaModel.FK_ASE_AS" FromRole="asesoria" ToRole="asesor" />
+          <NavigationProperty Name="cat_horario" Relationship="siaaModel.FK_ASE_HO" FromRole="asesoria" ToRole="cat_horario" />
+          <NavigationProperty Name="cat_lugar" Relationship="siaaModel.FK_ASE_LU" FromRole="asesoria" ToRole="cat_lugar" />
+          <NavigationProperty Name="cat_unidad_aprendizaje" Relationship="siaaModel.FK_ASE_UA" FromRole="asesoria" ToRole="cat_unidad_aprendizaje" />
+          <NavigationProperty Name="evaluacions" Relationship="siaaModel.FK_EV_ASE" FromRole="asesoria" ToRole="evaluacion" />
+          <NavigationProperty Name="reportes" Relationship="siaaModel.FK_RP_ASE" FromRole="asesoria" ToRole="reporte" />
+          <NavigationProperty Name="solicituds" Relationship="siaaModel.FK_SL_ASE" FromRole="asesoria" ToRole="solicitud" />
+        </EntityType>
+        <EntityType Name="cat_horario">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="Int32" Nullable="false" />
+          <Property Name="HoraFin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asesorias" Relationship="siaaModel.FK_ASE_HO" FromRole="cat_horario" ToRole="asesoria" />
+        </EntityType>
+        <Association Name="FK_ASE_AS">
+          <End Type="siaaModel.asesor" Role="asesor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesor">
+              <PropertyRef Name="IdAsesor" />
+            </Principal>
+            <Dependent Role="asesoria">
+              <PropertyRef Name="IdAsesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASE_HO">
+          <End Type="siaaModel.cat_horario" Role="cat_horario" Multiplicity="1" />
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cat_horario">
+              <PropertyRef Name="IdHorario" />
+            </Principal>
+            <Dependent Role="asesoria">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASE_LU">
+          <End Type="siaaModel.cat_lugar" Role="cat_lugar" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cat_lugar">
+              <PropertyRef Name="IdLugar" />
+            </Principal>
+            <Dependent Role="asesoria">
+              <PropertyRef Name="IdLugar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASE_UA">
+          <End Type="siaaModel.cat_unidad_aprendizaje" Role="cat_unidad_aprendizaje" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cat_unidad_aprendizaje">
+              <PropertyRef Name="IdUnidadAprendizaje" />
+            </Principal>
+            <Dependent Role="asesoria">
+              <PropertyRef Name="IdUnidadAprendizaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EV_ASE">
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="1" />
+          <End Type="siaaModel.evaluacion" Role="evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesoria">
+              <PropertyRef Name="IdAsesoria" />
+            </Principal>
+            <Dependent Role="evaluacion">
+              <PropertyRef Name="IdAsesoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RP_ASE">
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="siaaModel.reporte" Role="reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesoria">
+              <PropertyRef Name="IdAsesoria" />
+            </Principal>
+            <Dependent Role="reporte">
+              <PropertyRef Name="IdAsesoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SL_ASE">
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="1" />
+          <End Type="siaaModel.solicitud" Role="solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asesoria">
+              <PropertyRef Name="IdAsesoria" />
+            </Principal>
+            <Dependent Role="solicitud">
+              <PropertyRef Name="IdAsesoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1133,18 +1120,6 @@
                 <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="asesorias">
-            <EntityTypeMapping TypeName="siaaModel.asesoria">
-              <MappingFragment StoreEntitySet="asesoria">
-                <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
-                <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
-                <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
-                <ScalarProperty Name="CicloEscolar" ColumnName="CicloEscolar" />
-                <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
-                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1170,17 +1145,6 @@
               <MappingFragment StoreEntitySet="cat_estatus">
                 <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="cat_horario">
-            <EntityTypeMapping TypeName="siaaModel.cat_horario">
-              <MappingFragment StoreEntitySet="cat_horario">
-                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
-                <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
-                <ScalarProperty Name="Dia" ColumnName="Dia" />
-                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
-                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1287,6 +1251,28 @@
                 <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
                 <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
                 <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asesorias">
+            <EntityTypeMapping TypeName="siaaModel.asesoria">
+              <MappingFragment StoreEntitySet="asesoria">
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+                <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+                <ScalarProperty Name="CicloEscolar" ColumnName="CicloEscolar" />
+                <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
+                <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
+                <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cat_horario">
+            <EntityTypeMapping TypeName="siaaModel.cat_horario">
+              <MappingFragment StoreEntitySet="cat_horario">
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

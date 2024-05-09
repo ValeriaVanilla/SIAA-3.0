@@ -332,6 +332,8 @@
     <Content Include="Views\asesor\RegistraAsesor.cshtml" />
     <Content Include="Views\asesor\SolicitudesAsesoria.cshtml" />
     <Content Include="Views\encargado\ReporteEncargado.cshtml" />
+    <Content Include="Views\asesor\ReporteAsesor.cshtml" />
+    <Content Include="Views\asesor\ConsultaReporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
