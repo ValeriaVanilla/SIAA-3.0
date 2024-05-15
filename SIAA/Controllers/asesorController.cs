@@ -21,6 +21,7 @@ namespace SIAA.Controllers
         {
 
             var asesors = db.asesors.Include(a => a.usuario).Include(a => a.asesorias);
+            var usuarios = db.usuarios;
             return View(asesors.ToList());
 
         }
@@ -46,45 +47,6 @@ namespace SIAA.Controllers
             ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario");
             return View();
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RegistraAsesor([Bind(Include = "IdAsesor,Nombre,ApellidoPaterno,ApellidoMaterno,Correo,IdProgramaEducativo,IdEstatus,IdTipo")] asesor asesor)
-        {
-            if (asesor.IdAsesor < 0)
-            {
-                ModelState.AddModelError("IdAsesor", "La matricula no puede ser negativa.");
-            }
-            else if (!IsNumeric(asesor.IdAsesor.ToString()))
-            {
-                ModelState.AddModelError("IdAsesor", "Ingrese solo números positivos en el campo de Matrícula.");
-            }
-            else if (!Validar(asesor))
-            {
-                ModelState.AddModelError("IdAsesor", "Matricula repetida.");
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    asesor.usuario.Nombre = asesor.usuario.Nombre.ToUpper();
-                    asesor.usuario.ApellidoPaterno = asesor.usuario.ApellidoPaterno.ToUpper();
-                    asesor.usuario.ApellidoMaterno = asesor.usuario.ApellidoMaterno.ToUpper();
-                    asesor.usuario.cat_tipo_usuario.IdTipoUsuario = 2;
-                    db.asesors.Add(asesor);
-                    db.SaveChanges();
-
-                    return RedirectToAction("RegistraAsesor");
-                }
-            }
-
-            // En caso de validación fallida, devolver la vista con el modelo y mostrar los errores
-            ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion", asesor.usuario.IdEstatus);
-            ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo", asesor.usuario.IdProgramaEducativo);
-            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", asesor.usuario.IdUsuario);
-            return View(asesor);
-        }
-
 
         private bool IsNumeric(string value)
         {

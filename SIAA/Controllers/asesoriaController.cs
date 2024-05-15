@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Windows.Forms;
 using SIAA;
+using SIAA.Models;
 
 namespace SIAA.Controllers
 {
@@ -35,11 +37,19 @@ namespace SIAA.Controllers
             return View();
         }
 
+
+
         [HttpPost]  // Guarda los registros
         [ValidateAntiForgeryToken]
-        public ActionResult RegistroAsesoria([Bind(Include = "IdAsesoria,IdAsesor,IdUnidadAprendizaje,IdLugar,Horario,CicloEscolar")] asesoria asesoria)
+        public ActionResult RegistroAsesoria( AsesoriaHorarioViewModel viewModel) // Toma el Modela AsesoriaHorarioViewModel para hacer el registro en las tablas horario y asesoria
         {
             DateTime fecha;
+            var horario = viewModel.Horario;
+            var asesoria = viewModel.Asesoria;            
+            asesoria.IdHorario = viewModel.Horario.IdHorario;
+            asesoria.IdAsesor = viewModel.IdAsesor;
+            asesoria.IdLugar = viewModel.IdLugar;
+            asesoria.IdUnidadAprendizaje = viewModel.IdUnidadAprendizaje;
 
             if (ModelState.IsValid)
             {
@@ -52,8 +62,10 @@ namespace SIAA.Controllers
                 {
                     asesoria.CicloEscolar = fecha.Year.ToString() + "-1";
                 }
+                db.cat_horario.Add(horario); 
+                db.SaveChanges(); // Se guaradn los datos de horario               
                 db.asesorias.Add(asesoria);
-                db.SaveChanges();
+                db.SaveChanges(); // Se guardan los datos de asesoria
                 return RedirectToAction("ConsultaAsesoria");
             }
 
@@ -74,7 +86,7 @@ namespace SIAA.Controllers
                     return false;
                 }
             }
-            if (asesoria.IdAsesor == null || asesoria.cat_unidad_aprendizaje == null || asesoria.IdUnidadAprendizaje == null)
+            if (asesoria.IdAsesor == 0 || asesoria.cat_unidad_aprendizaje == null || asesoria.IdUnidadAprendizaje == 0)
             {
                 MessageBox.Show("Ingrese todos los datos", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;

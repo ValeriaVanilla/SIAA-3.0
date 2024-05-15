@@ -34,9 +34,9 @@
                     <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
                         <h2><b>REGISTRO  DE ASESORIAS</b></h2>
                         <!-- Contenido del formulario para registro de asesorias -->
-                        @model SIAA.asesoria
+                        @model SIAA.Models.AsesoriaHorarioViewModel
 
-                        @using (Html.BeginForm("RegistroAsesoria", "asesorias", FormMethod.Post, new { id = "formRegistro" }))
+                        @using (Html.BeginForm("RegistroAsesoria", "asesoria", FormMethod.Post, new { id = "formRegistro" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -50,8 +50,8 @@
                             <p class="control-label col-md-2"><b>CLAVE ASESORÍA</b></p>
                             <div class="col-md-10">
 
-                                @Html.EditorFor(model => model.IdAsesoria, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.IdAsesoria, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Asesoria.IdAsesoria, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Asesoria.IdAsesoria, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -82,26 +82,35 @@
                         </div>
 
                         <div class="form-group">
+                            <p class="control-label col-md-2"><b>IdHorario</b></p>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Horario.IdHorario, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Horario.IdHorario, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <p class="control-label col-md-2"><b>DÍA</b></p>
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.cat_horario.Dia, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cat_horario.Dia, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Horario.Dia, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Horario.Dia, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
                             <p class="control-label col-md-2"><b>HORA INICIO</b></p>
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.cat_horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cat_horario.HoraInicio, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Horario.HoraInicio, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
                             <p class="control-label col-md-2"><b>HORA FIN</b></p>
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.cat_horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cat_horario.HoraFin, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Horario.HoraFin, "", new { @class = "text-danger" })
                             </div>
                         </div>
 

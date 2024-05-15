@@ -1,62 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\",
+  "WorkspaceRootPath": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\views\\asesor\\reporteasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\reporteasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\siaa_model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\siaa_model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\views\\menu\\menuasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\menu\\menuasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\views\\shared\\layout_asesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\shared\\layout_asesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\artys\\onedrive\\documents\\github\\siaa-3.0\\siaa\\views\\asesor\\consultareporte.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\consultareporte.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\views\\asesor\\consultaasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\consultaasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\controllers\\asesorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\asesorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\content\\menuencargadostyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\content\\menuencargadostyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\controllers\\alumnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\alumnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\alumnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\views\\asesor\\modificaasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\modificaasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\registraalumnoasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\registraalumnoasesor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\views\\asesor\\solicitudesasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\solicitudesasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\menu\\menuencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\menu\\menuencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\views\\asesoria\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\encargado\\reporteencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\encargado\\reporteencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\shared\\layout_encargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\shared\\layout_encargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesoria\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesoria\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\siaa\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,185 +34,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "asesorController.cs",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\asesorController.cs",
-              "RelativeDocumentMoniker": "SIAA\\Controllers\\asesorController.cs",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\asesorController.cs",
-              "RelativeToolTip": "SIAA\\Controllers\\asesorController.cs",
-              "ViewState": "AQIAAN0AAAAAAAAAAAAUwOAAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:48:23.968Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReporteAsesor.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ReporteAsesor.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\ReporteAsesor.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ReporteAsesor.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\ReporteAsesor.cshtml",
-              "ViewState": "AQIAADUAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "Layout_Encargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\Shared\\Layout_Encargado.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAFMAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T00:33:43.221Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-05-15T19:39:19.203Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\packages.config",
-              "RelativeDocumentMoniker": "SIAA\\packages.config",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\packages.config",
-              "RelativeToolTip": "SIAA\\packages.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-05-04T20:28:30.831Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SIAA_Model.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\SIAA_Model.edmx",
-              "RelativeDocumentMoniker": "SIAA\\SIAA_Model.edmx",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\SIAA_Model.edmx [Diagram1]",
-              "RelativeToolTip": "SIAA\\SIAA_Model.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-05-04T20:28:39.312Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Layout_Asesor.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\Shared\\Layout_Asesor.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\Shared\\Layout_Asesor.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\Shared\\Layout_Asesor.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\Shared\\Layout_Asesor.cshtml",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFMAAABFAAAA",
+              "Title": "MenuEncargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\menu\\MenuEncargado.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-04T20:21:20.02Z",
+              "WhenOpened": "2024-05-15T19:39:04.291Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MenuAsesor.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\menu\\MenuAsesor.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\menu\\MenuAsesor.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\menu\\MenuAsesor.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\menu\\MenuAsesor.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACkAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-04T20:19:17.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ConsultaAsesor.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ConsultaAsesor.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\ConsultaAsesor.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ConsultaAsesor.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\ConsultaAsesor.cshtml",
+              "Title": "ReporteEncargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T00:58:37.544Z",
+              "WhenOpened": "2024-05-15T19:41:05.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ConsultaReporte.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ConsultaReporte.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\ConsultaReporte.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ConsultaReporte.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\ConsultaReporte.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAAAAAAABAAAA",
+              "Title": "RegistroAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-04T19:43:40.883Z",
+              "WhenOpened": "2024-05-15T17:44:07.395Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SolicitudesAsesoria.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\SolicitudesAsesoria.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\SolicitudesAsesoria.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\SolicitudesAsesoria.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\SolicitudesAsesoria.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T01:17:58.89Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "menuEncargadoStyle.css",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Content\\menuEncargadoStyle.css",
-              "RelativeDocumentMoniker": "SIAA\\Content\\menuEncargadoStyle.css",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Content\\menuEncargadoStyle.css",
-              "RelativeToolTip": "SIAA\\Content\\menuEncargadoStyle.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-03T03:43:23.388Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "alumnoController.cs",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\alumnoController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\alumnoController.cs",
               "RelativeDocumentMoniker": "SIAA\\Controllers\\alumnoController.cs",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\alumnoController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\alumnoController.cs",
               "RelativeToolTip": "SIAA\\Controllers\\alumnoController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAL4AAAAAAAAAAAAAAOAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:48:19.991Z"
+              "WhenOpened": "2024-05-15T05:41:55.894Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ModificaAsesor.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ModificaAsesor.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\ModificaAsesor.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesor\\ModificaAsesor.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\ModificaAsesor.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "RegistraAlumnoAsesor.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\RegistraAlumnoAsesor.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\RegistraAlumnoAsesor.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\RegistraAlumnoAsesor.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\alumno\\RegistraAlumnoAsesor.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T01:26:14.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RegistroAsesoria.cshtml",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesoria\\RegistroAsesoria.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T01:17:48.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "menuController.cs",
-              "DocumentMoniker": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\menuController.cs",
-              "RelativeDocumentMoniker": "SIAA\\Controllers\\menuController.cs",
-              "ToolTip": "C:\\Users\\artys\\OneDrive\\Documents\\GitHub\\SIAA-3.0\\SIAA\\Controllers\\menuController.cs",
-              "RelativeToolTip": "SIAA\\Controllers\\menuController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:57:17.701Z"
+              "WhenOpened": "2024-05-15T05:40:26.467Z",
+              "EditorCaption": ""
             }
           ]
         }

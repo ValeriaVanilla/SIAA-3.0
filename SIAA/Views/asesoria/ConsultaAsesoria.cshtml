@@ -50,11 +50,11 @@
                                 </th>
 
                                 <th>
-                                    <b>CLAVE UNIDAD APRENDIZAJE</b>
+                                    <b>UNIDAD APRENDIZAJE</b>
                                 </th>
 
                                 <th>
-                                    <b>CLAVE ASESOR</b>
+                                    <b>ASESOR</b>
                                 </th>
 
                                 <th>
@@ -68,7 +68,7 @@
                                 <th>
                                     <b>CICLO ESCOLAR</b>
                                 </th>
-                                
+
                                 <th>
 
                                 </th>
@@ -83,24 +83,34 @@
                                 <tr class="fila-asesor">
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdAsesoria)
+                                        
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdAsesor)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.cat_lugar)
+                                        @Html.DisplayFor(modelItem => item.cat_lugar.Descripcion)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.cat_horario)
+                                        @Html.DisplayFor(modelItem => item.cat_horario.Dia) -
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraInicio)<span>:00</span>
+                                        <span> a </span>
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraFin)<span>:00</span>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CicloEscolar)
                                     </td>
                                     <td>
-                                        @using (Html.BeginForm("ConfirmarEliminaAsesoria", "asesorias", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
+                                        @using (Html.BeginForm("ConfirmarEliminaAsesoria", "asesoria", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
                                         {
                                             @Html.AntiForgeryToken()
 

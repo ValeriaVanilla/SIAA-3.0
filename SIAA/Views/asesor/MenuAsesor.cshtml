@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "MenuAsesor";
+}
+
+<h2>MenuAsesor</h2>
+
+<html>
+<link rel="stylesheet" href="~/Content/registroAsesores.css">
+<body>
+    <div class="tabs">
+        <div class="tab" onclick="openTab('registro')">Registro Asesores</div>
+        <div class="tab" onclick="openTab('consulta')">Consulta Asesor</div>
+    </div>
+
+    <div id="registro" class="content">
+        <!-- Contenido del registro de asesores -->
+        <h2>Registro de Asesores</h2>]
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <p class="control-label col-md-2"><b>NÚMERO DE EMPLEADO</b></p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IdAsesor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, Html.DisplayNameFor(model => model.Nombre).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="control-label col-md-2"><b>APELLIDO PATERNO</b></p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ap_paterno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ap_paterno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="control-label col-md-2"><b>APELLIDO MATERNO</b></p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ap_materno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ap_materno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Correo, Html.DisplayNameFor(model => model.Correo).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="control-label col-md-2"><b>PROGRAMA EDUCATIVO</b></p>
+                    <div class="col-md-10">
+                        @Html.DropDownList("Id_ProgramaEducativo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Id_ProgramaEducativo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Estatus, Html.DisplayNameFor(model => model.Estatus).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Estatus", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Estatus, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- Aquí colocas el contenido específico para la pestaña de registro -->
+    </div>
+
+    <div id="consulta" class="content hidden">
+        <!-- Contenido de la consulta de asesores -->
+        <h2>Consulta Asesor</h2>
+
+        <!-- Aquí colocas el contenido específico para la pestaña de consulta -->
+    </div>
+</body>
+
+</html>
+<script>
+    function openTab(tabName) {
+        // Oculta todos los contenidos
+        document.querySelectorAll('.content').forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        // Quita la clase 'active' de todas las pestañas
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Muestra el contenido de la pestaña seleccionada
+        document.getElementById(tabName).classList.remove('hidden');
+
+        // Marca la pestaña como activa
+        document.querySelector(`.tab:contains(${tabName})`).classList.add('active');
+    }
+
+    // Polyfill para :contains en los navegadores modernos
+    if (!(':contains' in NodeList.prototype)) {
+        Object.defineProperty(NodeList.prototype, ':contains', {
+            value: function (text) {
+                for (let node of this) {
+                    if (node.textContent.includes(text)) return node;
+                }
+                return null;
+            },
+            configurable: true,
+            enumerable: false,
+            writable: true,
+        });
+    }
+
+    // Por defecto, muestra la pestaña de registro
+    openTab('registro');
+</script>
+
+
+
+<div>
+    <a href='@Url.Action("ConsultaAsesor", "asesor")'><img class="img" src="~/Resources/previous.png" /></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

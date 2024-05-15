@@ -30,7 +30,6 @@ namespace SIAA
         public int IdHorario { get; set; }
     
         public virtual asesor asesor { get; set; }
-        public virtual cat_horario cat_horario { get; set; }
         public virtual cat_lugar cat_lugar { get; set; }
         public virtual cat_unidad_aprendizaje cat_unidad_aprendizaje { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -39,5 +38,6 @@ namespace SIAA
         public virtual ICollection<reporte> reportes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<solicitud> solicituds { get; set; }
+        public virtual cat_horario cat_horario { get; set; }
     }
 }

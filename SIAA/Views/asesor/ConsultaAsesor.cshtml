@@ -21,7 +21,7 @@
         <div class="card-body">
             <ul class="nav nav-tabs pestania">
                 <li class="nav-item">
-                    <a class="navbar-link" onclick="openTab('registro')" href="@Url.Action("RegistraAsesor", "asesor")">Registro Asesores</a>
+                    <a class="nav-link" onclick="openTab('registro')" href="@Url.Action("RegistraAlumnoAsesor", "alumno")">Registro Alumnos Asesores</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesor", "asesor")">Consulta Asesores</a>
@@ -37,7 +37,7 @@
             <div class="tab-content">
                 <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
                     <h2><b>CONSULTA DE ASESORES</b></h2>
-                   
+                    <hr />
 
                     <div class="search-container">
                         <input class="form-control" id="myInput" type="text" placeholder="Buscar.." onkeyup="filtrarTabla()">
@@ -99,9 +99,9 @@
 
                             </tbody>
                         }
-                        
+
                     </table>
-                    </div>
+                </div>
                     <!-- Modal de edición -->
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">

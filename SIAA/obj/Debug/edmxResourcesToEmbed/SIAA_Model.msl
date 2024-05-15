@@ -19,6 +19,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="asesorias">
+      <EntityTypeMapping TypeName="siaaModel.asesoria">
+        <MappingFragment StoreEntitySet="asesoria">
+          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
+          <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
+          <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
+          <ScalarProperty Name="CicloEscolar" ColumnName="CicloEscolar" />
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="asistencias">
       <EntityTypeMapping TypeName="siaaModel.asistencia">
         <MappingFragment StoreEntitySet="asistencia">
@@ -147,18 +159,6 @@
           <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
           <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
           <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="asesorias">
-      <EntityTypeMapping TypeName="siaaModel.asesoria">
-        <MappingFragment StoreEntitySet="asesoria">
-          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
-          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
-          <ScalarProperty Name="CicloEscolar" ColumnName="CicloEscolar" />
-          <ScalarProperty Name="IdUnidadAprendizaje" ColumnName="IdUnidadAprendizaje" />
-          <ScalarProperty Name="IdAsesor" ColumnName="IdAsesor" />
-          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
