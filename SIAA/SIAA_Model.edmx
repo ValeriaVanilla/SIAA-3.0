@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="siaaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="siaaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="alumno">
           <Key>
             <PropertyRef Name="IdAlumno" />
@@ -59,10 +59,8 @@
         <EntityType Name="cat_horario">
           <Key>
             <PropertyRef Name="IdHorario" />
-            <PropertyRef Name="IdAsesoria" />
           </Key>
           <Property Name="IdHorario" Type="int" Nullable="false" />
-          <Property Name="IdAsesoria" Type="int" Nullable="false" />
           <Property Name="Dia" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="HoraInicio" Type="int" Nullable="false" />
           <Property Name="HoraFin" Type="int" Nullable="false" />
@@ -206,18 +204,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ASE_HO">
-          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1" />
           <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cat_horario">
               <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
             </Principal>
             <Dependent Role="asesoria">
               <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -536,8 +530,7 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="siaaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -574,12 +567,12 @@
           <Property Name="IdLugar" Type="Int32" Nullable="false" />
           <Property Name="IdHorario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="asesor" Relationship="Self.FK_ASE_AS" FromRole="asesoria" ToRole="asesor" />
-          <NavigationProperty Name="cat_horario" Relationship="Self.FK_ASE_HO" FromRole="asesoria" ToRole="cat_horario" />
           <NavigationProperty Name="cat_lugar" Relationship="Self.FK_ASE_LU" FromRole="asesoria" ToRole="cat_lugar" />
           <NavigationProperty Name="cat_unidad_aprendizaje" Relationship="Self.FK_ASE_UA" FromRole="asesoria" ToRole="cat_unidad_aprendizaje" />
           <NavigationProperty Name="evaluacions" Relationship="Self.FK_EV_ASE" FromRole="asesoria" ToRole="evaluacion" />
           <NavigationProperty Name="reportes" Relationship="Self.FK_RP_ASE" FromRole="asesoria" ToRole="reporte" />
           <NavigationProperty Name="solicituds" Relationship="Self.FK_SL_ASE" FromRole="asesoria" ToRole="solicitud" />
+          <NavigationProperty Name="cat_horario" Relationship="siaaModel.FK_ASE_HO" FromRole="asesoria" ToRole="cat_horario" />
         </EntityType>
         <EntityType Name="asistencia">
           <Key>
@@ -608,18 +601,6 @@
           <Property Name="IdEstatus" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_ES_USR" FromRole="cat_estatus" ToRole="usuario" />
-        </EntityType>
-        <EntityType Name="cat_horario">
-          <Key>
-            <PropertyRef Name="IdHorario" />
-            <PropertyRef Name="IdAsesoria" />
-          </Key>
-          <Property Name="IdHorario" Type="Int32" Nullable="false" />
-          <Property Name="IdAsesoria" Type="Int32" Nullable="false" />
-          <Property Name="Dia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HoraInicio" Type="Int32" Nullable="false" />
-          <Property Name="HoraFin" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="asesorias" Relationship="Self.FK_ASE_HO" FromRole="cat_horario" ToRole="asesoria" />
         </EntityType>
         <EntityType Name="cat_lugar">
           <Key>
@@ -823,22 +804,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ASE_HO">
-          <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cat_horario">
-              <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
-            </Principal>
-            <Dependent Role="asesoria">
-              <PropertyRef Name="IdHorario" />
-              <PropertyRef Name="IdAsesoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ASE_LU">
           <End Role="cat_lugar" Type="Self.cat_lugar" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1020,7 +985,6 @@
           <EntitySet Name="asistencias" EntityType="Self.asistencia" />
           <EntitySet Name="cat_estado" EntityType="Self.cat_estado" />
           <EntitySet Name="cat_estatus" EntityType="Self.cat_estatus" />
-          <EntitySet Name="cat_horario" EntityType="Self.cat_horario" />
           <EntitySet Name="cat_lugar" EntityType="Self.cat_lugar" />
           <EntitySet Name="cat_programa_educativo" EntityType="Self.cat_programa_educativo" />
           <EntitySet Name="cat_temas" EntityType="Self.cat_temas" />
@@ -1053,10 +1017,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_ASE_AS" Association="Self.FK_ASE_AS">
             <End Role="asesor" EntitySet="asesors" />
-            <End Role="asesoria" EntitySet="asesorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ASE_HO" Association="Self.FK_ASE_HO">
-            <End Role="cat_horario" EntitySet="cat_horario" />
             <End Role="asesoria" EntitySet="asesorias" />
           </AssociationSet>
           <AssociationSet Name="FK_ASE_LU" Association="Self.FK_ASE_LU">
@@ -1111,7 +1071,34 @@
             <End Role="usuario" EntitySet="usuarios" />
             <End Role="encargado" EntitySet="encargadoes" />
           </AssociationSet>
+          <EntitySet Name="cat_horario" EntityType="siaaModel.cat_horario" />
+          <AssociationSet Name="FK_ASE_HO" Association="siaaModel.FK_ASE_HO">
+            <End Role="cat_horario" EntitySet="cat_horario" />
+            <End Role="asesoria" EntitySet="asesorias" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="cat_horario">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="Int32" Nullable="false" />
+          <Property Name="HoraFin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asesorias" Relationship="siaaModel.FK_ASE_HO" FromRole="cat_horario" ToRole="asesoria" />
+        </EntityType>
+        <Association Name="FK_ASE_HO">
+          <End Type="siaaModel.cat_horario" Role="cat_horario" Multiplicity="1" />
+          <End Type="siaaModel.asesoria" Role="asesoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cat_horario">
+              <PropertyRef Name="IdHorario" />
+            </Principal>
+            <Dependent Role="asesoria">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1170,17 +1157,6 @@
               <MappingFragment StoreEntitySet="cat_estatus">
                 <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="cat_horario">
-            <EntityTypeMapping TypeName="siaaModel.cat_horario">
-              <MappingFragment StoreEntitySet="cat_horario">
-                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
-                <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
-                <ScalarProperty Name="Dia" ColumnName="Dia" />
-                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
-                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1287,6 +1263,16 @@
                 <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
                 <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
                 <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cat_horario">
+            <EntityTypeMapping TypeName="siaaModel.cat_horario">
+              <MappingFragment StoreEntitySet="cat_horario">
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

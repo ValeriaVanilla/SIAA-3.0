@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
 using System.Windows.Forms;
@@ -18,21 +20,9 @@ namespace SIAA.Controllers
         public ActionResult ConsultaAlumno() // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
         {
             var alumnoes = db.alumnoes.Include(a => a.usuario).Include(a => a.solicituds).Include(a => a.asistencias);
+        
             return View(alumnoes.ToList());
-        }
-
-        public ActionResult DetalleAlumno(int? id)   // Muestra los detalles
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            alumno alumno = db.alumnoes.Find(id);
-            if (alumno == null)
-            {
-                return HttpNotFound();
-            }
-            return View(alumno);
+         
         }
 
         public ActionResult RegistroAlumno() // Se inicializan las varibles de desplazamiento
@@ -40,6 +30,12 @@ namespace SIAA.Controllers
             ViewBag.IdAlumno = new SelectList(db.solicituds, "IdAlumno", "Duracion");
             ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion");
             ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo");
+            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario");
+            return View();
+        }
+
+        public ActionResult RegistraAlumnoAsesor() // Se inicializan las varibles de desplazamiento
+        {
             ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario");
             return View();
         }
@@ -72,7 +68,7 @@ namespace SIAA.Controllers
                 return RedirectToAction("ModificaAlumno", "alumno");
             }
             {
-                DialogResult result1 = MessageBox.Show("Desea modificar el registro?", "Modificar Asesor", MessageBoxButtons.YesNo,
+                DialogResult result1 = MessageBox.Show("Desea modificar el registro?", "Modificar Alumno", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
                 if (result1 == DialogResult.Yes)
                 {
@@ -136,10 +132,10 @@ namespace SIAA.Controllers
             var resultados = db.alumnoes.Where(a => a.usuario.Nombre.Contains(nombre)).ToList();
             return PartialView("_ResultadosBusqueda", resultados);
         }
-
+        #region Solicitud
         public ActionResult SolicitudesAlumno() // Inicializa la consulta de horarios
         {
-            var asesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
+            var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
             var asesorias = db.asesorias.ToList();
             var solicitudes = db.solicituds;
             /* for (int i = 0; i < asesorias.Count(); i++)
@@ -150,7 +146,7 @@ namespace SIAA.Controllers
                      asesorias.Remove(asesorias[i]);                        
                  } 
              }            */
-            return View(asesoriasActualizada.ToList());
+            return View(AsesoriasActualizada.ToList());
         }
 
         public ActionResult Solicitar(int id)  // Apartado para el funcionamiento de las solicitudes del alumno
@@ -170,5 +166,65 @@ namespace SIAA.Controllers
             var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
             return RedirectToAction("SolicitudesAlumno");
         }
+
+        #endregion
+
+        #region AlumnoAsesor
+        public ActionResult ConsultaAlumoAsesor() // Se obtiene la lista de los alumnos asesores registrados en el sistema y las conexiones que hay entre las tablas
+        {
+            var usuarios = db.usuarios.Include(a => a.alumno).Include(a => a.cat_tipo_usuario).Include(a => a.cat_programa_educativo).Include(a => a.cat_estatus);
+
+            return View(usuarios.ToList());
+        }
+
+
+        public ActionResult BuscarPorMatricula([Bind(Include = "IdUsuario, Nombre, ApellidoPaterno, ApellidoMaterno, IdProgramaEducativo, IdEstatus, IdTipoUsuario")] usuario idUsuario)
+        {
+            int id = idUsuario.IdUsuario;
+            Debug.WriteLine(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            usuario usuario = db.usuarios.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion", usuario.IdEstatus);
+            ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo", usuario.IdProgramaEducativo);
+            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", usuario.IdTipoUsuario);
+
+            return View(usuario);
+        }
+        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistraAlumnoAsesor([Bind(Include = "IdUsuario, Nombre, ApellidoPaterno, ApellidoMaterno, IdProgramaEducativo, IdEstatus, IdTipoUsuario")] usuario usuario)
+        {
+
+            DialogResult result1 = MessageBox.Show("Desea modificar el registro?", "Modifica Alumno Asesor", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(usuario).State = EntityState.Modified;
+                    db.SaveChanges();
+                    MessageBox.Show("La modificación se ha guardado con exito", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return RedirectToAction("ConsultaAlumno");
+                }
+            }
+            else
+                return RedirectToAction("RegistraAlumnoAsesor");
+
+            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", usuario.IdTipoUsuario);
+            return View(usuario);
+        }
+
+        #endregion
+
+
     }
 }

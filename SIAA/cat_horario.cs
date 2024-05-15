@@ -21,7 +21,6 @@ namespace SIAA
         }
     
         public int IdHorario { get; set; }
-        public int IdAsesoria { get; set; }
         public string Dia { get; set; }
         public int HoraInicio { get; set; }
         public int HoraFin { get; set; }

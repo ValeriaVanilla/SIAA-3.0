@@ -56,17 +56,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="cat_horario">
-      <EntityTypeMapping TypeName="siaaModel.cat_horario">
-        <MappingFragment StoreEntitySet="cat_horario">
-          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
-          <ScalarProperty Name="IdAsesoria" ColumnName="IdAsesoria" />
-          <ScalarProperty Name="Dia" ColumnName="Dia" />
-          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
-          <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="cat_lugar">
       <EntityTypeMapping TypeName="siaaModel.cat_lugar">
         <MappingFragment StoreEntitySet="cat_lugar">
@@ -170,6 +159,16 @@
           <ScalarProperty Name="IdProgramaEducativo" ColumnName="IdProgramaEducativo" />
           <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
           <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cat_horario">
+      <EntityTypeMapping TypeName="siaaModel.cat_horario">
+        <MappingFragment StoreEntitySet="cat_horario">
+          <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -54,10 +54,8 @@
   <EntityType Name="cat_horario">
     <Key>
       <PropertyRef Name="IdHorario" />
-      <PropertyRef Name="IdAsesoria" />
     </Key>
     <Property Name="IdHorario" Type="int" Nullable="false" />
-    <Property Name="IdAsesoria" Type="int" Nullable="false" />
     <Property Name="Dia" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="HoraInicio" Type="int" Nullable="false" />
     <Property Name="HoraFin" Type="int" Nullable="false" />
@@ -201,18 +199,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ASE_HO">
-    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1" />
     <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cat_horario">
         <PropertyRef Name="IdHorario" />
-        <PropertyRef Name="IdAsesoria" />
       </Principal>
       <Dependent Role="asesoria">
         <PropertyRef Name="IdHorario" />
-        <PropertyRef Name="IdAsesoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
