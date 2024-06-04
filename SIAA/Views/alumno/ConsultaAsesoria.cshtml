@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SIAA.asesoria>
+
+@{
+    Layout = "~/Views/Shared/Layout_Alumno.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="~/Content/Consultas.css">
+    <script src="~/Scripts/Consultas.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/busquedas.js"></script>
+</head>
+
+
+<body>
+    <div class="container" style="margin-right: 6cm;">
+
+                    <h2><b>CONSULTA DE ASESORÍAS</b></h2>
+                    <div class="search-container">
+                        <input class="form-control" id="myInput" type="text" placeholder="Buscar.." onkeyup="filtrarTabla()">
+                    </div>
+
+                    <table id="tabla" class="table table-striped" style="width: 100%">
+                        <thead class="encabezado">
+                            <tr>
+                                <th>
+                                    <b>CLAVE ASESORÍA</b>
+                                </th>
+
+                                <th>
+                                    <b>UNIDAD APRENDIZAJE</b>
+                                </th>
+
+                                <th>
+                                    <b>ASESOR</b>
+                                </th>
+
+                                <th>
+                                    <b>LUGAR</b>
+                                </th>
+
+                                <th>
+                                    <b>HORARIO</b>
+                                </th>
+
+                                <th>
+                                    <b>CICLO ESCOLAR</b>
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="myTable">
+                            @foreach (var item in Model)
+                            {
+                                <tr class="fila-asesor">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdAsesoria)
+                                        
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdAsesor)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cat_lugar.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cat_horario.Dia) -
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraInicio)<span>:00</span>
+                                        <span> a </span>
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraFin)<span>:00</span>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CicloEscolar)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>            
+        <script src="~/Scripts/menuConsultaAsesorias.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 ﻿@{
-    
+
     Layout = "~/Views/Shared/Layout_Encargado.cshtml";
 }
 
@@ -7,151 +7,122 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Registro de Asesorías</title>
     <link rel="stylesheet" type="text/css" href="~/Content/registroAsesorias.css">
 </head>
 
 
-    <body>
-        <div class="container" style="margin-right: 6cm;">
-            <!--INICIO DE TABS -->
-            <div class="card-body">
-                <ul class="nav nav-tabs pestania">
-                    <li class="nav-item active">
-                        <a class="navbar-link" onclick="openTab('registroA')" href="@Url.Action("RegistroAsesoria", "asesoria")">Registro Asesorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="openTab('consultaA')" href="@Url.Action("ConsultaAsesoria", "asesoria")">Consulta Asesorias</a>
-                    </li>
-                    
-                </ul>
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <!--INICIO DE TABS -->
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+                <li class="nav-item active">
+                    <a class="navbar-link" onclick="openTab('registroA')" href="@Url.Action("RegistroAsesoria", "asesoria")">Registro Asesorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consultaA')" href="@Url.Action("ConsultaAsesoria", "asesoria")">Consulta Asesorias</a>
+                </li>
+
+            </ul>
 
 
-                <div class="tab-content">
-                    <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
-                        <h2><b>REGISTRO  DE ASESORIAS</b></h2>
-                        <!-- Contenido del formulario para registro de asesorias -->
-                        @model SIAA.Models.AsesoriaHorarioViewModel
+            <div class="tab-content">
+                <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
+                    <h2><b>REGISTRO  DE ASESORIAS</b></h2>
+                    <!-- Contenido del formulario para registro de asesorias -->
+                    @model SIAA.Models.AsesoriaHorarioViewModel
 
-                        @using (Html.BeginForm("RegistroAsesoria", "asesoria", FormMethod.Post, new { id = "formRegistro" }))
-                        {
-                            @Html.AntiForgeryToken()
+                    @using (Html.BeginForm("RegistroAsesoria", "asesor", FormMethod.Post, new { id = "formRegistro" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                            <!--EMPIEZA EL FORMULARIO -->
+                        <!--EMPIEZA EL FORMULARIO -->
 
-                    <div class="form-horizontal">
-                        <hr />
+                <div class="form-horizontal">
+                    <hr />
 
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>CLAVE ASESORÍA</b></p>
-                            <div class="col-md-10">
-
-                                @Html.EditorFor(model => model.Asesoria.IdAsesoria, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Asesoria.IdAsesoria, "", new { @class = "text-danger" })
-                            </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>CLAVE ASESORÍA</b></p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Asesoria.IdAsesoria, new { htmlAttributes = new { @class = "form-control" } })           
+                            @Html.ValidationMessageFor(model => model.Asesoria.IdAsesoria, "", new { @class = "text-danger" })
                         </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>CLAVE ASESOR</b></p>
-                            <div class="col-md-10">
-                                @Html.DropDownList("IdAsesor", null, htmlAttributes: new { @class = "form-control", @id = "Id_AsesorDropDown" })
-                                @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>CLAVE UNIDAD APRENDIZAJE</b></p>
-                            <div class="col-md-10">
-                                @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>LUGAR</b></p>
-                            <div class="col-md-10">
-
-                                @Html.DropDownList("IdLugar", null, htmlAttributes: new { @class = "form-control", @id = "Id_LugarDropDown" })
-                                @Html.ValidationMessageFor(model => model.IdLugar, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>IdHorario</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.IdHorario, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.IdHorario, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>DÍA</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.Dia, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.Dia, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>HORA INICIO</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.HoraInicio, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>HORA FIN</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.HoraFin, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Guardar" class="btn btn-default" />
-                            </div>
-                        </div>
-
                     </div>
-                        }
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>CLAVE ASESOR</b></p>
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdAsesor", null, htmlAttributes: new { @class = "form-control", @id = "Id_AsesorDropDown" })                         
+                            @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
+
+                        </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>CLAVE UNIDAD APRENDIZAJE</b></p>
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>LUGAR</b></p>
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdLugar", null, htmlAttributes: new { @class = "form-control", @id = "Id_LugarDropDown" })                            
+                            @Html.ValidationMessageFor(model => model.IdLugar, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>DÍA</b></p>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Horario.Dia, ViewBag.dia as SelectList, htmlAttributes: new { @class = "form-control" } )                            
+                            @Html.ValidationMessageFor(model => model.Horario.Dia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>HORA INICIO</b></p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Horario.HoraInicio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>HORA FIN</b></p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })                            
+                            @Html.ValidationMessageFor(model => model.Horario.HoraFin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="botones">
+                            <button type="submit" class="btn btn-warning glyphicon glyphicon glyphicon-ok" value="Guardar"></button>
+                            <button type="reset" class="btn btn-light glyphicon glyphicon glyphicon-trash" value="Cancelar"></button>
+                        </div>
+                    </div>
+
+                </div>
+                    }
                 </div>
             </div>
         </div>
-        <script src="~/Scripts/menuRegistroAsesores.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </div>
+
+    <script src="~/Scripts/menuRegistroAsesorias.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </body>
 
 </html>
-
-<script>
-    // Agregar este script al final de la vista
-    document.addEventListener("DOMContentLoaded", function () {
-        // Agrega un evento de entrada (input) al campo "Nombre_Asesoria"
-        var nombreAsesoriaInput = document.getElementById("Nombre_Asesoria");
-
-        nombreAsesoriaInput.addEventListener("input", function () {
-            validarCampoTexto(nombreAsesoriaInput);
-        });
-
-        function validarCampoTexto(inputElement) {
-            var valor = inputElement.value;
-            if (/^\d+$/.test(valor)) {
-                // Si contiene solo números, muestra un mensaje de error
-                inputElement.setCustomValidity("Este campo no permite números.");
-            } else {
-                // Si no contiene solo números, elimina el mensaje de error
-                inputElement.setCustomValidity("");
-            }
-        }
-    });
-</script>

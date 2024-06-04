@@ -2,13 +2,13 @@
 @{
     Layout = "~/Views/Shared/Layout_Asesor.cshtml";
 }
-
+@model asesor
 <link rel="stylesheet" href="~/Content/menuEncargadoStyle.css">
 
 <!--INICIO BIENVENIDA -->
 <div class="jumbotron">
     <p>
-        <center> <h2>  <b> ¡Bienvenido Asesor!</b> </h2></center>
+        <center> <h2>  <b> ¡Bienvenido!</b> </h2></center>
     </p>
 
 </div>
@@ -16,7 +16,7 @@
 <!--INICIO CARD 1-->
 <div class="contenedor-menu">
     <div class="card-menu-encargado">
-        <a href="@Url.Action("RegistroAsesoria", "asesoria")" class="enlace-tarjeta">
+        <a href="@Url.Action("RegistroAsesoria", "asesor")" class="enlace-tarjeta">
             <div class="overlay">
                 <h2 class="titulo">Asesorías</h2>
             </div>

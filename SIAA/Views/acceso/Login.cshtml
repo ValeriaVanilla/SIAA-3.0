@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/Content/Login.css">
+
+</head>
+
+
+
+<body>
+    <div class="encabezados_borde">
+        <div class="borde-verde">
+
+            <img class="escudo-uabc" src="~/Resources/Logoenblancouabc.png" alt="">
+            <div class="linea-vertical-encabezado"></div>
+            <img class="escudo-fim" src="~/Resources/EscudoB_FIM.png" alt="">
+            <div class="texto-en-cuadrado-uabc">
+                <p>
+                    Universidad Autónoma de Baja California
+
+                </p>
+            </div>
+            <div class="texto-en-cuadrado-siaa">
+                <b>SIAA - SISTEMA DE ASESORÍAS ACADÉMICAS</b>
+            </div>
+        </div>
+        <div class="borde-amarillo"></div>
+    </div>
+
+    <div class="form-container">
+        <div class="formulario">
+            <h1>BIENVENIDOS <br /> CIMARRONES</h1>
+            @if (ViewData["Mensaje"] != null)
+            {
+                <p>@ViewData["Mensaje"]</p>
+            }
+
+                <form action="@Url.Action("Login","Acceso")" method="post">
+
+                    <div class="input-wrapper">
+                        <label for="'uabc.edu.mx">Correo Institucional:</label>
+                        <input type="email" id="correo" name="correo" placeholder="usuario@uabc.edu.mx" required />
+                    </div>
+
+                    <div class="input-wrapper2">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="cont" name="cont" placeholder="**********" required />
+                    </div>
+                    <button type="submit" class="large-button">Ingresar</button>
+
+                </form>
+        </div>
+        <div class="image-container">
+            <img src="~/Resources/login-imagen.png" class="login-image" />
+            <div class="circle yellow-circle"></div>
+            <div class="circle yellow-circle corner-circle"></div>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

@@ -166,6 +166,7 @@
     <Compile Include="cat_unidad_aprendizaje.cs">
       <DependentUpon>SIAA_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\accesoController.cs" />
     <Compile Include="Controllers\alumnoController.cs" />
     <Compile Include="Controllers\asesorController.cs" />
     <Compile Include="Controllers\asesoriaController.cs" />
@@ -230,6 +231,7 @@
     <Content Include="Content\consultaAsesor.css" />
     <Content Include="Content\Consultas.css" />
     <Content Include="Content\LayoutStyle.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\menuEncargadoStyle.css" />
     <Content Include="Content\registroAsesores.css" />
     <Content Include="Content\registroAsesorias.css" />
@@ -240,6 +242,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\EscudoB_FIM.png" />
+    <Content Include="Resources\login-imagen.png" />
     <Content Include="Resources\Linea.png" />
     <Content Include="Resources\Logoenblancouabc.png" />
     <Content Include="Resources\Menu_Asesor\reporte_asesor.jpg" />
@@ -333,7 +336,18 @@
     <Content Include="Views\asesor\RegistraAsesor.cshtml" />
     <Content Include="Views\asesor\SolicitudesAsesoria.cshtml" />
     <Content Include="Views\encargado\ReporteEncargado.cshtml" />
-    <Content Include="Views\alumno\RegistraAlumnoAsesor.cshtml" />
+    <Content Include="Views\encargado\RegistraAlumnoAsesor.cshtml" />
+    <Content Include="Views\alumno\EvaluacionAlumno.cshtml" />
+    <Content Include="Views\asesor\ReporteAsesor.cshtml" />
+    <Content Include="Views\acceso\Login.cshtml" />
+    <Content Include="Views\asesor\RegistroAsesoria.cshtml" />
+    <Content Include="Views\asesor\ConsultaAsesoria.cshtml" />
+    <Content Include="Views\asesor\ModificaAsesoria.cshtml" />
+    <Content Include="Views\alumno\ConsultaAsesoria.cshtml" />
+    <Content Include="Views\alumno\EstadoSolicitudesAlumno.cshtml" />
+    <Content Include="Views\encargado\RegistroAsesoria.cshtml" />
+    <Content Include="Views\encargado\ConsultaAsesoria.cshtml" />
+    <Content Include="Views\encargado\ModificaAsesoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

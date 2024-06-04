@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SIAA.solicitud>
+
+@{
+    Layout = "~/Views/Shared/Layout_Alumno.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="~/Content/Consultas.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <!--INICIO DE TABS -->
+
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+                <li class="nav-item">
+                    <a class="navbar-link" onclick="openTab('horarios')" href="@Url.Action("SolicitudesAlumno", "alumno")">Registro Solicitudes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="openTab('estado')" href="@Url.Action("EstadoSolicitudesAlumno", "alumno")">Consulta Solicitudes</a>
+                </li>
+            </ul>
+            <!--FIN DE TABS -->
+
+            <div>
+                <div class="tab-pane" id="estado" role="tabpanel" aria-labelledby="consulta-tab">
+
+                    <h2><b>CONSULTA DE SOLICITUDES</b></h2>
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <b>FECHA SOLICITUD</b>
+                            </th>
+                            <th>
+                                <b>FECHA ACEPTACIÓN</b>
+                            </th> 
+                            <th>
+                                <b>CICLO ESCOLAR</b>
+                            </th>
+                            <th>
+                                <b>ESTADO</b>
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaSolicitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaAceptacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.asesoria.CicloEscolar)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cat_estado.Descripcion)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/menuConsultaAsesorias.js"></script>
+</body>
+</html>

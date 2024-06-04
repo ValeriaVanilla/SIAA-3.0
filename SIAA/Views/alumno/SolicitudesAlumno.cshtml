@@ -4,64 +4,85 @@
     Layout = "~/Views/Shared/Layout_Alumno.cshtml";
 }
 
-<!--<link rel="stylesheet" href="~/Content/SolicitudesAlumno.css">-->
+<!DOCTYPE html>
+<html lang="es">
 
-<link rel="stylesheet" href="~/Content/SolicitudesAlumno.css">
-
-<div class="contenido">
-    <h1>Solicitudes De Asesorías</h1>
-
-    <!--Aqui se imprimen las solicitudes-->
-    <table class="tabla">
-        @foreach (var item in Model)
-        {
-            <tr class="tarjeta">
-                <td>
-                    <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
-
-                </td>
-                <td>
-                    <div class="titulo">
-                        <p>@Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</p>
-                        <p>@Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)</p>
-                    </div>
-
-                </td>
-                <td>
-                    <div class="datos-asesorado">
-                        <h3>Datos del asesorado</h3>
-                        <b>
-                            Nombre:
-                        </b>
-                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
-                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
-                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
-                        <br>
-                        <b>
-                            No. Empleado:
-                        </b>
-                        @Html.DisplayFor(modelItem => item.asesor.IdAsesor)
-                        <br>
-                        <b>Correo: </b>
-                        @Html.DisplayFor(modelItem => item.asesor.Correo)
-                    </div>
-                </td>
-                <td>
-                    
-                </td>
-                <td class="boton">
-                    @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria}, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
-                            </td>
-
-            </tr>
-        }
-    </table>
-</div>
+<head>
+    <link rel="stylesheet" href="~/Content/SolicitudesAlumno.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
 
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <!--INICIO DE TABS -->
 
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+                <li class="nav-item active">
+                    <a class="navbar-link" onclick="openTab('horarios')" href="@Url.Action("SolicitudesAlumno", "alumno")">Registro Solicitudes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('estado')" href="@Url.Action("EstadoSolicitudesAlumno", "alumno")">Consulta Solicitudes</a>
+                </li>
+            </ul>
+            <!--FIN DE TABS -->
 
+            <div>
+                <div class="tab-pane" id="horarios" role="tabpanel" aria-labelledby="registro-tab">
 
+                    <h2><b>REGISTRO DE SOLICITUDES</b></h2>
+                    <!--Aqui se imprimen las solicitudes-->
+                    <table id="tabla" class="table table-striped" style="width: 100%">
+                        @foreach (var item in Model)
+                        {
+                            <tr class="tarjeta">
+                                <td>
+                                    <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
 
+                                </td>
+                                <td>
+                                    <div class="titulo">
+                                        <p>@Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</p>
+                                        <p>@Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)</p>
+                                    </div>
 
+                                </td>
+                                <td>
+                                    <div class="datos-asesorado">
+                                        <h3>Datos del asesorado</h3>
+                                        <b>
+                                            Nombre:
+                                        </b>
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
+                                        <br>
+                                        <b>
+                                            No. Empleado:
+                                        </b>
+                                        @Html.DisplayFor(modelItem => item.asesor.IdAsesor)
+                                        <br>
+                                        <b>Correo: </b>
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Correo)
+                                    </div>
+                                </td>
+                                <td>
+                                </td>
+                                <td class="boton">
+                                    @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria }, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
+                                </td>
 
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/menuConsultaAsesorias.js"></script>
+</body>
+</html>

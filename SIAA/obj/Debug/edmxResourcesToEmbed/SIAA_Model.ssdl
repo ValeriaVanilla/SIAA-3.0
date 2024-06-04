@@ -5,16 +5,12 @@
       <PropertyRef Name="IdAlumno" />
     </Key>
     <Property Name="IdAlumno" Type="int" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Genero" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="asesor">
     <Key>
       <PropertyRef Name="IdAsesor" />
     </Key>
     <Property Name="IdAsesor" Type="int" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="45" />
-    <Property Name="Genero" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="asesoria">
     <Key>
@@ -101,8 +97,6 @@
       <PropertyRef Name="IdEncargado" />
     </Key>
     <Property Name="IdEncargado" Type="int" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Genero" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="evaluacion">
     <Key>
@@ -151,10 +145,12 @@
     <Property Name="Nombre" Type="varchar" MaxLength="45" />
     <Property Name="ApellidoPaterno" Type="varchar" MaxLength="45" />
     <Property Name="ApellidoMaterno" Type="varchar" MaxLength="45" />
+    <Property Name="Correo" Type="varchar" MaxLength="45" Nullable="false" />
     <Property Name="Contrasena" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Genero" Type="varchar" MaxLength="20" />
     <Property Name="IdProgramaEducativo" Type="int" />
     <Property Name="IdTipoUsuario" Type="int" Nullable="false" />
-    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdEstatus" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_AL_USR">
     <End Role="usuario" Type="Self.usuario" Multiplicity="1">
@@ -199,7 +195,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ASE_HO">
-    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1" />
+    <End Role="cat_horario" Type="Self.cat_horario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="asesoria" Type="Self.asesoria" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cat_horario">
@@ -279,7 +277,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ES_USR">
-    <End Role="cat_estatus" Type="Self.cat_estatus" Multiplicity="0..1">
+    <End Role="cat_estatus" Type="Self.cat_estatus" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
@@ -359,9 +357,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SL_AL">
-    <End Role="alumno" Type="Self.alumno" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1" />
     <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="alumno">
@@ -373,7 +369,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SL_ASE">
-    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1" />
+    <End Role="asesoria" Type="Self.asesoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="asesoria">

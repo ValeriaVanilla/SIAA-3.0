@@ -10,18 +10,22 @@ using System.Windows.Forms;
 using SIAA;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Collections;
+using SIAA.Models;
 
 namespace SIAA.Controllers
 {
     public class asesorController : Controller
     {
         private siaaEntities db = new siaaEntities();
+        asesor asesor1 = System.Web.HttpContext.Current.Session["LOGIN"] as asesor;
 
+        #region asesor
         public ActionResult ConsultaAsesor() // Se obtiene la lista de los asesores registrados en el sistema y las conexiones que hay entre las tablas
         {
 
             var asesors = db.asesors.Include(a => a.usuario).Include(a => a.asesorias);
-            var usuarios = db.usuarios;
+            var usuarios = db.usuarios;            
             return View(asesors.ToList());
 
         }
@@ -68,8 +72,6 @@ namespace SIAA.Controllers
         }
 
 
-
-
         public ActionResult ModificaAsesor(int? id) // Valida antes de modificar
         {
             if (id == null)
@@ -91,7 +93,7 @@ namespace SIAA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ModificaAsesor([Bind(Include = "IdAsesor,Nombre,ApellidoPaterno,ApellidoMaterno,Correo,IdProgramaEducativo,IdEstatus,IdTipo")] asesor asesor) // Se modifican los registros de asesores
         {
-            if (asesor.usuario.Nombre == null || asesor.usuario.ApellidoMaterno == null || asesor.usuario.ApellidoPaterno == null || asesor.Correo == null || asesor.usuario.IdProgramaEducativo == 0 || asesor.usuario.IdEstatus == null)
+            if (asesor.usuario.Nombre == null || asesor.usuario.ApellidoMaterno == null || asesor.usuario.ApellidoPaterno == null || asesor.usuario.Correo == null || asesor.usuario.IdProgramaEducativo == 0 || asesor.usuario.IdEstatus == null)
             {
                 MessageBox.Show("Ingrese todos los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return RedirectToAction("ModificaAsesor", "asesor");
@@ -158,27 +160,226 @@ namespace SIAA.Controllers
             base.Dispose(disposing);
         }
 
+        #endregion
+
+        
         public ActionResult BuscarPorNombre(string nombre) // Busqueda por nombre
         {
             var resultados = db.asesors.Where(a => a.usuario.Nombre.Contains(nombre)).ToList();
             return PartialView("_ResultadosBusqueda", resultados);
         }
 
+        #region asesoria
+
+        public ActionResult ConsultaAsesoria()// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
+        {
+            var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar).Where(a => a.IdAsesor == asesor1.IdAsesor); ;
+            var asesoriasOrdenadas = asesorias.OrderBy(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje).ToList();
+            // Pasa la lista ordenada a la vista
+            return View(asesoriasOrdenadas);
+        }
+
+
+        public ActionResult RegistroAsesoria(String nombre) // Se inicializan las varibles de desplazamiento
+        {
+            List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+            ViewBag.dia = new SelectList(semana);            
+            ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje");
+            ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion");
+            return View();
+        }
+
+
+
+        [HttpPost]  // Guarda los registros
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistroAsesoria(AsesoriaHorarioViewModel viewModel) // Toma el Modela AsesoriaHorarioViewModel para hacer el registro en las tablas horario y asesoria
+        {
+            DateTime fecha;
+            var horario = viewModel.Horario;
+            var asesoria = viewModel.Asesoria;
+            horario.IdHorario = asesoria.IdAsesoria;
+            asesoria.IdHorario = asesoria.IdAsesoria;
+            asesoria.IdAsesor = asesor1.IdAsesor;
+            asesoria.IdLugar = viewModel.IdLugar;
+            asesoria.IdUnidadAprendizaje = viewModel.IdUnidadAprendizaje;
+
+            if (ModelState.IsValid)
+            {
+                fecha = System.DateTime.Now;
+                if (fecha.Month / 2 >= 6)
+                {
+                    asesoria.CicloEscolar = fecha.Year.ToString() + "-2";
+                }
+                else
+                {
+                    asesoria.CicloEscolar = fecha.Year.ToString() + "-1";
+                }
+                db.cat_horario.Add(horario);
+                db.SaveChanges(); // Se guardan los datos de horario               
+                db.asesorias.Add(asesoria);
+                db.SaveChanges(); // Se guardan los datos de asesoria
+                return RedirectToAction("ConsultaAsesoria");
+            }
+            List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+            ViewBag.dia = new SelectList(semana, horario.Dia);            
+            ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje", asesoria.IdUnidadAprendizaje);
+            ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion", asesoria.IdLugar);
+            return View(asesoria);
+        }
+
+        public bool Validar(asesoria asesoria) // Funcion para validar los datos antes de guardarlos
+        {
+            var use = db.asesorias.ToList();
+            for (int i = 0; i < use.Count(); i++)
+            {
+                if (asesoria.IdAsesoria == use[i].IdAsesoria)
+                {
+                    MessageBox.Show("Matricula duplicada", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+            }
+            if (asesoria.IdAsesor == 0 || asesoria.cat_unidad_aprendizaje == null || asesoria.IdUnidadAprendizaje == 0)
+            {
+                MessageBox.Show("Ingrese todos los datos", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
+        }
+        public ActionResult ModificaAsesoria(int? id) // Valida antes de modificar
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AsesoriaHorarioViewModel viewModel = new AsesoriaHorarioViewModel();
+            viewModel.Asesoria = db.asesorias.Find(id);
+            viewModel.Horario = db.cat_horario.Find(id);
+            if (viewModel.Asesoria == null)
+            {
+                return HttpNotFound();
+            }
+            List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+            ViewBag.dia = new SelectList(semana);            
+            ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje");
+            ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion");
+            return View(viewModel);
+        }
+
+        [HttpPost] // Se modifican los registros de alumnos
+        [ValidateAntiForgeryToken]
+        public ActionResult ModificaAsesoria(AsesoriaHorarioViewModel viewModel)
+        {
+            DateTime fecha;
+
+            var horario = viewModel.Horario;
+            var asesoria = viewModel.Asesoria;
+            horario.IdHorario = asesoria.IdAsesoria;
+            asesoria.IdHorario = asesoria.IdAsesoria;
+            asesoria.IdAsesor = asesor1.IdAsesor;
+            asesoria.IdLugar = viewModel.IdLugar;
+            asesoria.IdUnidadAprendizaje = viewModel.IdUnidadAprendizaje;
+            Debug.WriteLine(viewModel.Asesoria.IdAsesor);
+            Debug.WriteLine(viewModel.Asesoria.IdUnidadAprendizaje);
+            if (ModelState.IsValid)
+            {
+                /*fecha = System.DateTime.Now;
+                if (fecha.Month / 2 >= 6)
+                {
+                    viewModel.Asesoria.CicloEscolar = fecha.Year.ToString() + "-2";
+                }
+                else
+                {
+                    asesoria.CicloEscolar = fecha.Year.ToString() + "-1";
+                */
+                db.Entry(viewModel.Horario).State = EntityState.Modified;
+                db.Entry(viewModel.Asesoria).State = EntityState.Modified;
+                db.SaveChanges();
+
+                TempData["MensajeExito"] = "La asesoría se modificó con éxito.";
+                return RedirectToAction("ConsultaAsesoria");
+            }
+            List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+            ViewBag.dia = new SelectList(horario.Dia);           
+            ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje", asesoria.IdUnidadAprendizaje);
+            ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion", asesoria.IdLugar);
+            return View(viewModel.Asesoria);
+        }
+
+        public ActionResult EliminaAsesoria(int? id) // Elimina registros de asesorías
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            asesoria asesoria = db.asesorias.Find(id);
+            if (asesoria == null)
+            {
+                return HttpNotFound();
+            }
+            return View(asesoria);
+        }
+
+        // POST: asesorias/Delete/5
+        [HttpPost, ActionName("ConfirmarEliminaAsesoria")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmarEliminaAsesoria(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            asesoria asesoria = db.asesorias.Find(id);
+            cat_horario horario = db.cat_horario.Find(id);
+            if (asesoria == null)
+            {
+                return HttpNotFound();
+            }
+            db.asesorias.Remove(asesoria);
+            db.cat_horario.Remove(horario);
+            db.SaveChanges();
+            //TempData["MensajeEliminacion"] = "La asesoría se eliminó correctamente.";
+            MessageBox.Show("La asesoría se eliminó correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Agrega una línea de registro
+            System.Diagnostics.Debug.WriteLine("La asesoría se eliminó correctamente.");
+            return RedirectToAction("ConsultaAsesoria");
+
+
+        }
+
+        #endregion
+
+        #region solicitud
         public ActionResult SolicitudesAsesoria() // se llama a la vista de solicitudes
         {
-            var solicitudes = db.solicituds.Include(a => a.alumno).Include(a => a.asesoria);
+            var solicitudes = db.solicituds.Include(a => a.alumno).Include(a => a.asesoria).Where(a => a.IdEstado == 1 && a.asesoria.IdAsesor==asesor1.IdAsesor);           
             return View(solicitudes.ToList());
         }
-        
+
         ///// Funciones para el componente de solicitudes
 
-        public ActionResult AprobarSolicitud(int idAsesoria, int idAlumno)
+        public ActionResult AprobarSolicitud(int idSolicitud)
         {
-
+            solicitud solicitudAprobada = db.solicituds.Find(idSolicitud);
+            solicitudAprobada.IdEstado = 2;
+            solicitudAprobada.FechaAceptacion = System.DateTime.Now;
+            db.Entry(solicitudAprobada).State = EntityState.Modified;
+            db.SaveChanges();
             return RedirectToAction("SolicitudesAsesoria");
         }
 
-        
+        public ActionResult RechazarSolicitud(int idSolicitud)
+        {
+            solicitud solicitudAprobada = db.solicituds.Find(idSolicitud);
+            solicitudAprobada.IdEstado = 3;
+            db.Entry(solicitudAprobada).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("SolicitudesAsesoria");
+        }
+
+        #endregion
+
+        #region reportes
         ///// Funciones para el componente de reportes
 
         public ActionResult ConsultaReporte() // Se obtiene la lista de los reportes registrados en el sistema y las conexiones que hay entre las tablas
@@ -213,6 +414,8 @@ namespace SIAA.Controllers
             ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema", reporte.IdTemaVisto);
             return View(reporte);
         }
+
+        #endregion
     }
 }
     

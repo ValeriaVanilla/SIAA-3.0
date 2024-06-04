@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -16,11 +17,11 @@ namespace SIAA.Controllers
     public class alumnoController : Controller
     {
         private siaaEntities db = new siaaEntities();
+        alumno alumno1 = System.Web.HttpContext.Current.Session["LOGIN"] as alumno;
 
         public ActionResult ConsultaAlumno() // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
         {
-            var alumnoes = db.alumnoes.Include(a => a.usuario).Include(a => a.solicituds).Include(a => a.asistencias);
-        
+            var alumnoes = db.alumnoes.Include(a => a.usuario).Include(a => a.solicituds).Include(a => a.asistencias);        
             return View(alumnoes.ToList());
          
         }
@@ -62,7 +63,7 @@ namespace SIAA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ModificaAlumno([Bind(Include = "IdAlumno, Nombre, ApellidoPaterno, ApellidoMaterno, Correo, IdEstatus, IdProgramaEducativo, IdTipo")] alumno alumno) // Se modifican los registros de alumnos
         {
-            if (alumno.usuario.Nombre == null || alumno.usuario.ApellidoMaterno == null || alumno.usuario.ApellidoPaterno == null || alumno.Correo == null || alumno.usuario.IdProgramaEducativo == 0 || alumno.usuario.IdEstatus == null)
+            if (alumno.usuario.Nombre == null || alumno.usuario.ApellidoMaterno == null || alumno.usuario.ApellidoPaterno == null || alumno.usuario.Correo == null || alumno.usuario.IdProgramaEducativo == 0 || alumno.usuario.IdEstatus == null)
             {
                 MessageBox.Show("Ingrese todos los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return RedirectToAction("ModificaAlumno", "alumno");
@@ -133,30 +134,37 @@ namespace SIAA.Controllers
             return PartialView("_ResultadosBusqueda", resultados);
         }
         #region Solicitud
+
+        public ActionResult ConsultaAsesoria()// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
+        {
+            var asesorias = db.solicituds.Where(s => s.IdAlumno == alumno1.IdAlumno && s.IdEstado == 2).Select(s => s.asesoria).Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
+            var asesoriasOrdenadas = asesorias.OrderBy(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje).ToList();
+            // Pasa la lista ordenada a la vista
+            return View(asesoriasOrdenadas);
+        }
+
         public ActionResult SolicitudesAlumno() // Inicializa la consulta de horarios
         {
-            var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
-            var asesorias = db.asesorias.ToList();
-            var solicitudes = db.solicituds;
-            /* for (int i = 0; i < asesorias.Count(); i++)
-             {
-                 for(int c = 0; c < solicitudes.Count(); c++)
-                 if (asesorias.ElementAt(i).IdAsesoria == solicitudes.ElementAt(c).IdAsesoria)
-                 {
-                     asesorias.Remove(asesorias[i]);                        
-                 } 
-             }            */
+            var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Where(a => !db.solicituds.Any(s => s.IdAsesoria == a.IdAsesoria && s.IdAlumno == alumno1.IdAlumno));
             return View(AsesoriasActualizada.ToList());
+        }
+
+        public ActionResult EstadoSolicitudesAlumno() // Inicializa la consulta de horarios
+        {
+            var solicitudes = db.solicituds.Where(s => s.IdAlumno == alumno1.IdAlumno).Include(a => a.alumno).Include(a => a.asesoria);            
+            return View(solicitudes.ToList());
         }
 
         public ActionResult Solicitar(int id)  // Apartado para el funcionamiento de las solicitudes del alumno
         {
             asesoria asesoria = db.asesorias.Find(id);
-
             solicitud nuevaSolicitud = new solicitud();
-
+            if (db.solicituds.Any()) {                
+                nuevaSolicitud.Idsolicitud = db.solicituds.ToList().Last().Idsolicitud + 1;
+            }
+            else { nuevaSolicitud.Idsolicitud = 1; }
             nuevaSolicitud.IdAsesoria = id;
-            nuevaSolicitud.IdAlumno = 3;
+            nuevaSolicitud.IdAlumno = alumno1.IdAlumno;
             nuevaSolicitud.FechaSolicitud = System.DateTime.Now;
             nuevaSolicitud.IdEstado = 1;
             db.solicituds.Add(nuevaSolicitud);
@@ -164,67 +172,17 @@ namespace SIAA.Controllers
             MessageBox.Show("La solicitud se ha enviado exitosamente", "Solicitud exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
-            return RedirectToAction("SolicitudesAlumno");
+            return RedirectToAction("EstadoSolicitudesAlumno");
         }
 
         #endregion
-
-        #region AlumnoAsesor
-        public ActionResult ConsultaAlumoAsesor() // Se obtiene la lista de los alumnos asesores registrados en el sistema y las conexiones que hay entre las tablas
+       
+        #region Evaluaciones
+        public ActionResult EvaluacionAlumno() // Inicializa la consulta de horarios
         {
-            var usuarios = db.usuarios.Include(a => a.alumno).Include(a => a.cat_tipo_usuario).Include(a => a.cat_programa_educativo).Include(a => a.cat_estatus);
-
-            return View(usuarios.ToList());
+            return View();
         }
-
-
-        public ActionResult BuscarPorMatricula([Bind(Include = "IdUsuario, Nombre, ApellidoPaterno, ApellidoMaterno, IdProgramaEducativo, IdEstatus, IdTipoUsuario")] usuario idUsuario)
-        {
-            int id = idUsuario.IdUsuario;
-            Debug.WriteLine(id);
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion", usuario.IdEstatus);
-            ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo", usuario.IdProgramaEducativo);
-            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", usuario.IdTipoUsuario);
-
-            return View(usuario);
-        }
-        
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RegistraAlumnoAsesor([Bind(Include = "IdUsuario, Nombre, ApellidoPaterno, ApellidoMaterno, IdProgramaEducativo, IdEstatus, IdTipoUsuario")] usuario usuario)
-        {
-
-            DialogResult result1 = MessageBox.Show("Desea modificar el registro?", "Modifica Alumno Asesor", MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question);
-            if (result1 == DialogResult.Yes)
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(usuario).State = EntityState.Modified;
-                    db.SaveChanges();
-                    MessageBox.Show("La modificación se ha guardado con exito", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return RedirectToAction("ConsultaAlumno");
-                }
-            }
-            else
-                return RedirectToAction("RegistraAlumnoAsesor");
-
-            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", usuario.IdTipoUsuario);
-            return View(usuario);
-        }
-
         #endregion
-
 
     }
 }

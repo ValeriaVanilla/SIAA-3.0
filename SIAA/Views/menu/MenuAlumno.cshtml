@@ -15,7 +15,7 @@
 <!--INICIO CARD 1-->
 <div class="contenedor-menu">
     <div class="card-menu-encargado">
-        <a href="@Url.Action("SolicitudesAlumno", "alumno")" class="enlace-tarjeta">
+        <a href="@Url.Action("EstadoSolicitudesAlumno", "alumno")" class="enlace-tarjeta">
             <div class="overlay">
                 <h2 class="titulo">Horarios</h2>
             </div>
@@ -30,7 +30,7 @@
     <!--FIN CARD 1-->
     <!--INICIO CARD 2-->
     <div class="card-menu-encargado">
-        <a href="@Url.Action("ConsultaAsesoria", "asesoria")" class="enlace-tarjeta">
+        <a href="@Url.Action("ConsultaAsesoria", "alumno")" class="enlace-tarjeta">
             <div class="overlay">
                 <h2 class="titulo">Asesorías</h2>
             </div>
@@ -41,10 +41,11 @@
     <!--FIN CARD 2-->
     <!--INICIO CARD 3-->
     <div class="card-menu-encargado">
-        <div class="overlay">
-            <h2 class="titulo">Evaluaciones</h2>
-        </div>
-        <img src="~/Resources/Menu_encargado/reportes-encargado.jpg" alt="cheetah" />
+        <a href="@Url.Action("EvaluacionAlumno", "alumno")" class="enlace-tarjeta">
+            <div class="overlay">
+                <h2 class="titulo">Evaluaciones</h2>
+            </div>
+            <img src="~/Resources/Menu_encargado/reportes-encargado.jpg" alt="cheetah" />
     </div>
 
     <!--FIN CARD 3-->

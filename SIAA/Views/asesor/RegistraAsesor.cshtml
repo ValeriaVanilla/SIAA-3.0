@@ -94,11 +94,11 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Correo, Html.DisplayNameFor(model => model.Correo).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.usuario.Correo, Html.DisplayNameFor(model => model.usuario.Correo).ToString().ToUpper(), htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", placeholder = "uabc.edu.mx.com", id = "correoInput" } })
+                                    @Html.EditorFor(model => model.usuario.Correo, new { htmlAttributes = new { @class = "form-control", placeholder = "uabc.edu.mx.com", id = "correoInput" } })
                                     <span id="correoError" class="text-danger"></span>
-                                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.usuario.Correo, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -144,89 +144,13 @@
             </div>
 
         </div>
-        </div>
-        <script src="~/Scripts/menuRegistroAsesores.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </div>
+    <script src="~/Scripts/menuRegistroAsesores.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        <script>
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var successMessage = "@ViewBag.SuccessMessage";
-            if (successMessage && successMessage.trim() !== "") {
-                // Muestra el mensaje de éxito usando JavaScript
-                var successElement = document.getElementById("success-message");
-                successElement.innerHTML = successMessage;
-
-                // Puedes agregar estilos o clases adicionales según tus necesidades
-                successElement.classList.add("alert", "alert-primary", "d-flex", "align-items-center", "role", "alert");
-
-                // Limpia el mensaje de éxito después de un tiempo (opcional)
-                setTimeout(function () {
-                    successElement.innerHTML = "";
-                }, 50000); // Muestra el mensaje por 5 segundos (ajusta según tus necesidades).
-            }
-        });
-        </script>
-
-        <!-- Agrega este script al final de tu vista -->
-        <script>
-
-            document.addEventListener("DOMContentLoaded", function () {
-                // ... (otro código)
-
-                // Validación para campos de texto que no permiten números
-                var nombreInput = document.getElementById("nombreInput");
-                var apellidoPaternoInput = document.getElementById("apellidoPaternoInput");
-                var apellidoMaternoInput = document.getElementById("apellidoMaternoInput");
-
-                nombreInput.addEventListener("input", function () {
-                    validarCampoTexto(nombreInput);
-                });
-
-                apellidoPaternoInput.addEventListener("input", function () {
-                    validarCampoTexto(apellidoPaternoInput);
-                });
-
-                apellidoMaternoInput.addEventListener("input", function () {
-                    validarCampoTexto(apellidoMaternoInput);
-                });
-
-                function validarCampoTexto(inputElement) {
-                    var valor = inputElement.value;
-                    if (/^\d+$/.test(valor)) {
-                        // Si contiene solo números, muestra un mensaje de error
-                        inputElement.setCustomValidity("Este campo no permite números.");
-                    } else {
-                        // Si no contiene solo números, elimina el mensaje de error
-                        inputElement.setCustomValidity("");
-                    }
-                }
-
-
-            });
-        </script>
-        <script>
-
-
-            function limpiarCampos() {
-                // Limpiar campos al hacer clic en el botón de cancelar
-                document.getElementById("nombreInput").value = "";
-                document.getElementById("apellidoPaternoInput").value = "";
-                document.getElementById("apellidoMaternoInput").value = "";
-                document.getElementById("correoInput").value = "";
-
-                // También puedes restablecer la validación si es necesario
-                document.getElementById("nombreInput").setCustomValidity("");
-                document.getElementById("apellidoPaternoInput").setCustomValidity("");
-                document.getElementById("apellidoMaternoInput").setCustomValidity("");
-                document.getElementById("correoInput").setCustomValidity("");
-            }
-        </script>
+  
+    </body>
 
 
 
-</body>
-
-
-
-</html>
+    </html>

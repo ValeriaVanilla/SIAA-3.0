@@ -7,6 +7,7 @@ namespace SIAA.Models
 {
     public class AsesoriaHorarioViewModel
     {
+        public AsesoriaHorarioViewModel() { }  
         public asesoria Asesoria { get; set; }
         public cat_horario Horario { get; set; }
 

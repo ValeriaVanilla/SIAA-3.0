@@ -9,6 +9,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Registro de Reportes</title>
     <link rel="stylesheet" type="text/css" href="~/Content/registroAsesorias.css">
 
@@ -30,7 +33,7 @@
 
             <div class="tab-content">
                 <div id="registro" role="tabpanel" aria-labelledby="registro-tab">
-                    <h2><b>REGISTRO  DE REPORTES</b></h2>
+                    <h2><b>REGISTRO DE REPORTES</b></h2>
                     <!-- Contenido del formulario para registro de reportes -->
                     @model SIAA.reporte
 
@@ -88,7 +91,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p class="control-label col-md-2"><b>NO. DE TEMA VISTO</b></p>
+                                    <p class="control-label col-md-2"><b>TEMA VISTO</b></p>
                                     <div class="col-md-10">
                                         @Html.DropDownList("IdTemaVisto", null, htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.IdTemaVisto, "", new { @class = "text-danger" })

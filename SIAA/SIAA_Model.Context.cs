@@ -31,6 +31,7 @@ namespace SIAA
         public virtual DbSet<asistencia> asistencias { get; set; }
         public virtual DbSet<cat_estado> cat_estado { get; set; }
         public virtual DbSet<cat_estatus> cat_estatus { get; set; }
+        public virtual DbSet<cat_horario> cat_horario { get; set; }
         public virtual DbSet<cat_lugar> cat_lugar { get; set; }
         public virtual DbSet<cat_programa_educativo> cat_programa_educativo { get; set; }
         public virtual DbSet<cat_temas> cat_temas { get; set; }
@@ -41,6 +42,5 @@ namespace SIAA
         public virtual DbSet<reporte> reportes { get; set; }
         public virtual DbSet<solicitud> solicituds { get; set; }
         public virtual DbSet<usuario> usuarios { get; set; }
-        public virtual DbSet<cat_horario> cat_horario { get; set; }
     }
 }

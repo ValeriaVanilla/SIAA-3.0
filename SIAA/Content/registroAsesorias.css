@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
     margin: 15px;
     margin-left: 160px;
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 
@@ -24,7 +24,6 @@
 .nav-tabs a.active {
     background-color: #f1b034;
     font-weight: bold;
-    /* Otros estilos que desees aplicar */
 }
 
 .botones{

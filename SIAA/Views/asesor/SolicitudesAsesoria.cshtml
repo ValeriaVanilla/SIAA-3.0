@@ -42,17 +42,17 @@
                         @Html.DisplayFor(modelItem => item.alumno.IdAlumno)
                         <br>
                         <b>Correo: </b>
-                        @Html.DisplayFor(modelItem => item.alumno.Correo)
+                        @Html.DisplayFor(modelItem => item.alumno.usuario.Correo)
                     </div>
                 </td>
     <td></td>
         <td>
         </td>
         <td>
-            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idAsesoria = item.IdAsesoria},  new { @class = "btn btn-warning glyphicon glyphicon-ok" })
+            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud},  new { @class = "btn btn-warning glyphicon glyphicon-ok" })
         </td>
         <td>
-            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { id = item.IdAsesoria }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
+            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
         </td>
         </tr>
     }

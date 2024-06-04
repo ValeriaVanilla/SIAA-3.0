@@ -18,32 +18,71 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     // Llama a openTab con el nombre de la pestaña de registro al cargar la página
-    openTab('registroA');
+    openTab('registro');
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    var formRegistro = document.getElementById("formRegistro");
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Llama a openTab con el nombre de la pestaña de registro al cargar la página
-    openTab('registroA');
-});
-$(document).ready(function () {
-    $("#Id_AsesorDropDown").change(function () {
-        var selectedId = $(this).val();
+    if (formRegistro) { // Verificar si el formulario existe
+        formRegistro.addEventListener("submit", function (event) {
+            var correoInput = document.getElementById("correoInput");
+            var correoError = document.getElementById("correoError");
+            var correoValue = correoInput.value.trim();
 
-        // Construir la URL explícitamente
-        var url = '@Url.Action("ObtenerNombreAsesor", "asesorias")' + '?id=' + selectedId;
+            // Expresión regular para verificar que el correo termine con "@uabc.edu.mx"
+            var regex = /@uabc\.edu\.mx$/;
 
-        // Realiza una solicitud Ajax para obtener el nombre del asesor
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function (result) {
-                $("#NombreEditor").val(result); // Actualiza el valor del editor de texto
-            },
-            error: function (xhr, status, error) {
-                console.error("Error en la solicitud Ajax:", error);
-                // Maneja errores si es necesario
+            if (!regex.test(correoValue)) {
+                correoError.innerText = "El correo debe terminar con @uabc.edu.mx";
+                event.preventDefault(); // Evitar que el formulario se envíe si la validación falla
+            } else {
+                correoError.innerText = ""; // Limpiar el mensaje de error si la validación es exitosa
             }
         });
-    });
+    }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    var formRegistro = document.getElementById("formRegistro");
+
+    if (formRegistro) {
+        formRegistro.addEventListener("submit", function (event) {
+            validarCampo("idInput", "idError", "Es necesario insertar un id", event);                  
+        });
+    }
+});
+
+function validarCampo(inputId, errorId, errorMessage, event) {
+    var input = document.getElementById(inputId);
+    var error = document.getElementById(errorId);
+    var inputValue = input.value.trim();
+
+    // Expresión regular para verificar que el campo no contiene números
+    var regex = /^[^\d]+$/;
+
+    if (!inputValue) {
+        error.innerText = "Este campo no puede estar vacío";
+        event.preventDefault(); // Evita que el formulario se envíe si la validación falla
+    } else if (!regex.test(inputValue)) {
+        error.innerText = errorMessage;
+        event.preventDefault(); // Evita que el formulario se envíe si la validación falla
+    } else {
+        error.innerText = ""; // Limpia el mensaje de error si la validación es exitosa
+    }
+}
+function validarFormulario() {
+    // Obtener el valor del campo
+    var idAsesor = document.getElementById("IdAsesoria").value;
+
+    // Verificar si el campo está vacío
+    if (idAsesor.trim() === "") {
+        // Mostrar un mensaje de error (puedes personalizar según tus necesidades)
+        alert("Por favor, ingrese la matrícula.");
+        // Devolver false para evitar que el formulario se envíe
+        return false;
+    }
+
+    // Si llegamos aquí, el formulario se enviará
+    return true;
+}
