@@ -5,28 +5,22 @@
     background-color: #ffffff;
 }
 
-
 #myInput {
     margin: 9px;
 }
-
-
 
 .tab-pane {
     border-radius: 5px;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
     margin-top: 10px;
 }
-
 
 .nav-tabs a.active {
     background-color: #f1b034;
     font-weight: bold;
-    /* Otros estilos que desees aplicar */
 }
 
-.botones{
-    margin-left:200px;
+.botones {
+    margin-left: 200px;
 }

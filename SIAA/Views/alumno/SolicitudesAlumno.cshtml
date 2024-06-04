@@ -47,15 +47,33 @@
                     </div>
                 </td>
                 <td>
-                    
                 </td>
                 <td class="boton">
-                    @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria}, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
-                            </td>
+                    @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria }, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
+                </td>
 
             </tr>
         }
     </table>
+
+    <div class="paginacion">
+        <ul class="pagination pull-right">
+            @if (ViewBag.PaginaActual > 1)
+            {
+                <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual - 1 })">&laquo;</a></li>
+            }
+            @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+            {
+                <li class="@(ViewBag.PaginaActual == i ? "active" : "")"><a href="@Url.Action("SolicitudesAlumno", new { pagina = i })">@i</a></li>
+            }
+            @if (ViewBag.PaginaActual < ViewBag.TotalPaginas)
+            {
+                <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual + 1 })">&raquo;</a></li>
+            }
+        </ul>
+    </div>
+
+
 </div>
 
 

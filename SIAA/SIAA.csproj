@@ -240,6 +240,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\EscudoB_FIM.png" />
+    <Content Include="Resources\filter.png" />
     <Content Include="Resources\Linea.png" />
     <Content Include="Resources\Logoenblancouabc.png" />
     <Content Include="Resources\Menu_Asesor\reporte_asesor.jpg" />

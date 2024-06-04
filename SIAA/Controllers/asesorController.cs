@@ -45,6 +45,8 @@ namespace SIAA.Controllers
             ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion");
             ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo");
             ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario");
+            var ultimosRegistros = db.asesors.Include(a => a.usuario).OrderByDescending(a => a.IdAsesor).Take(2).ToList();
+            ViewBag.UltimosRegistros = ultimosRegistros;
             return View();
         }
 

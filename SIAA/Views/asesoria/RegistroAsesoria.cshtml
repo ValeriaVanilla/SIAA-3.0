@@ -120,6 +120,23 @@
                             </div>
                         </div>
 
+                        <div class="ultimosregistros" style="background-color: #f5f5f5; padding: 20px; max-width: 500px; border-radius: 10px; margin-left: 20px; margin-top: 20px;">
+                            <h2><b>ÚLTIMOS REGISTROS</b></h2>
+                            @foreach (var registro in ViewBag.UltimosRegistros)
+                            {
+                                <div class="registro">
+                                    <p>Clave de Asesoria: @registro.IdAsesoria</p>
+                                    <p>Clave de Unidad de Aprendizaje: @registro.IdUnidadAprendizaje<span> - </span> @registro.cat_unidad_aprendizaje.NombreUnidadAprendizaje</p>
+                                    <p>Lugar: @registro.cat_lugar.Descripcion</p>
+                                    <p>Clave de Horario: @registro.IdHorario</p>
+                                    <p>Dia: @registro.cat_horario.Dia</p>
+                                    <p>Hora de Inicio: @registro.cat_horario.HoraInicio<span>:00</span></p>
+                                    <p>Hora de Fin: @registro.cat_horario.HoraFin<span>:00</span></p>
+                                    <br />
+                                </div>
+                            }
+                        </div>
+
                     </div>
                         }
                     </div>

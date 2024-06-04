@@ -44,7 +44,7 @@
         <img class="iconUsuario" src="~/Resources/UsuarioInicio.png" />
         <p class="txtUsuario">Alumno</p>
         <div class="usuario-dropdown">
-            <a href="#">Informacion Personal</a>
+            <a href="#" data-toggle="modal" data-target="#informacionModal">Información Personal</a>
             <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
         </div>
 
@@ -81,7 +81,7 @@
                 </li>
                 <li>
                     <div class="opcion-menu-1">
-                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                        <a href='@Url.Action("ConsultaAlumno", "alumno")'>
                             <img class="imagenes-lateral" src="~/Resources/Menu_lateral/evaluar-inicio.png" />
                             <span>Evaluaciones </span>
                         </a>
@@ -94,7 +94,7 @@
 
                 <li>
                     <div class="opcion-menu">
-                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                        <a href='@Url.Action("ConsultaAlumno", "alumno")'>
                             <img class="imagenes-lateral" src="~/Resources/Menu_lateral/cerrar-sesion-inicio.png" />
                             <span>Cerrar Sesión </span>
                         </a>
@@ -102,13 +102,50 @@
                 </li>
                 <li>
                     <div class="opcion-menu">
-                        <a href='@Url.Action("RegistroAlumno", "alumno")'>
+                        <a href="#" data-toggle="modal" data-target="#ayuda">
                             <img class="imagenes-lateral" src="~/Resources/Menu_lateral/ayuda-inicio.png" />
                             <span>Ayuda </span>
                         </a>
                     </div>
                 </li>
             </ul>
+        </div>
+    </div>
+
+    <!-- MODAL DE INFORMACION PERSONAL -->
+    <div class="modal" id="informacionModal" tabindex="-1" role="dialog" aria-labelledby="informacionPersonal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="informacionPersonal">Información Personal</h5>
+                </div>
+                <div class="modal-body">
+                    <p><b>Nombre:</b> </p>
+                    <p><b>Correo Electrónico:</b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE AYUDA -->
+    <div class="modal" id="ayuda" tabindex="-1" role="dialog" aria-labelledby="ayudaModaL" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h3 class="modal-title" id="ayudaModal">Contacto</h3></center>
+                </div>
+                <div class="modal-body">
+                    <p><b>Teléfono: </b></p>
+                    <p><b>Email: </b></p>
+                    <p><b>Campus: </b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
     </div>
 

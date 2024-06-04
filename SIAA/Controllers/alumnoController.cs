@@ -17,13 +17,44 @@ namespace SIAA.Controllers
     {
         private siaaEntities db = new siaaEntities();
 
-        public ActionResult ConsultaAlumno() // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
+        public ActionResult ConsultaAlumno(int pagina = 1, int registros = 9, string searchString = "")
         {
-            var alumnoes = db.alumnoes.Include(a => a.usuario).Include(a => a.solicituds).Include(a => a.asistencias);
-        
-            return View(alumnoes.ToList());
-         
+            var alumnos = db.alumnoes
+                .Include(a => a.usuario)
+                .Include(a => a.usuario.cat_estatus)
+                .Include(a => a.usuario.cat_programa_educativo)
+                .Include(a => a.usuario.cat_tipo_usuario);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                alumnos = alumnos.Where(a => a.usuario.Nombre.Contains(searchString) ||
+                                             a.usuario.ApellidoPaterno.Contains(searchString) ||
+                                             a.usuario.ApellidoMaterno.Contains(searchString) ||
+                                             a.usuario.cat_estatus.Descripcion.Contains(searchString) ||
+                                             a.usuario.cat_programa_educativo.NombreProgramaEducativo.Contains(searchString) ||
+                                             a.usuario.cat_tipo_usuario.NombreUsuario.Contains(searchString));
+            }
+
+            alumnos = alumnos.OrderBy(a => a.IdAlumno);
+
+            var totalAlumnos = alumnos.Count();
+            var alumnosP = alumnos.Skip((pagina - 1) * registros).Take(registros).ToList();
+
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAlumnos / registros);
+            ViewBag.RegistrosPorPagina = registros;
+            ViewBag.SearchString = searchString;
+
+            return View(alumnosP);
         }
+
+        //public ActionResult ConsultaAlumno() // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
+        //{
+        // var alumnoes = db.alumnoes.Include(a => a.usuario).Include(a => a.solicituds).Include(a => a.asistencias);
+
+        //return View(alumnoes.ToList());
+
+        //}
 
         public ActionResult RegistroAlumno() // Se inicializan las varibles de desplazamiento
         {
@@ -133,39 +164,77 @@ namespace SIAA.Controllers
             return PartialView("_ResultadosBusqueda", resultados);
         }
         #region Solicitud
-        public ActionResult SolicitudesAlumno() // Inicializa la consulta de horarios
+
+        public ActionResult SolicitudesAlumno(int pagina = 1, int registros = 4)
         {
-            var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
-            var asesorias = db.asesorias.ToList();
-            var solicitudes = db.solicituds;
-            /* for (int i = 0; i < asesorias.Count(); i++)
-             {
-                 for(int c = 0; c < solicitudes.Count(); c++)
-                 if (asesorias.ElementAt(i).IdAsesoria == solicitudes.ElementAt(c).IdAsesoria)
-                 {
-                     asesorias.Remove(asesorias[i]);                        
-                 } 
-             }            */
-            return View(AsesoriasActualizada.ToList());
+            var asesorias = db.asesorias
+                .Include(a => a.asesor.usuario)
+                .Include(a => a.cat_unidad_aprendizaje)
+                .OrderBy(a => a.IdAsesoria);
+
+            var totalAsesorias = asesorias.Count();
+            var asesoriasPaginadas = asesorias.Skip((pagina - 1) * registros).Take(registros).ToList();
+
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAsesorias / registros);
+            ViewBag.RegistrosPorPagina = registros;
+
+            return View(asesoriasPaginadas);
         }
 
-        public ActionResult Solicitar(int id)  // Apartado para el funcionamiento de las solicitudes del alumno
+        public ActionResult Solicitar(int id)
         {
             asesoria asesoria = db.asesorias.Find(id);
 
-            solicitud nuevaSolicitud = new solicitud();
+            solicitud nuevaSolicitud = new solicitud
+            {
+                IdAsesoria = id,
+                IdAlumno = 3,
+                FechaSolicitud = System.DateTime.Now,
+                IdEstado = 1
+            };
 
-            nuevaSolicitud.IdAsesoria = id;
-            nuevaSolicitud.IdAlumno = 3;
-            nuevaSolicitud.FechaSolicitud = System.DateTime.Now;
-            nuevaSolicitud.IdEstado = 1;
             db.solicituds.Add(nuevaSolicitud);
             db.SaveChanges();
+
             MessageBox.Show("La solicitud se ha enviado exitosamente", "Solicitud exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
             return RedirectToAction("SolicitudesAlumno");
         }
+
+        //public ActionResult SolicitudesAlumno() // Inicializa la consulta de horarios
+        //{
+        //    var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
+        //    var asesorias = db.asesorias.ToList();
+        //    var solicitudes = db.solicituds;
+        //    /* for (int i = 0; i < asesorias.Count(); i++)
+        //     {
+        //         for(int c = 0; c < solicitudes.Count(); c++)
+        //         if (asesorias.ElementAt(i).IdAsesoria == solicitudes.ElementAt(c).IdAsesoria)
+        //         {
+        //             asesorias.Remove(asesorias[i]);                        
+        //         } 
+        //     }            */
+        //    return View(AsesoriasActualizada.ToList());
+        //}
+
+        //public ActionResult Solicitar(int id)  // Apartado para el funcionamiento de las solicitudes del alumno
+        //{
+        //    asesoria asesoria = db.asesorias.Find(id);
+
+        //    solicitud nuevaSolicitud = new solicitud();
+
+        //    nuevaSolicitud.IdAsesoria = id;
+        //    nuevaSolicitud.IdAlumno = 3;
+        //    nuevaSolicitud.FechaSolicitud = System.DateTime.Now;
+        //    nuevaSolicitud.IdEstado = 1;
+        //    db.solicituds.Add(nuevaSolicitud);
+        //    db.SaveChanges();
+        //    MessageBox.Show("La solicitud se ha enviado exitosamente", "Solicitud exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //    var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje);
+        //    return RedirectToAction("SolicitudesAlumno");
+        //}
 
         #endregion
 
