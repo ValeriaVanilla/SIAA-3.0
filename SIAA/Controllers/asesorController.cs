@@ -173,24 +173,51 @@ namespace SIAA.Controllers
 
         #region asesoria
 
-        public ActionResult ConsultaAsesoria()// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
+        public ActionResult ConsultaAsesoria(int pagina = 1, int registros = 9, string searchString = "")// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
         {
-            var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar).Where(a => a.IdAsesor == asesor1.IdAsesor); ;
-            var asesoriasOrdenadas = asesorias.OrderBy(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje).ToList();
+            //var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar).Where(a => a.IdAsesor == asesor1.IdAsesor); 
+            //var asesoriasOrdenadas = asesorias.OrderBy(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje).ToList();
             // Pasa la lista ordenada a la vista
-            return View(asesoriasOrdenadas);
-        }
+            //return View(asesoriasOrdenadas);
+            var unidadesAprendizaje = db.cat_unidad_aprendizaje.ToList();
+            ViewBag.UnidadesAprendizaje = unidadesAprendizaje;
 
+            var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar).Where(a => a.IdAsesor == asesor1.IdAsesor);
 
-        public ActionResult RegistroAsesoria(String nombre) // Se inicializan las varibles de desplazamiento
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                asesorias = asesorias.Where(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje.Contains(searchString) ||
+                                                 a.asesor.usuario.Nombre.Contains(searchString) ||
+                                                 a.asesor.usuario.ApellidoPaterno.Contains(searchString) ||
+                                                 a.asesor.usuario.ApellidoMaterno.Contains(searchString) ||
+                                                 a.cat_lugar.Descripcion.Contains(searchString) ||
+                                                 a.cat_horario.Dia.Contains(searchString) ||
+                                                 a.CicloEscolar.Contains(searchString));
+            }
+
+            asesorias = asesorias.OrderBy(a => a.IdAsesoria);
+
+            var totalAsesorias = asesorias.Count();
+            var asesoriasP = asesorias.Skip((pagina - 1) * registros).Take(registros).ToList();
+
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAsesorias / registros);
+            ViewBag.RegistrosPorPagina = registros;
+            ViewBag.SearchString = searchString;
+
+            return View(asesoriasP);
+            }
+
+        public ActionResult RegistroAsesoria() // Se inicializan las varibles de desplazamiento
         {
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana);            
             ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje");
             ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion");
+            var ultimosRegistros = db.asesorias.Where(a => a.IdAsesor == asesor1.IdAsesor).OrderByDescending(a => a.IdAsesoria).Take(2).ToList();
+            ViewBag.UltimosRegistros = ultimosRegistros;
             return View();
         }
-
 
 
         [HttpPost]  // Guarda los registros
@@ -199,7 +226,12 @@ namespace SIAA.Controllers
         {
             DateTime fecha;
             var horario = viewModel.Horario;
-            var asesoria = viewModel.Asesoria;
+            asesoria asesoria = new asesoria();
+            if (db.asesorias.Any())
+            {
+                asesoria.IdAsesoria = db.asesorias.ToList().Last().IdAsesoria + 1;
+            }
+            else { asesoria.IdAsesoria = 1; }
             horario.IdHorario = asesoria.IdAsesoria;
             asesoria.IdHorario = asesoria.IdAsesoria;
             asesoria.IdAsesor = asesor1.IdAsesor;

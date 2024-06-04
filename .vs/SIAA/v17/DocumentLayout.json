@@ -7,28 +7,12 @@
       "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\asesorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\consultaalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\consultaalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesor\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\solicitudesalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\solicitudesalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\evaluacionalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\evaluacionalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\modificaalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\modificaalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\alumno\\estadosolicitudesalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\alumno\\estadosolicitudesalumno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +22,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\acceso\\Login.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\acceso\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\acceso\\Login.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\acceso\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T11:31:37.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistroAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T11:31:16.035Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -48,87 +58,9 @@
               "RelativeDocumentMoniker": "SIAA\\Controllers\\asesorController.cs",
               "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesorController.cs",
               "RelativeToolTip": "SIAA\\Controllers\\asesorController.cs",
-              "ViewState": "AQIAAGIBAAAAAAAAAAAAAAkAAAALAAAA",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAAOAAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T10:06:13.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConsultaAlumno.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ConsultaAlumno.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\ConsultaAlumno.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ConsultaAlumno.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\ConsultaAlumno.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAMAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:38.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SolicitudesAlumno.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\SolicitudesAlumno.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\SolicitudesAlumno.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\SolicitudesAlumno.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\SolicitudesAlumno.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:36.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ModificaAlumno.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ModificaAlumno.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\ModificaAlumno.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ModificaAlumno.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\ModificaAlumno.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:34.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EvaluacionAlumno.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\EvaluacionAlumno.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\EvaluacionAlumno.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\EvaluacionAlumno.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\EvaluacionAlumno.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:33.464Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ConsultaAsesoria.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ConsultaAsesoria.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\ConsultaAsesoria.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\ConsultaAsesoria.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\ConsultaAsesoria.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:24.814Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EstadoSolicitudesAlumno.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\EstadoSolicitudesAlumno.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\alumno\\EstadoSolicitudesAlumno.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\alumno\\EstadoSolicitudesAlumno.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\alumno\\EstadoSolicitudesAlumno.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T10:03:32.543Z",
+              "WhenOpened": "2024-06-04T11:26:49.363Z",
               "EditorCaption": ""
             }
           ]

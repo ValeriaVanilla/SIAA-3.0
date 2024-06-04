@@ -169,7 +169,6 @@
     <Compile Include="Controllers\accesoController.cs" />
     <Compile Include="Controllers\alumnoController.cs" />
     <Compile Include="Controllers\asesorController.cs" />
-    <Compile Include="Controllers\asesoriaController.cs" />
     <Compile Include="Controllers\encargadoController.cs" />
     <Compile Include="Controllers\menuController.cs" />
     <Compile Include="Controllers\usuarioController.cs" />
@@ -325,9 +324,6 @@
     <Content Include="Views\menu\MenuAlumno.cshtml" />
     <Content Include="Views\menu\MenuAsesor.cshtml" />
     <Content Include="Views\menu\MenuEncargado.cshtml" />
-    <Content Include="Views\asesoria\ConsultaAsesoria.cshtml" />
-    <Content Include="Views\asesoria\ModificaAsesoria.cshtml" />
-    <Content Include="Views\asesoria\RegistroAsesoria.cshtml" />
     <Content Include="Views\alumno\ConsultaAlumno.cshtml" />
     <Content Include="Views\alumno\ModificaAlumno.cshtml" />
     <Content Include="Views\alumno\SolicitudesAlumno.cshtml" />
@@ -345,9 +341,9 @@
     <Content Include="Views\asesor\ModificaAsesoria.cshtml" />
     <Content Include="Views\alumno\ConsultaAsesoria.cshtml" />
     <Content Include="Views\alumno\EstadoSolicitudesAlumno.cshtml" />
+    <Content Include="Views\encargado\ModificaAsesoria.cshtml" />
     <Content Include="Views\encargado\RegistroAsesoria.cshtml" />
     <Content Include="Views\encargado\ConsultaAsesoria.cshtml" />
-    <Content Include="Views\encargado\ModificaAsesoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
