@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SIAA.asesoria>
 
 @{
-    Layout = "~/Views/Shared/Layout_Encargado.cshtml";
+    Layout = "~/Views/Shared/Layout_Asesor.cshtml";
 }
 
 <!DOCTYPE html>
@@ -26,10 +26,10 @@
         <div class="card-body">
             <ul class="nav nav-tabs pestania">
                 <li class="nav-item">
-                    <a class="navbar-link" onclick="openTab('registro')" href="@Url.Action("RegistroAsesoria", "asesoria")">Registro Asesorias</a>
+                    <a class="navbar-link" onclick="openTab('registro')" href="@Url.Action("RegistroAsesoria", "encargado")">Registro Asesorias</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesoria", "asesoria")">Consulta Asesorias</a>
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesoria", "encargado")">Consulta Asesorias</a>
                 </li>
             </ul>
             <!--FIN DE TABS -->
@@ -38,61 +38,9 @@
                 <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
 
                     <h2><b>CONSULTA DE ASESORÍAS</b></h2>
-                    <div class="contenedor de busqueda" style="overflow: auto;">
-                        @using (Html.BeginForm("ConsultaAsesoria", "asesoria", FormMethod.Get, new { @class = "form-inline" }))
-                        {
-                            <div style="display: inline-block; text-align: left;">
-                                <input class="form-control" id="myInput" name="searchString" type="text" placeholder="Consultar..." value="@ViewBag.SearchString">
-                            </div>
-                            <div style="display: inline-block; text-align: left;">
-                                <button type="submit" class="btn btn-default">Buscar</button>
-                            </div>
-                            <!-- Icono de filtros -->
-                            <div style="display: inline-block;">
-                                <!-- Icono de filtro -->
-                                <a href="#" data-toggle="modal" data-target="#modalFiltro">
-                                    <img src="~/Resources/filter.png" alt="Icono de filtros" style="width: 40px; height: 40px;">
-                                </a>
-
-
-                            </div>
-                        }
+                    <div class="search-container">
+                        <input class="form-control" id="myInput" type="text" placeholder="Buscar.." onkeyup="filtrarTabla()">
                     </div>
-                    <!-- Modal de filtro -->
-                    <div class="modal fade" id="modalFiltro" tabindex="-1" role="dialog" aria-labelledby="modalFiltroLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalFiltroLabel">Filtro</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="unidadAprendizaje">Unidad de Aprendizaje:</label>
-                                            <select id="unidadAprendizaje" class="form-control">
-                                                <option value="">Seleccionar Unidad de Aprendizaje</option>
-                                                @foreach (var unidad in ViewBag.UnidadesAprendizaje)
-                                                {
-                                                    <option value="@unidad.IdUnidadAprendizaje">@unidad.NombreUnidadAprendizaje</option>
-                                                }
-                                            </select>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aplicar</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
 
                     <table id="tabla" class="table table-striped" style="width: 100%">
                         <thead class="encabezado">
@@ -130,62 +78,56 @@
                         </thead>
 
                         <tbody id="myTable">
-                            @if (Model.Any())
+                            @foreach (var item in Model)
                             {
-                                foreach (var item in Model)
-                                {
-                                    <tr class="fila-asesor">
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.IdAsesoria)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)
-                                            <span> - </span>
-                                            @Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.IdAsesor)
-                                            <span> - </span>
-                                            @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
-                                            @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
-                                            @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.cat_lugar.Descripcion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.cat_horario.Dia) -
-                                            @Html.DisplayFor(modelItem => item.cat_horario.HoraInicio)<span>:00</span>
-                                            <span> a </span>
-                                            @Html.DisplayFor(modelItem => item.cat_horario.HoraFin)<span>:00</span>
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.CicloEscolar)
-                                        </td>
-                                        <td>
-                                            @using (Html.BeginForm("ConfirmarEliminaAsesoria", "asesoria", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
-                                            {
-                                                @Html.AntiForgeryToken()
+                                <tr class="fila-asesor">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdAsesoria)
 
-                                                <a href="#" class="btn btn-warning glyphicon glyphicon-edit modificar-asesoria" data-id="@item.IdAsesoria" data-toggle="modal" data-target="#myModal"></a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdAsesor)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
+                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cat_lugar.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cat_horario.Dia) -
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraInicio)<span>:00</span>
+                                        <span> a </span>
+                                        @Html.DisplayFor(modelItem => item.cat_horario.HoraFin)<span>:00</span>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CicloEscolar)
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("ConfirmarEliminaAsesoria", "encargado", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
+                                        {
+                                            @Html.AntiForgeryToken()
 
-                                                <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-trash"></button>
+                                            <a href="#" class="btn btn-warning glyphicon glyphicon-edit modificar-asesoria" data-id="@item.IdAsesoria" data-toggle="modal" data-target="#myModal"></a>
 
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                            else
-                            {
-                                <tr>
-                                    <td colspan="8" style="text-align: center;">No se encontraron registros</td>
+                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-trash"></button>
+
+                                        }
+
+
+                                    </td>
                                 </tr>
                             }
                         </tbody>
 
-
                     </table>
+
                     <div class="paginacion">
                         <ul class="pagination pull-right">
                             @if (ViewBag.PaginaActual > 1)
@@ -218,8 +160,7 @@
                         </div>
                     }
 
-                    <!-- Modal para la vista de modificación -->
-                    <div class="modal fade" id="myModal" role="dialog" data-modifica-url="@Url.Action("ModificaAsesoria", "asesorias")">
+                    <div class="modal fade" id="myModal" role="dialog" data-modifica-url="@Url.Action("ModificaAsesoria", "encargado")">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -231,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

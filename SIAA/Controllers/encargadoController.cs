@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using SIAA;
 using SIAA.Models;
 
@@ -18,6 +19,12 @@ namespace SIAA.Controllers
         private siaaEntities db = new siaaEntities();
         encargado encargado1 = System.Web.HttpContext.Current.Session["LOGIN"] as encargado;
 
+        public ActionResult Layout_Encargado()
+        {
+            encargado encargado1 = System.Web.HttpContext.Current.Session["LOGIN"] as encargado;
+            return View();
+        }
+
         public class reportesController : Controller
         {
             // GET: encargado
@@ -27,25 +34,59 @@ namespace SIAA.Controllers
             }
         }
 
+        public ActionResult InformacionPersonal()
+        {
+            usuario usuario = encargado1.usuario;
+            return View(usuario);
+        }
+
         #region asesoria
 
 
-        public ActionResult ConsultaAsesoria()// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
+        public ActionResult ConsultaAsesoria(int pagina = 1, int registros = 9, string searchString = "")// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
         {
+            
+            var unidadesAprendizaje = db.cat_unidad_aprendizaje.ToList();
+            ViewBag.UnidadesAprendizaje = unidadesAprendizaje;
+
             var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar);
-            var asesoriasOrdenadas = asesorias.OrderBy(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje).ToList();
-            // Pasa la lista ordenada a la vista
-            return View(asesoriasOrdenadas);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                asesorias = asesorias.Where(a => a.cat_unidad_aprendizaje.NombreUnidadAprendizaje.Contains(searchString) ||
+                                                 a.asesor.usuario.Nombre.Contains(searchString) ||
+                                                 a.asesor.usuario.ApellidoPaterno.Contains(searchString) ||
+                                                 a.asesor.usuario.ApellidoMaterno.Contains(searchString) ||
+                                                 a.cat_lugar.Descripcion.Contains(searchString) ||
+                                                 a.cat_horario.Dia.Contains(searchString) ||
+                                                 a.CicloEscolar.Contains(searchString));
+            }
+
+            asesorias = asesorias.OrderBy(a => a.IdAsesoria);
+
+            var totalAsesorias = asesorias.Count();
+            var asesoriasP = asesorias.Skip((pagina - 1) * registros).Take(registros).ToList();
+
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAsesorias / registros);
+            ViewBag.RegistrosPorPagina = registros;
+            ViewBag.SearchString = searchString;
+
+            return View(asesoriasP);
+
+
         }
 
 
-        public ActionResult RegistroAsesoria(String nombre) // Se inicializan las varibles de desplazamiento
+        public ActionResult RegistroAsesoria() // Se inicializan las varibles de desplazamiento
         {
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana);
-            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "IdAsesor");
             ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje");
             ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion");
+            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "usuario.Nombre");
+            var ultimosRegistros = db.asesorias.OrderByDescending(a => a.IdAsesoria).Take(2).ToList();
+            ViewBag.UltimosRegistros = ultimosRegistros;
             return View();
         }
 
@@ -57,7 +98,12 @@ namespace SIAA.Controllers
         {
             DateTime fecha;
             var horario = viewModel.Horario;
-            var asesoria = viewModel.Asesoria;
+            asesoria asesoria = new asesoria();
+            if (db.asesorias.Any())
+            {
+                asesoria.IdAsesoria = db.asesorias.ToList().Last().IdAsesoria + 1;
+            }
+            else { asesoria.IdAsesoria = 1; }
             horario.IdHorario = asesoria.IdAsesoria;
             asesoria.IdHorario = asesoria.IdAsesoria;
             asesoria.IdAsesor = viewModel.IdAsesor;
@@ -83,7 +129,7 @@ namespace SIAA.Controllers
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana, horario.Dia);
-            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "Nombre", asesoria.IdAsesor);
+            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "usuario.Nombre", asesoria.IdAsesor);
             ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje", asesoria.IdUnidadAprendizaje);
             ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion", asesoria.IdLugar);
             return View(asesoria);
@@ -122,7 +168,7 @@ namespace SIAA.Controllers
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana);
-            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "IdAsesor");
+            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "usuario.Nombre");
             ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje");
             ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion");
             return View(viewModel);
@@ -162,7 +208,7 @@ namespace SIAA.Controllers
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana, horario.Dia);
-            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "Nombre", asesoria.IdAsesor);
+            ViewBag.IdAsesor = new SelectList(db.asesors, "IdAsesor", "usuario.Nombre", asesoria.IdAsesor);
             ViewBag.IdUnidadAprendizaje = new SelectList(db.cat_unidad_aprendizaje, "IdUnidadAprendizaje", "NombreUnidadAprendizaje", asesoria.IdUnidadAprendizaje);
             ViewBag.IdLugar = new SelectList(db.cat_lugar, "IdLugar", "Descripcion", asesoria.IdLugar);
             return View(asesoria);

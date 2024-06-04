@@ -1,0 +1,41 @@
+﻿@model SIAA.usuario
+
+@{
+    Layout = "~/Views/Shared/Layout_Alumno.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+
+<body>
+    <div class="container" style="margin-right: 6cm;">
+
+        <h2><b>INFORMACION PERSONAL</b></h2>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>NOMBRE</b></p>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>CORREO</b></p>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2"><b>ROL</b></p>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.cat_tipo_usuario.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+
+    </div>
+    <script src="~/Scripts/menuConsultaAsesorias.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model encargado
+
+@{
     Layout = "~/Views/Shared/Layout_Encargado.cshtml";
 }
 <link rel="stylesheet" href="~/Content/menuEncargadoStyle.css">
@@ -6,7 +8,7 @@
 <!--INICIO BIENVENIDA -->
 <div class="jumbotron">
     <p>
-        <center> <h2>  <b> ¡Bienvenido Encargado!</b> </h2></center>
+        <center> <h2>  <b> ¡Bienvenido @Html.DisplayFor(model => model.usuario.Nombre) !</b> </h2></center>
     </p>
 
 </div>
@@ -45,7 +47,7 @@
                 <h2 class="titulo">Reportes y Evaluaciones</h2>
             </div>
             <img src="~/Resources/Menu_encargado/reportes-encargado.jpg" alt="cheetah" />
-            </a>
+        </a>
     </div>
 
     <!--FIN CARD 3-->

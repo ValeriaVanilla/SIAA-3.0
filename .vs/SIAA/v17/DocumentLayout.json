@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\encargado\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\encargado\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\encargado\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\encargado\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\encargado\\reporteencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\encargado\\reporteencargado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\asesorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\asesorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesor\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\registroasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\asesor\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\asesor\\consultaasesoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\views\\acceso\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\encargadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\encargadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|c:\\users\\valer\\onedrive\\desktop\\documentos siaa\\siaa\\siaa\\controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2398B4C-746A-4A6C-AFE3-CD91E1653D79}|SIAA\\SIAA.csproj|solutionrelative:siaa\\controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +42,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReporteEncargado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\encargado\\ReporteEncargado.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:18:00.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "asesorController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesorController.cs",
+              "RelativeDocumentMoniker": "SIAA\\Controllers\\asesorController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesorController.cs",
+              "RelativeToolTip": "SIAA\\Controllers\\asesorController.cs",
+              "ViewState": "AQIAAKkAAAAAAAAAAAAAALYAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T15:14:23.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConsultaAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ConsultaAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\encargado\\ConsultaAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\ConsultaAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\encargado\\ConsultaAsesoria.cshtml",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAAAHEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:10:25.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "encargadoController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\encargadoController.cs",
+              "RelativeDocumentMoniker": "SIAA\\Controllers\\encargadoController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\encargadoController.cs",
+              "RelativeToolTip": "SIAA\\Controllers\\encargadoController.cs",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAwwG0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T15:05:28.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "RegistroAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\RegistroAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\encargado\\RegistroAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\encargado\\RegistroAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\encargado\\RegistroAsesoria.cshtml",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAAAF0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:08:57.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\acceso\\Login.cshtml",
               "RelativeDocumentMoniker": "SIAA\\Views\\acceso\\Login.cshtml",
@@ -34,33 +119,33 @@
               "RelativeToolTip": "SIAA\\Views\\acceso\\Login.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T11:31:37.66Z",
+              "WhenOpened": "2024-06-04T15:07:29.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RegistroAsesoria.cshtml",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
-              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
-              "RelativeToolTip": "SIAA\\Views\\asesor\\RegistroAsesoria.cshtml",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAADIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T11:31:16.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "asesorController.cs",
-              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesorController.cs",
-              "RelativeDocumentMoniker": "SIAA\\Controllers\\asesorController.cs",
-              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\asesorController.cs",
-              "RelativeToolTip": "SIAA\\Controllers\\asesorController.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAAAOAAAAAsAAAA",
+              "DocumentIndex": 7,
+              "Title": "accesoController.cs",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\accesoController.cs",
+              "RelativeDocumentMoniker": "SIAA\\Controllers\\accesoController.cs",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Controllers\\accesoController.cs",
+              "RelativeToolTip": "SIAA\\Controllers\\accesoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T11:26:49.363Z",
+              "WhenOpened": "2024-06-04T15:07:45.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ConsultaAsesoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\ConsultaAsesoria.cshtml",
+              "RelativeDocumentMoniker": "SIAA\\Views\\asesor\\ConsultaAsesoria.cshtml",
+              "ToolTip": "C:\\Users\\Valer\\OneDrive\\Desktop\\Documentos SIAA\\SIAA\\SIAA\\Views\\asesor\\ConsultaAsesoria.cshtml",
+              "RelativeToolTip": "SIAA\\Views\\asesor\\ConsultaAsesoria.cshtml",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAswLUAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:10:42.745Z",
               "EditorCaption": ""
             }
           ]

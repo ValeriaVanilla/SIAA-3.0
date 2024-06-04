@@ -1,4 +1,6 @@
-﻿@{
+﻿@model alumno
+
+@{
     Layout = "~/Views/Shared/Layout_Alumno.cshtml";
 }
 
@@ -7,7 +9,7 @@
 <!--INICIO BIENVENIDA -->
 <div class="jumbotron">
     <p>
-        <center> <h2>  <b> ¡Bienvenido Alumno!</b> </h2></center>
+        <center> <h2>  <b> ¡Bienvenido @Html.DisplayFor(model => model.usuario.Nombre) ! </b> </h2></center>
     </p>
 
 </div>
@@ -15,7 +17,7 @@
 <!--INICIO CARD 1-->
 <div class="contenedor-menu">
     <div class="card-menu-encargado">
-        <a href="@Url.Action("EstadoSolicitudesAlumno", "alumno")" class="enlace-tarjeta">
+        <a href="@Url.Action("SolicitudesAlumno", "alumno")" class="enlace-tarjeta">
             <div class="overlay">
                 <h2 class="titulo">Horarios</h2>
             </div>

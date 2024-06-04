@@ -45,7 +45,7 @@
         <p class="txtUsuario">Asesor</p>
         <div class="usuario-dropdown">
             <a href="#" data-toggle="modal" data-target="#informacionModal">Información Personal</a>
-            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+            <a href='@Url.Action("Logout", "acceso")'> <span>Cerrar Sesión </span> </a>
         </div>
 
     </div>
@@ -139,9 +139,9 @@
                     <center><h3 class="modal-title" id="ayudaModal">Contacto</h3></center>
                 </div>
                 <div class="modal-body">
-                    <p><b>Teléfono: </b></p>
-                    <p><b>Email: </b></p>
-                    <p><b>Campus: </b></p>
+                    <p><b>Teléfono: 686-556-1234</b></p>
+                    <p><b>Email: soporte_asesorias@uabc.edu.mx </b></p>
+                    <p><b>Campus: Mexicali</b></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
