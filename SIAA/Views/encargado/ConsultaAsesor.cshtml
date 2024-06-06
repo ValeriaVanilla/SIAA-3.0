@@ -46,8 +46,12 @@
                     <thead class="encabezado">
                         <tr>
                             <th>
+                                <b>NO. EMPLEADO</b>
+                            </th>
+
+                            <th>
                                 <b>NOMBRE</b>
-                            </th>                          
+                            </th>
 
                             <th>
                                 <b>CORREO</b>
@@ -59,10 +63,6 @@
 
                             <th>
                                 <b>PROGRAMA EDUCATIVO</b>
-                            </th>
-
-                            <th>
-                                <b>ROL</b>
                             </th>
 
                             <th>
@@ -81,7 +81,8 @@
                             <tr class="fila-asesor">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IdAsesor)
-                                    <span> - </span>
+                                </td>
+                                <td>                                    
                                     @Html.DisplayFor(modelItem => item.usuario.Nombre)
                                     @Html.DisplayFor(modelItem => item.usuario.ApellidoPaterno)
                                     @Html.DisplayFor(modelItem => item.usuario.ApellidoMaterno)
@@ -94,9 +95,6 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.usuario.cat_programa_educativo.NombreProgramaEducativo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.usuario.cat_tipo_usuario.NombreUsuario)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.usuario.cat_estatus.Descripcion)

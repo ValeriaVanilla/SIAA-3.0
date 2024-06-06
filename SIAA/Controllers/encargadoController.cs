@@ -263,7 +263,7 @@ namespace SIAA.Controllers
         #endregion
 
         #region Asesor
-        public ActionResult ConsultaAsesor(int pagina = 1, int registros = 9, string searchString = "") // Se obtiene la lista de los asesores registrados en el sistema y las conexiones que hay entre las tablas
+        public ActionResult ConsultaAsesor(int pagina = 1, int registros = 6, string searchString = "") // Se obtiene la lista de los asesores registrados en el sistema y las conexiones que hay entre las tablas
         {
 
             var asesores = db.asesors.Include(a => a.usuario).Include(a => a.asesorias);
@@ -292,10 +292,10 @@ namespace SIAA.Controllers
 
         #region AlumnoAsesor
 
-        public ActionResult ConsultaAlumno(int pagina = 1, int registros = 9, string searchString = "") // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
+        public ActionResult ConsultaAlumno(int pagina = 1, int registros = 6, string searchString = "") // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
         {
 
-            var alumnos = db.alumnoes.Where(a => a.solicituds.Any(s => s.IdEstado == 2)).Include(a => a.usuario).Include(a => a.usuario.cat_estatus).Include(a => a.usuario.cat_programa_educativo).Include(a => a.usuario.cat_tipo_usuario).Include(a => a.solicituds);
+            var alumnos = db.alumnoes.Include(a => a.usuario).Include(a => a.usuario.cat_estatus).Include(a => a.usuario.cat_programa_educativo).Include(a => a.usuario.cat_tipo_usuario).Include(a => a.solicituds);            
 
             if (!String.IsNullOrEmpty(searchString))
             {

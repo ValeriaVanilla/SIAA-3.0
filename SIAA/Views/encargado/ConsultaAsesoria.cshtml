@@ -75,7 +75,7 @@
                                 </th>
 
                                 <th>
-                                    <b>UNIDAD APRENDIZAJE</b>
+                                    <b>UNIDAD DE APRENDIZAJE</b>
                                 </th>
 
                                 <th>
@@ -139,13 +139,10 @@
                                         {
                                             @Html.AntiForgeryToken()
 
-                                            <a href="#" class="btn btn-warning glyphicon glyphicon-edit modificar-asesoria" data-id="@item.IdAsesoria" data-toggle="modal" data-target="#myModal"></a>
+                                            <a href="#" class="btn btn-warning glyphicon glyphicon-edit modificar-asesoria" data-id="@item.IdAsesoria" data-toggle="modal" data-target="#myModal" title="Modificar"></a>
 
-                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-trash"></button>
-
+                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-trash" title="Eliminar"></button>
                                         }
-
-
                                     </td>
                                 </tr>
                             }

@@ -61,6 +61,10 @@
                         <thead class="encabezado">
                             <tr>
                                 <th>
+                                    <b>MATRÍCULA</b>
+                                </th>
+
+                                <th>
                                     <b>NOMBRE</b>
                                 </th>
 
@@ -99,9 +103,12 @@
                             @foreach (var item in Model)
                             {
                                 <tr class="fila-asesor">
+
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdAlumno)
-                                        <span> - </span>
+                                    </td>
+
+                                    <td>                                                                            
                                         @Html.DisplayFor(modelItem => item.usuario.Nombre)
                                         @Html.DisplayFor(modelItem => item.usuario.ApellidoPaterno)
                                         @Html.DisplayFor(modelItem => item.usuario.ApellidoMaterno)
@@ -121,21 +128,23 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.usuario.cat_estatus.Descripcion)
                                     </td>
-                                    <td>
+                                    <td>                                            
                                         @foreach (var asesoria in item.solicituds)
                                         {
-
-                                            <p>
-                                                @asesoria.asesoria.IdAsesoria -
-                                                @asesoria.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje
-                                            </p>
+                                            if (asesoria.IdEstado == 2)
+                                            {
+                                                <p>
+                                                    @asesoria.asesoria.IdAsesoria -
+                                                    @asesoria.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje
+                                                </p>
+                                            }
                                         }
                                     </td>
                                     <td>
                                         @using (Html.BeginForm("ConfirmarRegistroAlumnoAsesor", "encargado", new { id = item.IdAlumno }, FormMethod.Post, new { onsubmit = "return confirm('¿Deseas cambiar los permisos de asesor a este alumno?');" }))
                                         {
                                             @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-refresh"></button>
+                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-refresh" title="Cambiar rol"></button>
                                         }
                                     </td>
 

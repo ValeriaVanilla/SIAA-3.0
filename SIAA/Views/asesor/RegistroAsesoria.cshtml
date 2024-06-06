@@ -64,7 +64,7 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group">
-                                <p class="control-label col-md-2"><b>CLAVE UNIDAD APRENDIZAJE</b></p>
+                                <p class="control-label col-md-2"><b>UNIDAD DE APRENDIZAJE</b></p>
                                 <div class="col-md-10">
                                     @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
@@ -105,8 +105,8 @@
 
                             <div class="form-group">
                                 <div class="botones">
-                                    <button type="submit" class="btn btn-warning glyphicon glyphicon glyphicon-ok" value="Guardar"></button>
-                                    <button type="reset" class="btn btn-light glyphicon glyphicon glyphicon-trash" value="Cancelar"></button>
+                                    <button type="submit" class="btn btn-warning glyphicon glyphicon glyphicon-ok" value="Guardar" title="Registrar"></button>
+                                    <button type="reset" class="btn btn-light glyphicon glyphicon glyphicon-trash" value="Cancelar" title="Cancelar"></button>
                                 </div>
                             </div>
 

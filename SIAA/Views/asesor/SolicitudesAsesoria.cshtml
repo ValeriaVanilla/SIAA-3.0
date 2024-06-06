@@ -88,10 +88,10 @@
                         <td>
                         </td>
                         <td>
-                            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-warning glyphicon glyphicon-ok" })
+                            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-warning glyphicon glyphicon-ok", title = "Aceptar" })
                         </td>
                         <td>
-                            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
+                            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-danger glyphicon glyphicon-remove", title = "Rechazar" })
                         </td>
                     </tr>
                 }

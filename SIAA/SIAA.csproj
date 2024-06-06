@@ -299,6 +299,7 @@
       <DependentUpon>SIAA_Model.edmx</DependentUpon>
       <LastGenOutput>SIAA_Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\acceso\Login.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -330,7 +331,6 @@
     <Content Include="Views\encargado\RegistraAlumnoAsesor.cshtml" />
     <Content Include="Views\alumno\EvaluacionAlumno.cshtml" />
     <Content Include="Views\asesor\ReporteAsesor.cshtml" />
-    <Content Include="Views\acceso\Login.cshtml" />
     <Content Include="Views\asesor\RegistroAsesoria.cshtml" />
     <Content Include="Views\asesor\ConsultaAsesoria.cshtml" />
     <Content Include="Views\asesor\ModificaAsesoria.cshtml" />

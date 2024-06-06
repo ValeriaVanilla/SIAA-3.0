@@ -30,9 +30,8 @@ namespace SIAA.Controllers
             return View(asesoriasOrdenadas);
         }
 
-        public ActionResult SolicitudesAlumno() // Inicializa la consulta de horarios
-        {
-            int pagina = 1, registros = 4;
+        public ActionResult SolicitudesAlumno(int pagina = 1, int registros = 3) // Inicializa la consulta de horarios
+        {            
             //var AsesoriasActualizada = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Where(a => !db.solicituds.Any(s => s.IdAsesoria == a.IdAsesoria && s.IdAlumno == alumno1.IdAlumno));
             //return View(AsesoriasActualizada.ToList());
 
