@@ -1,0 +1,171 @@
+﻿@model IEnumerable<SIAA.alumno>
+
+@{
+    Layout = "~/Views/Shared/Layout_Encargado.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="~/Content/Consultas.css">
+    <script src="~/Scripts/Consultas.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/busquedas.js"></script>
+</head>
+
+
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <!--INICIO DE TABS -->
+
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+                <li class="nav-item active">
+                    <a class="navbar-link" onclick="openTab('consultaAlumno')" href="@Url.Action("ConsultaAlumno", "encargado")">Consulta Alumnos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consultaAsesor')" href="@Url.Action("ConsultaAsesor", "encargado")">Consulta Asesores</a>
+                </li>
+            </ul>
+            <!--FIN DE TABS -->
+
+            <div>
+                <div class="tab-pane" id="consultaAlumno" role="tabpanel" aria-labelledby="consultaAlumno-tab">
+
+                    <h2><b>CONSULTA DE ALUMNOS</b></h2>
+
+
+                    <!--Notificaciones de operacion exitosa -->
+                    <div>
+                        @if (TempData["MsgRegistroAlumnoAsesorExitoso"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["MsgRegistroAlumnoAsesorExitoso"]
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="search-container">
+                        <input class="form-control" id="myInput" type="text" placeholder="Buscar.." onkeyup="filtrarTabla()">
+                    </div>
+
+                    <table id="tabla" class="table table-striped" style="width: 100%">
+                        <thead class="encabezado">
+                            <tr>
+                                <th>
+                                    <b>NOMBRE</b>
+                                </th>
+
+                                <th>
+                                    <b>CORREO</b>
+                                </th>
+
+                                <th>
+                                    <b>GENERO</b>
+                                </th>
+
+                                <th>
+                                    <b>PROGRAMA EDUCATIVO</b>
+                                </th>
+
+                                <th>
+                                    <b>ROL</b>
+                                </th>
+
+                                <th>
+                                    <b>ESTATUS</b>
+                                </th>
+
+                                <th>
+                                    <b>ASESORIAS</b>
+                                </th>
+
+                                <th>
+                                    <b>CAMBIAR ROL</b>
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="myTable">
+                            @foreach (var item in Model)
+                            {
+                                <tr class="fila-asesor">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdAlumno)
+                                        <span> - </span>
+                                        @Html.DisplayFor(modelItem => item.usuario.Nombre)
+                                        @Html.DisplayFor(modelItem => item.usuario.ApellidoPaterno)
+                                        @Html.DisplayFor(modelItem => item.usuario.ApellidoMaterno)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.usuario.Correo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.usuario.Genero)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.usuario.cat_programa_educativo.NombreProgramaEducativo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.usuario.cat_tipo_usuario.NombreUsuario)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.usuario.cat_estatus.Descripcion)
+                                    </td>
+                                    <td>
+                                        @foreach (var asesoria in item.solicituds)
+                                        {
+
+                                            <p>
+                                                @asesoria.asesoria.IdAsesoria -
+                                                @asesoria.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje
+                                            </p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("ConfirmarRegistroAlumnoAsesor", "encargado", new { id = item.IdAlumno }, FormMethod.Post, new { onsubmit = "return confirm('¿Deseas cambiar los permisos de asesor a este alumno?');" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-light glyphicon glyphicon glyphicon-refresh"></button>
+                                        }
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+                    <div class="paginacion">
+                        <ul class="pagination pull-right">
+                            @if (ViewBag.PaginaActual > 1)
+                            {
+                                <li><a href="@Url.Action("ConsultaAlumno", new { pagina = ViewBag.PaginaActual - 1 })">&laquo;</a></li>
+                            }
+                            @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                            {
+                                <li class="@(ViewBag.PaginaActual == i ? "active" : "")"><a href="@Url.Action("ConsultaAlumno", new { pagina = i })">@i</a></li>
+                            }
+                            @if (ViewBag.PaginaActual < ViewBag.TotalPaginas)
+                            {
+                                <li><a href="@Url.Action("ConsultaAlumno", new { pagina = ViewBag.PaginaActual + 1 })">&raquo;</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="~/Scripts/menuConsultaAsesorias.js"></script>
+    </div>
+</body>
+</html>

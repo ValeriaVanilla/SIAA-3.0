@@ -40,7 +40,7 @@ namespace SIAA.Controllers
             return View(usuario);
         }
 
-        #region asesoria
+        #region Asesoria
 
 
         public ActionResult ConsultaAsesoria(int pagina = 1, int registros = 9, string searchString = "")// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
@@ -125,7 +125,8 @@ namespace SIAA.Controllers
                 db.SaveChanges(); // Se guardan los datos de horario               
                 db.asesorias.Add(asesoria);
                 db.SaveChanges(); // Se guardan los datos de asesoria
-                return RedirectToAction("ConsultaAsesoria");
+                TempData["MsgRegistroExitoso"] = "La asesoria se registró exitosamente.";
+                return RedirectToAction("RegistroAsesoria");
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana, horario.Dia);
@@ -203,7 +204,7 @@ namespace SIAA.Controllers
                 db.Entry(asesoria).State = EntityState.Modified;
                 db.SaveChanges();
 
-                TempData["MensajeExito"] = "La asesoría se modificó con éxito.";
+                TempData["MsgModificacionExitosa"] = "La asesoría se modificó con éxito.";
                 return RedirectToAction("ConsultaAsesoria");
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
@@ -246,13 +247,8 @@ namespace SIAA.Controllers
             db.asesorias.Remove(asesoria);
             db.cat_horario.Remove(horario);
             db.SaveChanges();
-            //TempData["MensajeEliminacion"] = "La asesoría se eliminó correctamente.";
-            MessageBox.Show("La asesoría se eliminó correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Agrega una línea de registro
-            System.Diagnostics.Debug.WriteLine("La asesoría se eliminó correctamente.");
+            TempData["MsgEliminacionExitosa"] = "La asesoria se eliminó exitosamente.";
             return RedirectToAction("ConsultaAsesoria");
-
-
         }
 
         protected override void Dispose(bool disposing)
@@ -266,12 +262,110 @@ namespace SIAA.Controllers
 
         #endregion
 
+        #region Asesor
+        public ActionResult ConsultaAsesor(int pagina = 1, int registros = 9, string searchString = "") // Se obtiene la lista de los asesores registrados en el sistema y las conexiones que hay entre las tablas
+        {
+
+            var asesores = db.asesors.Include(a => a.usuario).Include(a => a.asesorias);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                asesores = asesores.Where(a => a.usuario.Nombre.Contains(searchString) ||
+                                             a.usuario.ApellidoPaterno.Contains(searchString) ||
+                                             a.usuario.ApellidoMaterno.Contains(searchString) ||
+                                             a.usuario.cat_estatus.Descripcion.Contains(searchString) ||
+                                             a.usuario.cat_programa_educativo.NombreProgramaEducativo.Contains(searchString) ||
+                                             a.usuario.cat_tipo_usuario.NombreUsuario.Contains(searchString));
+            }
+
+            asesores = asesores.OrderBy(a => a.IdAsesor);
+
+            var totalAsesores = asesores.Count();
+            var asesoresP = asesores.Skip((pagina - 1) * registros).Take(registros).ToList();
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAsesores / registros);
+            ViewBag.RegistrosPorPagina = registros;
+            ViewBag.SearchString = searchString;
+            return View(asesoresP);
+
+        }
+        #endregion
+
         #region AlumnoAsesor
+
+        public ActionResult ConsultaAlumno(int pagina = 1, int registros = 9, string searchString = "") // Se obtiene la lista de los alumnos registrados en el sistema y las conexiones que hay entre las tablas
+        {
+
+            var alumnos = db.alumnoes.Where(a => a.solicituds.Any(s => s.IdEstado == 2)).Include(a => a.usuario).Include(a => a.usuario.cat_estatus).Include(a => a.usuario.cat_programa_educativo).Include(a => a.usuario.cat_tipo_usuario).Include(a => a.solicituds);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                alumnos = alumnos.Where(a => a.usuario.Nombre.Contains(searchString) ||
+                                             a.usuario.ApellidoPaterno.Contains(searchString) ||
+                                             a.usuario.ApellidoMaterno.Contains(searchString) ||
+                                             a.usuario.cat_estatus.Descripcion.Contains(searchString) ||
+                                             a.usuario.cat_programa_educativo.NombreProgramaEducativo.Contains(searchString) ||
+                                             a.usuario.cat_tipo_usuario.NombreUsuario.Contains(searchString));                                                                                                                                      
+            }
+
+            alumnos = alumnos.OrderBy(a => a.IdAlumno);
+
+            var totalAlumnos = alumnos.Count();
+            var alumnosP = alumnos.Skip((pagina - 1) * registros).Take(registros).ToList();
+
+            ViewBag.PaginaActual = pagina;
+            ViewBag.TotalPaginas = (int)Math.Ceiling((double)totalAlumnos / registros);
+            ViewBag.RegistrosPorPagina = registros;
+            ViewBag.SearchString = searchString;
+
+            return View(alumnosP);
+        }
+
         public ActionResult ConsultaAlumoAsesor() // Se obtiene la lista de los alumnos asesores registrados en el sistema y las conexiones que hay entre las tablas
         {
             var usuarios = db.usuarios.Include(a => a.alumno).Include(a => a.cat_tipo_usuario).Include(a => a.cat_programa_educativo).Include(a => a.cat_estatus);
 
             return View(usuarios.ToList());
+        }
+
+        public ActionResult RegistroAlumnoAsesor(int? id) // Elimina registros de asesorías
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            alumno alumno = db.alumnoes.Find(id);
+            if (alumno == null)
+            {
+                return HttpNotFound();
+            }
+            return View(alumno);
+        }
+
+        // POST: asesorias/Delete/5
+        [HttpPost, ActionName("ConfirmarRegistroAlumnoAsesor")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmarRegistroAlumnoAsesor(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            alumno alumno = db.alumnoes.Find(id);
+            if (alumno == null)
+            {
+                return HttpNotFound();
+            }
+            if(alumno.usuario.IdTipoUsuario == 4)
+            {                
+                alumno.usuario.IdTipoUsuario = 1;
+            } else
+            {                
+                alumno.usuario.IdTipoUsuario = 4;
+            }                
+            db.Entry(alumno).State = EntityState.Modified;
+            db.SaveChanges();
+            TempData["MsgRegistroAlumnoAsesorExitoso"] = "El cambio de rol se registró exitosamente";
+            return RedirectToAction("ConsultaAlumno");
         }
 
 

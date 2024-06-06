@@ -4,58 +4,108 @@
     Layout = "~/Views/Shared/Layout_Asesor.cshtml";
 }
 
-<link rel="stylesheet" href="~/Content/Solicitudes.css">
 
-<div class="contenido">
-    <h1>Solicitudes De Asesorías</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-    <!--Aqui se imprimen las solicitudes-->
-    <table class="tabla">
-        @foreach (var item in Model)
+<head>
+    <link rel="stylesheet" href="~/Content/Solicitudes.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="contenido">
+        <h1>Solicitudes De Asesorías</h1>
+
+
+        <!--Notificaciones de operacion exitosa -->
+        <div>
+            @if (TempData["MsgAprobacionExitosa"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["MsgAprobacionExitosa"]
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
+
+        <div>
+            @if (TempData["MsgRechazoExitoso"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["MsgRechazoExitoso"]
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
+
+        <!--Aqui se imprimen las solicitudes-->
+        @if (Model.Any())
         {
-            <tr class="tarjeta">
-                <td>
-                    <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
+            <table class="tabla">
+                @foreach (var item in Model)
+                {
+                    <tr class="tarjeta">
+                        <td>
+                            <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
 
-                </td>
-                <td>
-                    <div class="titulo">
+                        </td>
+                        <td>
+                            <div class="titulo">
 
-                        <h2>@Html.DisplayFor(modelItem => item.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</h2>
-                        <p> @Html.DisplayFor(modelItem => item.IdAsesoria)</p>
-                    </div>
+                                <h2>@Html.DisplayFor(modelItem => item.asesoria.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</h2>
+                                <p> @Html.DisplayFor(modelItem => item.IdAsesoria)</p>
+                            </div>
 
-                </td>
-                <td>
-                    <div class="datos-asesorado">
-                        <h3>Datos del asesorado</h3>
-                        <b>
-                            Nombre:
-                        </b>
-                        @Html.DisplayFor(modelItem => item.alumno.usuario.Nombre)
-                        @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoPaterno)
-                        @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoMaterno)
-                        <br>
-                        <b>
-                            Matricula:
-                        </b>
-                        @Html.DisplayFor(modelItem => item.alumno.IdAlumno)
-                        <br>
-                        <b>Correo: </b>
-                        @Html.DisplayFor(modelItem => item.alumno.usuario.Correo)
-                    </div>
-                </td>
-    <td></td>
-        <td>
-        </td>
-        <td>
-            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud},  new { @class = "btn btn-warning glyphicon glyphicon-ok" })
-        </td>
-        <td>
-            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
-        </td>
-        </tr>
-    }
-        </table>
+                        </td>
+                        <td>
+                            <div class="datos-asesorado">
+                                <h3>Datos del asesorado</h3>
+                                <b>
+                                    Nombre:
+                                </b>
+                                @Html.DisplayFor(modelItem => item.alumno.usuario.Nombre)
+                                @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoPaterno)
+                                @Html.DisplayFor(modelItem => item.alumno.usuario.ApellidoMaterno)
+                                <br>
+                                <b>
+                                    Matricula:
+                                </b>
+                                @Html.DisplayFor(modelItem => item.alumno.IdAlumno)
+                                <br>
+                                <b>Correo: </b>
+                                @Html.DisplayFor(modelItem => item.alumno.usuario.Correo)
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "AprobarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-warning glyphicon glyphicon-ok" })
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "RechazarSolicitud", "asesor", new { idSolicitud = item.Idsolicitud }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        }
+        else
+        {
+            <div class="alert alert-info col-md-12" role="alert" style="text-align:center">
+                <h2>No tienes solicitudes pendientes</h2>
+            </div>
+        }
+
     </div>
 
+    </body>
+</html>

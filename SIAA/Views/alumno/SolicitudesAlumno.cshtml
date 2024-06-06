@@ -35,68 +35,93 @@
                 <div class="tab-pane" id="horarios" role="tabpanel" aria-labelledby="registro-tab">
 
                     <h2><b>REGISTRO DE SOLICITUDES</b></h2>
-                    <!--Aqui se imprimen las solicitudes-->
-                    <table id="tabla" class="table table-striped" style="width: 100%">
-                        @foreach (var item in Model)
+
+
+                    <!--Notificaciones de operacion exitosa -->
+                    <div>
+                        @if (TempData["MsgRegistroExitoso"] != null)
                         {
-                            <tr class="tarjeta">
-                                <td>
-                                    <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
-
-                                </td>
-                                <td>
-                                    <div class="titulo">
-                                        <p>@Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</p>
-                                        <p>@Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)</p>
-                                    </div>
-
-                                </td>
-                                <td>
-                                    <div class="datos-asesorado">
-                                        <h3>Datos del asesorado</h3>
-                                        <b>
-                                            Nombre:
-                                        </b>
-                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
-                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
-                                        @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
-                                        <br>
-                                        <b>
-                                            No. Empleado:
-                                        </b>
-                                        @Html.DisplayFor(modelItem => item.asesor.IdAsesor)
-                                        <br>
-                                        <b>Correo: </b>
-                                        @Html.DisplayFor(modelItem => item.asesor.usuario.Correo)
-                                    </div>
-                                </td>
-                                <td>
-                                </td>
-                                <td class="boton">
-                                    @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria }, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
-                                </td>
-
-                            </tr>
+                            <div class="alert alert-success">
+                                @TempData["MsgRegistroExitoso"]
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
                         }
-                    </table>
-
-                    <div class="paginacion">
-                        <ul class="pagination pull-right">
-                            @if (ViewBag.PaginaActual > 1)
-                            {
-                                <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual - 1 })">&laquo;</a></li>
-                            }
-                            @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
-                            {
-                                <li class="@(ViewBag.PaginaActual == i ? "active" : "")"><a href="@Url.Action("SolicitudesAlumno", new { pagina = i })">@i</a></li>
-                            }
-                            @if (ViewBag.PaginaActual < ViewBag.TotalPaginas)
-                            {
-                                <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual + 1 })">&raquo;</a></li>
-                            }
-                        </ul>
                     </div>
 
+                    <!--Aqui se imprimen las solicitudes-->
+                    @if (Model.Any())
+                    {
+
+                        <table id="tabla" class="table table-striped" style="width: 100%">
+                            @foreach (var item in Model)
+                            {
+                                <tr class="tarjeta">
+                                    <td>
+                                        <img class="imagen" src="~/Resources/Solicitudes/Imagen-prueba.png" />
+
+                                    </td>
+                                    <td>
+                                        <div class="titulo">
+                                            <p>@Html.DisplayFor(modelItem => item.cat_unidad_aprendizaje.NombreUnidadAprendizaje)</p>
+                                            <p>@Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)</p>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="datos-asesorado">
+                                            <h3>Datos del asesorado</h3>
+                                            <b>
+                                                Nombre:
+                                            </b>
+                                            @Html.DisplayFor(modelItem => item.asesor.usuario.Nombre)
+                                            @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoPaterno)
+                                            @Html.DisplayFor(modelItem => item.asesor.usuario.ApellidoMaterno)
+                                            <br>
+                                            <b>
+                                                No. Empleado:
+                                            </b>
+                                            @Html.DisplayFor(modelItem => item.asesor.IdAsesor)
+                                            <br>
+                                            <b>Correo: </b>
+                                            @Html.DisplayFor(modelItem => item.asesor.usuario.Correo)
+                                        </div>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="boton">
+                                        @Html.ActionLink(" ", "Solicitar", "alumno", new { id = item.IdAsesoria }, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+
+                        <div class="paginacion">
+                            <ul class="pagination pull-right">
+                                @if (ViewBag.PaginaActual > 1)
+                                {
+                                    <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual - 1 })">&laquo;</a></li>
+                                }
+                                @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                                {
+                                    <li class="@(ViewBag.PaginaActual == i ? "active" : "")"><a href="@Url.Action("SolicitudesAlumno", new { pagina = i })">@i</a></li>
+                                }
+                                @if (ViewBag.PaginaActual < ViewBag.TotalPaginas)
+                                {
+                                    <li><a href="@Url.Action("SolicitudesAlumno", new { pagina = ViewBag.PaginaActual + 1 })">&raquo;</a></li>
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="alert alert-info col-md-12" role="alert" style="text-align:center">
+                            <h2>No se encuentran asesorias disponibles</h2>
+                        </div>
+                    }
 
                 </div>
             </div>

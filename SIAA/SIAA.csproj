@@ -182,6 +182,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AsesoriaHorarioViewModel.cs" />
+    <Compile Include="Models\ReporteAsistenciaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reporte.cs">
       <DependentUpon>SIAA_Model.tt</DependentUpon>
@@ -315,21 +316,15 @@
     <Content Include="SIAA_Model.edmx.diagram">
       <DependentUpon>SIAA_Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\usuario\Delete.cshtml" />
-    <Content Include="Views\usuario\Edit.cshtml" />
-    <Content Include="Views\usuario\Index.cshtml" />
     <Content Include="Views\Shared\Layout_Alumno.cshtml" />
     <Content Include="Views\Shared\Layout_Asesor.cshtml" />
     <Content Include="Views\Shared\Layout_Encargado.cshtml" />
     <Content Include="Views\menu\MenuAlumno.cshtml" />
     <Content Include="Views\menu\MenuAsesor.cshtml" />
     <Content Include="Views\menu\MenuEncargado.cshtml" />
-    <Content Include="Views\alumno\ConsultaAlumno.cshtml" />
-    <Content Include="Views\alumno\ModificaAlumno.cshtml" />
+    <Content Include="Views\encargado\ConsultaAlumno.cshtml" />
     <Content Include="Views\alumno\SolicitudesAlumno.cshtml" />
-    <Content Include="Views\asesor\ConsultaAsesor.cshtml" />
-    <Content Include="Views\asesor\ModificaAsesor.cshtml" />
-    <Content Include="Views\asesor\RegistraAsesor.cshtml" />
+    <Content Include="Views\encargado\ConsultaAsesor.cshtml" />
     <Content Include="Views\asesor\SolicitudesAsesoria.cshtml" />
     <Content Include="Views\encargado\ReporteEncargado.cshtml" />
     <Content Include="Views\encargado\RegistraAlumnoAsesor.cshtml" />
@@ -345,6 +340,7 @@
     <Content Include="Views\encargado\RegistroAsesoria.cshtml" />
     <Content Include="Views\encargado\ConsultaAsesoria.cshtml" />
     <Content Include="Views\encargado\InformacionPersonal.cshtml" />
+    <Content Include="Views\asesor\ConsultaReporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

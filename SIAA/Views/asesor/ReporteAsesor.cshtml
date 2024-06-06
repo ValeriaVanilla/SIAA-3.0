@@ -34,6 +34,20 @@
             <div class="tab-content">
                 <div id="registro" role="tabpanel" aria-labelledby="registro-tab">
                     <h2><b>REGISTRO DE REPORTES</b></h2>
+
+                    <!--Notificaciones de operacion exitosa -->
+                    <div>
+                        @if (TempData["MsgRegistroReporteExitoso"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["MsgRegistroReporteExitoso"]
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                        }
+                    </div>
+
                     <!-- Contenido del formulario para registro de reportes -->
                     @model SIAA.reporte
 
@@ -45,29 +59,12 @@
 
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <p class="control-label col-md-2"><b>NO. DE REPORTE</b></p>
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.IdReporte, new { htmlAttributes = new { @class = "form-control", id = "IdReporte" } })
-                                    @Html.ValidationMessageFor(model => model.IdReporte, "", new { @class = "text-danger" })
-                                    <span id="success-message" class="text-success">@ViewBag.SuccessMessage</span>
-                                    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
-                                    {
-                                        <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use xlink:href="#info-fill" /></svg>
-                                            <div>
-                                                @ViewBag.SuccessMessage
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
 
-                            <div class="form-group">                               
-                               
+                            <div class="form-group">
+
 
                                 <div class="form-group">
-                                    <p class="control-label col-md-2"><b>NO. DE ASESORÍA</b></p>
+                                    <p class="control-label col-md-2"><b>NOMBRE ASESORÍA</b></p>
                                     <div class="col-md-10">
                                         @Html.DropDownList("IdAsesoria", null, htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.IdAsesoria, "", new { @class = "text-danger" })
@@ -113,11 +110,12 @@
                                     </div>
                                 </div>
 
-                           
+                            </div>
+
+
                         </div>
-                    </div>
                     }
-                    </div>
+                </div>
                 <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
                       </div>
 

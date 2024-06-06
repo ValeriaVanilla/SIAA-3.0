@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SIAA.asesoria>
 
 @{
-    Layout = "~/Views/Shared/Layout_Asesor.cshtml";
+    Layout = "~/Views/Shared/Layout_Encargado.cshtml";
 }
 
 <!DOCTYPE html>
@@ -26,10 +26,10 @@
         <div class="card-body">
             <ul class="nav nav-tabs pestania">
                 <li class="nav-item">
-                    <a class="navbar-link" onclick="openTab('registro')" href="@Url.Action("RegistroAsesoria", "encargado")">Registro Asesorias</a>
+                    <a class="navbar-link" onclick="openTab('registro')" href="@Url.Action("RegistroAsesoria", "asesoria")">Registro Asesorias</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesoria", "encargado")">Consulta Asesorias</a>
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesoria", "asesoria")">Consulta Asesorias</a>
                 </li>
             </ul>
             <!--FIN DE TABS -->
@@ -38,31 +38,6 @@
                 <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
 
                     <h2><b>CONSULTA DE ASESORÍAS</b></h2>
-
-                    <!--Notificaciones de operacion exitosa -->
-                    <div>
-                        @if (TempData["MsgModificacionExitosa"] != null)
-                        {
-                            <div class="alert alert-success">
-                                @TempData["MsgModificacionExitosa"]
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                        }
-                    </div>
-
-                    @if (TempData["MsgEliminacionExitosa"] != null)
-                    {
-                        <div class="alert alert-danger">
-                            @TempData["MsgEliminacionExitosa"]
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span>&times;</span>
-                            </button>
-                        </div>
-                    }
-                </div>
-
                     <div class="search-container">
                         <input class="form-control" id="myInput" type="text" placeholder="Buscar.." onkeyup="filtrarTabla()">
                     </div>
@@ -108,7 +83,7 @@
                                 <tr class="fila-asesor">
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdAsesoria)
-
+                                        
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IdUnidadAprendizaje)
@@ -135,7 +110,7 @@
                                         @Html.DisplayFor(modelItem => item.CicloEscolar)
                                     </td>
                                     <td>
-                                        @using (Html.BeginForm("ConfirmarEliminaAsesoria", "encargado", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
+                                        @using (Html.BeginForm("ConfirmarEliminaAsesoria", "asesoria", new { id = item.IdAsesoria }, FormMethod.Post, new { onsubmit = "return confirm('¿Estás seguro de que deseas eliminar esta asesoría?');" }))
                                         {
                                             @Html.AntiForgeryToken()
 
@@ -152,25 +127,23 @@
                         </tbody>
 
                     </table>
+                    @if (TempData["MostrarConfirmacion"] != null && (bool)TempData["MostrarConfirmacion"])
+                    {
+                        <script>
+                            // Muestra un mensaje de confirmación antes de la modificación
+                            alert('¿Estás seguro de que deseas modificar esta asesoría?');
+                        </script>
+                    }
 
-                    <div class="paginacion">
-                        <ul class="pagination pull-right">
-                            @if (ViewBag.PaginaActual > 1)
-                            {
-                                <li><a href="@Url.Action("ConsultaAsesoria", new { pagina = ViewBag.PaginaActual - 1 })">&laquo;</a></li>
-                            }
-                            @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
-                            {
-                                <li class="@(ViewBag.PaginaActual == i ? "active" : "")"><a href="@Url.Action("ConsultaAsesoria", new { pagina = i })">@i</a></li>
-                            }
-                            @if (ViewBag.PaginaActual < ViewBag.TotalPaginas)
-                            {
-                                <li><a href="@Url.Action("ConsultaAsesoria", new { pagina = ViewBag.PaginaActual + 1 })">&raquo;</a></li>
-                            }
-                        </ul>
-                    </div>
+                    @if (TempData["MensajeExito"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["MensajeExito"]
+                        </div>
+                    }
 
-                    <div class="modal fade" id="myModal" role="dialog" data-modifica-url="@Url.Action("ModificaAsesoria", "encargado")">
+                    <!-- Modal para la vista de modificación -->
+                    <div class="modal fade" id="myModal" role="dialog" data-modifica-url="@Url.Action("ModificaAsesoria", "asesorias")">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -182,7 +155,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

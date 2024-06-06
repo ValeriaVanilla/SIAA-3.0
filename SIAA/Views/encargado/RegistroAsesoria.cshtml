@@ -33,6 +33,20 @@
                 <div class="tab-content">
                     <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
                         <h2><b>REGISTRO  DE ASESORIAS</b></h2>
+
+                        <!--Notificaciones de operacion exitosa -->
+                        <div>
+                            @if (TempData["MsgRegistroExitoso"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["MsgRegistroExitoso"]
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+
                         <!-- Contenido del formulario para registro de asesorias -->
                         @model SIAA.Models.AsesoriaHorarioViewModel
 
@@ -42,85 +56,85 @@
 
                             <!--EMPIEZA EL FORMULARIO -->
 
-                    <div class="form-horizontal">
-                        <hr />
+                            <div class="form-horizontal">
+                                <hr />
 
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>CLAVE ASESOR</b></p>
-                            <div class="col-md-10">
-                                @Html.DropDownList("IdAsesor", null, htmlAttributes: new { @class = "form-control", @id = "Id_AsesorDropDown" })
-                                @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>CLAVE UNIDAD APRENDIZAJE</b></p>
-                            <div class="col-md-10">
-                                @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>LUGAR</b></p>
-                            <div class="col-md-10">
-
-                                @Html.DropDownList("IdLugar", null, htmlAttributes: new { @class = "form-control", @id = "Id_LugarDropDown" })
-                                @Html.ValidationMessageFor(model => model.IdLugar, "", new { @class = "text-danger" })
-                            </div>
-                        </div>                      
-
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>DÍA</b></p>
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.Horario.Dia, ViewBag.dia as SelectList, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Horario.Dia, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>HORA INICIO</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.HoraInicio, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="control-label col-md-2"><b>HORA FIN</b></p>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Horario.HoraFin, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Guardar" class="btn btn-default" />
-                            </div>
-                        </div>
-
-                        <div class="ultimosregistros" style="background-color: #f5f5f5; padding: 20px; max-width: 500px; border-radius: 10px; margin-left: 20px; margin-top: 20px;">
-                            <h2><b>ÚLTIMOS REGISTROS</b></h2>
-                            @foreach (var registro in ViewBag.UltimosRegistros) // hay un error en  esta parte
-                            {
-                                <div class="registro">
-                                    <p>Clave de Asesoria: @registro.IdAsesoria</p>
-                                    <p>Clave de Unidad de Aprendizaje: @registro.IdUnidadAprendizaje<span> - </span> @registro.cat_unidad_aprendizaje.NombreUnidadAprendizaje</p>
-                                    <p>Lugar: @registro.cat_lugar.Descripcion</p>                                    
-                                    <p>Dia: @registro.cat_horario.Dia</p>
-                                    <p>Hora de Inicio: @registro.cat_horario.HoraInicio<span>:00</span></p>
-                                    <p>Hora de Fin: @registro.cat_horario.HoraFin<span>:00</span></p>
-                                    <br />
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>CLAVE ASESOR</b></p>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("IdAsesor", null, htmlAttributes: new { @class = "form-control", @id = "Id_AsesorDropDown" })
+                                        @Html.ValidationMessageFor(model => model.IdAsesor, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            }
-                        </div>
 
-                    </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>CLAVE UNIDAD APRENDIZAJE</b></p>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("IdUnidadAprendizaje", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IdUnidadAprendizaje, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>LUGAR</b></p>
+                                    <div class="col-md-10">
+
+                                        @Html.DropDownList("IdLugar", null, htmlAttributes: new { @class = "form-control", @id = "Id_LugarDropDown" })
+                                        @Html.ValidationMessageFor(model => model.IdLugar, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>DÍA</b></p>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.Horario.Dia, ViewBag.dia as SelectList, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Horario.Dia, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>HORA INICIO</b></p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Horario.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Horario.HoraInicio, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2"><b>HORA FIN</b></p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Horario.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Horario.HoraFin, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Guardar" class="btn btn-default" />
+                                    </div>
+                                </div>
+
+                                <div class="ultimosregistros" style="background-color: #f5f5f5; padding: 20px; max-width: 500px; border-radius: 10px; margin-left: 20px; margin-top: 20px;">
+                                    <h2><b>ÚLTIMOS REGISTROS</b></h2>
+                                    @foreach (var registro in ViewBag.UltimosRegistros) // hay un error en  esta parte
+                                    {
+                                        <div class="registro">
+                                            <p>Clave de Asesoria: @registro.IdAsesoria</p>
+                                            <p>Clave de Unidad de Aprendizaje: @registro.IdUnidadAprendizaje<span> - </span> @registro.cat_unidad_aprendizaje.NombreUnidadAprendizaje</p>
+                                            <p>Lugar: @registro.cat_lugar.Descripcion</p>
+                                            <p>Dia: @registro.cat_horario.Dia</p>
+                                            <p>Hora de Inicio: @registro.cat_horario.HoraInicio<span>:00</span></p>
+                                            <p>Hora de Fin: @registro.cat_horario.HoraFin<span>:00</span></p>
+                                            <br />
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
                         }
                     </div>
                 </div>

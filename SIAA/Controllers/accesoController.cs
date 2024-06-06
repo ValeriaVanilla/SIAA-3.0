@@ -33,21 +33,17 @@ namespace SIAA.Controllers
 
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(cont))
             {
-                MessageBox.Show("Ingresa todos los datos", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ViewData["Mensaje"] = "Inicio de sesión exitoso. ¡Bienvenido!";
                 return RedirectToAction("Login", "Acceso");
             }
             try
             {
-
-
                 usuario usuario = (from o in db.usuarios where o.Correo == correo && o.Contrasena == cont select o).ToList().ElementAt(0);
 
                 if (usuario.IdTipoUsuario== 1)
                 {
                     alumno alumno = db.alumnoes.Find(usuario.IdUsuario);
                     System.Web.HttpContext.Current.Session["LOGIN"] = alumno;
-                    string msg = "Bienvenido " + alumno.usuario.Nombre + " " + alumno.usuario.ApellidoPaterno + " " + alumno.usuario.ApellidoMaterno;
-                    MessageBox.Show(msg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return RedirectToAction("MenuAlumno", "menu");
 
                 }
@@ -55,50 +51,38 @@ namespace SIAA.Controllers
                 {
                     asesor asesor = db.asesors.Find(usuario.IdUsuario);
                     System.Web.HttpContext.Current.Session["LOGIN"] = asesor;
-                    string msg = "Bienvenido " + asesor.usuario.Nombre + " " + asesor.usuario.ApellidoPaterno + " " + asesor.usuario.ApellidoMaterno;
-                    MessageBox.Show(msg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return RedirectToAction("MenuAsesor", "menu");
                 }
                 else if (usuario.IdTipoUsuario == 3)
                 {
                     encargado encargado = db.encargadoes.Find(usuario.IdUsuario);
                     System.Web.HttpContext.Current.Session["LOGIN"] = encargado;
-                    MessageBox.Show("Bienvenido Encargado", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     return RedirectToAction("MenuEncargado", "menu");
                 }
                 if (usuario.IdTipoUsuario == 4)
                 {
                     alumno alumno = db.alumnoes.Find(usuario.IdUsuario);
                     System.Web.HttpContext.Current.Session["LOGIN"] = alumno;
-                    string msg = "Bienvenido " + alumno.usuario.Nombre + " " + alumno.usuario.ApellidoPaterno + " " + alumno.usuario.ApellidoMaterno;
-                    MessageBox.Show(msg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return RedirectToAction("MenuAlumno", "menu");
                 }
-
-
                 else
                 {
-                    MessageBox.Show("El usuario o contraseña son incorrectos", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return RedirectToAction("Login", "Acceso");
-
-
+                    TempData["Error"] = "El usuario o contraseña son inccorectos";
+                    return RedirectToAction("Login", "acceso");
                 }
-
-
 
             }
             catch (SqlException s)
             {
-                String linea = "" + s.ErrorCode;
+                string linea = "" + s.ErrorCode;
                 MessageBox.Show(linea, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("El usuario o contraseña son incorrectos", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return RedirectToAction("Login", "Acceso");
+                TempData["Error"] = "El usuario o contraseña son inccorectos";
+                return RedirectToAction("Login", "acceso");
 
             }
 

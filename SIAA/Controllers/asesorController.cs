@@ -20,151 +20,6 @@ namespace SIAA.Controllers
         private siaaEntities db = new siaaEntities();
         asesor asesor1 = System.Web.HttpContext.Current.Session["LOGIN"] as asesor;
 
-        #region asesor
-        public ActionResult ConsultaAsesor() // Se obtiene la lista de los asesores registrados en el sistema y las conexiones que hay entre las tablas
-        {
-
-            var asesors = db.asesors.Include(a => a.usuario).Include(a => a.asesorias);
-            var usuarios = db.usuarios;            
-            return View(asesors.ToList());
-
-        }
-
-        public ActionResult Details(int? id) // Muestra los detalles
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            asesor asesor = db.asesors.Find(id);
-            if (asesor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(asesor);
-        }
-
-        public ActionResult RegistraAsesor() // Se inicializan las varibles de desplazamiento
-        {
-            ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion");
-            ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo");
-            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario");
-            var ultimosRegistros = db.asesors.Include(a => a.usuario).OrderByDescending(a => a.IdAsesor).Take(2).ToList();
-            ViewBag.UltimosRegistros = ultimosRegistros;
-            return View();
-        }
-
-        private bool IsNumeric(string value)
-        {
-            return int.TryParse(value, out _);
-        }
-
-
-        public bool Validar(asesor asesor) //Se validan los datos antes de realizar el registro
-        {
-            var use = db.asesors.ToList();
-            for (int i = 0; i < use.Count(); i++)
-            {
-                if (asesor.IdAsesor == use[i].IdAsesor)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-
-        public ActionResult ModificaAsesor(int? id) // Valida antes de modificar
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            asesor asesor = db.asesors.Find(id);
-            if (asesor == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion", asesor.usuario.IdEstatus);
-            ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo", asesor.usuario.IdProgramaEducativo);
-            ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", asesor.usuario.IdUsuario);
-            return View(asesor);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ModificaAsesor([Bind(Include = "IdAsesor,Nombre,ApellidoPaterno,ApellidoMaterno,Correo,IdProgramaEducativo,IdEstatus,IdTipo")] asesor asesor) // Se modifican los registros de asesores
-        {
-            if (asesor.usuario.Nombre == null || asesor.usuario.ApellidoMaterno == null || asesor.usuario.ApellidoPaterno == null || asesor.usuario.Correo == null || asesor.usuario.IdProgramaEducativo == 0 || asesor.usuario.IdEstatus == null)
-            {
-                MessageBox.Show("Ingrese todos los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return RedirectToAction("ModificaAsesor", "asesor");
-            }
-            {
-                DialogResult result1 = MessageBox.Show("Desea modificar el registro?", "Modificar Asesor", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-                if (result1 == DialogResult.Yes)
-                {
-
-                    if (ModelState.IsValid)
-                    {
-                        asesor.usuario.Nombre = asesor.usuario.Nombre.ToUpper();
-                        asesor.usuario.ApellidoPaterno = asesor.usuario.ApellidoPaterno.ToUpper();
-                        asesor.usuario.ApellidoMaterno = asesor.usuario.ApellidoMaterno.ToUpper();
-                        db.Entry(asesor).State = EntityState.Modified;
-                        db.SaveChanges();
-                        MessageBox.Show("La modificación se ha guardado con éxito", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return RedirectToAction("ConsultaAsesor");
-                    }
-                }
-                else
-                    return RedirectToAction("ModificaAsesor");
-                ViewBag.IdEstatus = new SelectList(db.cat_estatus, "IdEstatus", "Descripcion", asesor.usuario.IdEstatus);
-                ViewBag.IdProgramaEducativo = new SelectList(db.cat_programa_educativo, "IdProgramaEducativo", "NombreProgramaEducativo", asesor.usuario.IdProgramaEducativo);
-                ViewBag.IdTipoUsuario = new SelectList(db.cat_tipo_usuario, "IdTipoUsuario", "NombreUsuario", asesor.usuario.IdUsuario);
-                return View(asesor);
-            }
-
-        }
-
-
-        public ActionResult EliminarAsesor(int? id) // Elimina registros de asesores
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            asesor asesor = db.asesors.Find(id);
-            if (asesor == null)
-            {
-                return HttpNotFound();
-            }
-            DialogResult result1 = MessageBox.Show("Desea eliminar el registro?", "Eliminar Asesor", MessageBoxButtons.YesNo,
-           MessageBoxIcon.Question);
-            if (result1 == DialogResult.Yes)
-            {
-
-                db.asesors.Remove(asesor);
-                db.SaveChanges();
-                MessageBox.Show("El registro se ha eliminado con éxito", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return RedirectToAction("ConsultaAsesor");
-            }
-            else
-                return RedirectToAction("ConsultaAsesor");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #endregion
-
-        
         public ActionResult BuscarPorNombre(string nombre) // Busqueda por nombre
         {
             var resultados = db.asesors.Where(a => a.usuario.Nombre.Contains(nombre)).ToList();
@@ -172,7 +27,7 @@ namespace SIAA.Controllers
         }
 
         #region asesoria
-
+        
         public ActionResult ConsultaAsesoria(int pagina = 1, int registros = 9, string searchString = "")// Se obtiene la lista de las asesorias registradas en el sistema y las conexiones que hay entre las tablas
         {
             //var asesorias = db.asesorias.Include(a => a.asesor).Include(a => a.cat_unidad_aprendizaje).Include(a => a.cat_lugar).Where(a => a.IdAsesor == asesor1.IdAsesor); 
@@ -253,7 +108,8 @@ namespace SIAA.Controllers
                 db.SaveChanges(); // Se guardan los datos de horario               
                 db.asesorias.Add(asesoria);
                 db.SaveChanges(); // Se guardan los datos de asesoria
-                return RedirectToAction("ConsultaAsesoria");
+                TempData["MsgRegistroExitoso"] = "La asesoria se registró exitosamente.";
+                return RedirectToAction("RegistroAsesoria");                
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
             ViewBag.dia = new SelectList(semana, horario.Dia);            
@@ -330,7 +186,7 @@ namespace SIAA.Controllers
                 db.Entry(viewModel.Asesoria).State = EntityState.Modified;
                 db.SaveChanges();
 
-                TempData["MensajeExito"] = "La asesoría se modificó con éxito.";
+                TempData["MsgModificacionExitosa"] = "La asesoría se modificó con éxito.";
                 return RedirectToAction("ConsultaAsesoria");
             }
             List<string> semana = new List<string> { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
@@ -371,11 +227,8 @@ namespace SIAA.Controllers
             }
             db.asesorias.Remove(asesoria);
             db.cat_horario.Remove(horario);
-            db.SaveChanges();
-            //TempData["MensajeEliminacion"] = "La asesoría se eliminó correctamente.";
-            MessageBox.Show("La asesoría se eliminó correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Agrega una línea de registro
-            System.Diagnostics.Debug.WriteLine("La asesoría se eliminó correctamente.");
+            db.SaveChanges();            
+            TempData["MsgEliminacionExitosa"] = "La asesoria se eliminó exitosamente.";
             return RedirectToAction("ConsultaAsesoria");
 
 
@@ -390,8 +243,6 @@ namespace SIAA.Controllers
             return View(solicitudes.ToList());
         }
 
-        ///// Funciones para el componente de solicitudes
-
         public ActionResult AprobarSolicitud(int idSolicitud)
         {
             solicitud solicitudAprobada = db.solicituds.Find(idSolicitud);
@@ -399,6 +250,7 @@ namespace SIAA.Controllers
             solicitudAprobada.FechaAceptacion = System.DateTime.Now;
             db.Entry(solicitudAprobada).State = EntityState.Modified;
             db.SaveChanges();
+            TempData["MsgAprobacionExitosa"] = "La asesoria ha sido aprobada exitosamente.";
             return RedirectToAction("SolicitudesAsesoria");
         }
 
@@ -408,6 +260,7 @@ namespace SIAA.Controllers
             solicitudAprobada.IdEstado = 3;
             db.Entry(solicitudAprobada).State = EntityState.Modified;
             db.SaveChanges();
+            TempData["MsgRechazoExitoso"] = "La asesoria ha sido rechazada exitosamente.";
             return RedirectToAction("SolicitudesAsesoria");
         }
 
@@ -422,29 +275,38 @@ namespace SIAA.Controllers
             var reportes = db.reportes.Include(a => a.cat_temas).Include(a => a.asesoria);
             return View(reportes.ToList());
         }
-
-
+       
         public ActionResult ReporteAsesor() // Se llama la vista reporte de asesor donde se registran los reportes
         {
-            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "CicloEscolar");
-            ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema");
+            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "cat_Unidad_Aprendizaje.NombreUnidadAprendizaje");
+            ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema");            
             return View();
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ReporteAsesor([Bind(Include = "IdReporte, IdAsesoria, Fecha, Duracion, IdTemaVisto, Comentarios")] reporte reporte) // Se guarda el registro del reporte
         {
+
+            var alumnosInscritos = db.solicituds.Where(s => s.IdAsesoria == 2).Select(s => s.alumno).ToList();
+
+            if (db.reportes.Any())
+            {
+                reporte.IdReporte = db.reportes.ToList().Last().IdReporte + 1;
+            }
+            else { reporte.IdReporte = 1; }
+
             if (ModelState.IsValid)
             {
                 db.reportes.Add(reporte);
                 db.SaveChanges();
-
+                TempData["MsgRegistroReporteExitoso"] = "El reporte se registró exitosamente.";                
                 return RedirectToAction("ReporteAsesor");
             }
         
             // En caso de validación fallida, devolver la vista con el modelo y mostrar los errores
-            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "CicloEscolar", reporte.IdAsesoria);
+            ViewBag.IdAsesoria = new SelectList(db.asesorias, "IdAsesoria", "cat_Unidad_Aprendizaje.NombreUnidadAprendizaje", reporte.IdAsesoria);
             ViewBag.IdTemaVisto = new SelectList(db.cat_temas, "IdTemas", "NombreTema", reporte.IdTemaVisto);
             return View(reporte);
         }

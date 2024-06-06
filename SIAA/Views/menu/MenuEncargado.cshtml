@@ -8,7 +8,7 @@
 <!--INICIO BIENVENIDA -->
 <div class="jumbotron">
     <p>
-        <center> <h2>  <b> ¡Bienvenido @Html.DisplayFor(model => model.usuario.Nombre) !</b> </h2></center>
+        <center> <h2>  <b> ¡Bienvenido @Html.DisplayFor(model => model.usuario.Nombre)!</b> </h2></center>
     </p>
 
 </div>
@@ -31,9 +31,9 @@
     <!--FIN CARD 1-->
     <!--INICIO CARD 2-->
     <div class="card-menu-encargado">
-        <a href="@Url.Action("RegistraAlumnoAsesor", "encargado")" class="enlace-tarjeta">
+        <a href="@Url.Action("ConsultaAsesor", "encargado")" class="enlace-tarjeta">
             <div class="overlay">
-                <h2 class="titulo">Asesores</h2>
+                <h2 class="titulo">Usuarios</h2>
             </div>
             <img src="~/Resources/Menu_encargado/asesores-encargado.png" alt="cheetah" />
         </a>

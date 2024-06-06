@@ -1,0 +1,195 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Layout_Encargado.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<!--ESTE ES EL HEAD-->
+<head>
+    <meta charset="UTF-8">
+    <meta naame="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Alumnos Asesores</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/registroAsesorias.css">
+    <link rel="stylesheet" href="~/Content/Consultas.css">
+    <script src="~/Scripts/Consultas.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/busquedas.js"></script>
+    <script src="~/Scripts/Modifica.js"></script>
+
+</head>
+<!--FIN DE HEAD-->
+<!--INICIO DE BODY-->
+<body>
+    <div class="container" style="margin-right: 6cm;">
+        <div class="card-body">
+            <ul class="nav nav-tabs pestania">
+
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="openTab('registro')" href="@Url.Action("RegistraAlumnoAsesor", "alumno")">Registro Alumnos Asesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAsesor", "asesor")">Consulta Asesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openTab('consulta')" href="@Url.Action("ConsultaAlumno", "alumno")">Consulta Alumno</a>
+                </li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane" id="registro" role="tabpanel" aria-labelledby="registro-tab">
+                    <h2><b>REGISTRO  DE ALUMNO ASESOR</b></h2>
+                    <!-- Contenido del formulario para registro de asesores -->
+                    @model SIAA.alumno
+
+
+                    @using (Html.BeginForm("BuscarPorMatricula", "alumno", FormMethod.Post, new { id = "formBusqueda" }))
+      {
+          @Html.AntiForgeryToken()
+
+          <div class="form-horizontal">
+
+              <div class="form-group">
+                  <p class="control-label col-md-2"><b>MATRICULA</b></p>
+                  <div class="col-md-10">
+                      @Html.EditorFor(model => model.IdAlumno, new { htmlAttributes = new { @class = "form-control" } })
+                      @Html.ValidationMessageFor(model => model.IdAlumno, "", new { @class = "text-danger" })
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-10">
+                      <input type="submit" value="Enviar" class="btn btn-default" />
+                  </div>
+              </div>
+
+          </div>
+       }
+
+                    @using (Html.BeginForm("RegistraAlumnoAsesor", "alumno", FormMethod.Post, new { id = "formRegistro" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.IdAlumno)
+
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>NOMBRE</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.usuario.Nombre)                            
+                            @Html.ValidationMessageFor(model => model.usuario.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>APELLIDO PATERNO</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.usuario.ApellidoPaterno)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>APELLIDO MATERNO</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.usuario.ApellidoMaterno)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>CORREO</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.Correo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>GENERO</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.Genero)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>PROGRAMA EDUCATIV0</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.usuario.cat_programa_educativo.NombreProgramaEducativo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>ESTATUS</b></p>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.usuario.cat_estatus.Descripcion)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><b>TIPO USUARIO</b></p>
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdTipoUsuario", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.usuario.cat_tipo_usuario.IdTipoUsuario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                    }
+                </div>
+
+                        <div class="tab-pane" id="consulta" role="tabpanel" aria-labelledby="consulta-tab">
+
+
+                        </div>
+                    </div>
+
+        </div>
+    </div>
+    <script src="~/Scripts/menuRegistroAsesores.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var successMessage = "@ViewBag.SuccessMessage";
+            if (successMessage && successMessage.trim() !== "") {
+                // Muestra el mensaje de éxito usando JavaScript
+                var successElement = document.getElementById("success-message");
+                successElement.innerHTML = successMessage;
+
+                // Puedes agregar estilos o clases adicionales según tus necesidades
+                successElement.classList.add("alert", "alert-primary", "d-flex", "align-items-center", "role", "alert");
+
+                // Limpia el mensaje de éxito después de un tiempo (opcional)
+                setTimeout(function () {
+                    successElement.innerHTML = "";
+                }, 50000); // Muestra el mensaje por 5 segundos (ajusta según tus necesidades).
+            }
+        });
+    </script>
+
+
+
+</body>
+
+
+
+</html>
+

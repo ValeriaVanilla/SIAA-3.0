@@ -13,7 +13,7 @@ namespace SIAA.Controllers
         public ActionResult MenuEncargado()
         {
             encargado encargado1 = System.Web.HttpContext.Current.Session["LOGIN"] as encargado;
-            return View();
+            return View(encargado1);
         }
 
         // Se llama al menu principal del asesor
@@ -27,7 +27,7 @@ namespace SIAA.Controllers
         public ActionResult MenuAlumno()
         {
             alumno alumno1 = System.Web.HttpContext.Current.Session["LOGIN"] as alumno;
-            return View();
+            return View(alumno1);
         }
 
 
